@@ -108,8 +108,33 @@ class Wsb_Admin_Design {
         $float_icon = get_option('wsb_float_btn_icon', 'dashicons-calendar-alt');
         $showcase_layout = get_option('wsb_showcase_layout', 'grid');
         ?>
-        <div class="wrap wsb-admin-wrap">
-            <h1 style="margin-bottom:20px;">System Customization & Branding</h1>
+        <div class="wrap wsb-admin-wrap wsb-design-wrapper">
+            <style>
+                /* Design & Branding Responsive Layouts */
+                .wsb-design-header { margin-bottom: 20px; }
+                .wsb-design-main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: start; }
+                .wsb-design-column-stack { display: flex; flex-direction: column; gap: 30px; }
+                .wsb-palette-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+                .wsb-effect-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+                .wsb-label-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+                .wsb-basket-toggle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
+                .wsb-basket-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; padding: 20px; background: rgba(0,0,0,0.1); border-radius: 16px; }
+                .wsb-float-assistant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; }
+                .wsb-float-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+                .wsb-action-bar { background: var(--wsb-panel-dark); padding: 20px; border-radius: 16px; border: 1px solid var(--wsb-border); margin-top: 30px; display: flex; gap: 15px; }
+
+                @media (max-width: 1200px) {
+                    .wsb-design-main-grid { grid-template-columns: 1fr; }
+                }
+
+                @media (max-width: 768px) {
+                    .wsb-effect-grid, .wsb-label-grid, .wsb-basket-toggle-grid, .wsb-float-assistant-grid, .wsb-float-detail-grid { grid-template-columns: 1fr; }
+                    .wsb-basket-detail-grid { grid-template-columns: 1fr; }
+                    .wsb-action-bar { flex-direction: column; }
+                    .wsb-action-bar button { width: 100%; }
+                }
+            </style>
+            <h1 class="wsb-design-header">System Customization & Branding</h1>
             <p style="color:var(--wsb-text-muted); margin-bottom:30px;">Fully loaded control center for your premium booking ecosystem.</p>
 
             <link rel="stylesheet" href="<?php echo esc_url(WSB_PLUGIN_URL . 'assets/all.min.css'); ?>"  />
@@ -125,10 +150,10 @@ class Wsb_Admin_Design {
             <form method="post">
                 <?php wp_nonce_field('wsb_save_design', 'wsb_design_nonce'); ?>
 
-                <div style="display:grid; grid-template-columns: 2fr 1fr; gap:30px; align-items:start;">
+                <div class="wsb-design-main-grid">
                     
                     <!-- Left Column: Primary Settings -->
-                    <div style="display:flex; flex-direction:column; gap:30px;">
+                    <div class="wsb-design-column-stack">
                         
                         <!-- Section 1: Brand Identity & Palette -->
                         <div class="wsb-design-section" style="margin:0; border-left: 4px solid var(--wsb-primary);">
@@ -137,7 +162,7 @@ class Wsb_Admin_Design {
                             </h2>
                             <p style="color:var(--wsb-text-muted); font-size:12px; margin-bottom:25px; line-height:1.6;">Fine-tune your visual identity. These colors define the primary mood, interactions, and granular elements of your booking system.</p>
                             
-                            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:20px;">
+                            <div class="wsb-palette-grid">
                                 <!-- Primary Brand Group -->
                                 <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                                     <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; display:block; margin-bottom:10px;">Core Identity</label>
@@ -223,7 +248,7 @@ class Wsb_Admin_Design {
                                 <span class="dashicons dashicons-admin-appearance"></span> 02. Component Styling & Effects
                             </h2>
                             
-                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                            <div class="wsb-effect-grid">
                                 <div>
                                     <label style="display:block; color:white; font-weight:600; font-size:14px; margin-bottom:10px;">Typography Engine</label>
                                     <select name="wsb_font_family" style="width:100%; background:rgba(255,255,255,0.05); color:white; border:1px solid rgba(255,255,255,0.1); padding:12px; border-radius:10px;">
@@ -277,7 +302,7 @@ class Wsb_Admin_Design {
                             <h2 style="color:white; margin-bottom:25px; font-weight: 700; letter-spacing: -0.02em; display:flex; align-items:center; gap:10px;">
                                 <span class="dashicons dashicons-editor-textcolor"></span> 03. Content & Dynamic Labeling
                             </h2>
-                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                            <div class="wsb-label-grid">
                                 <div class="wsb-input-wrap">
                                     <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;">Step 1 Title</label>
                                     <input type="text" name="wsb_label_step1" value="<?php echo esc_attr($l_step1); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
@@ -311,7 +336,7 @@ class Wsb_Admin_Design {
                                 <span class="dashicons dashicons-cart" style="color:#f59e0b; font-size:24px; width:24px; height:24px;"></span> 04. Basket & Interaction Ecosystem
                             </h2>
                             
-                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:25px; margin-bottom:30px;">
+                            <div class="wsb-basket-toggle-grid">
                                 <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.03); padding:20px; border-radius:14px; border:1px solid rgba(255,255,255,0.05);">
                                     <div>
                                         <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
@@ -335,7 +360,7 @@ class Wsb_Admin_Design {
                                 </div>
                             </div>
 
-                            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px; padding:20px; background:rgba(0,0,0,0.1); border-radius:16px;">
+                            <div class="wsb-basket-detail-grid">
                                 <div class="wsb-input-wrap">
                                     <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Basket Icon</label>
                                     <div style="display:flex; gap:8px;">
@@ -363,7 +388,7 @@ class Wsb_Admin_Design {
                                 <span class="dashicons dashicons-calendar-alt" style="color:var(--wsb-success); font-size:24px; width:24px; height:24px;"></span> 05. Floating Booking Assistant
                             </h2>
 
-                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:25px; margin-bottom:25px;">
+                            <div class="wsb-float-assistant-grid">
                                 <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.03); padding:20px; border-radius:14px; border:1px solid rgba(255,255,255,0.05);">
                                     <div>
                                         <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
@@ -387,7 +412,7 @@ class Wsb_Admin_Design {
                                 </div>
                             </div>
 
-                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                            <div class="wsb-float-detail-grid">
                                 <div class="wsb-input-wrap">
                                     <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Floating Widget Icon</label>
                                     <div style="display:flex; gap:8px;">
@@ -403,7 +428,7 @@ class Wsb_Admin_Design {
                         </div>
 
                         <!-- Save Actions -->
-                        <div style="background:var(--wsb-panel-dark); padding:20px; border-radius:16px; border:1px solid var(--wsb-border); margin-top:30px; display:flex; gap:15px;">
+                        <div class="wsb-action-bar">
                             <button type="submit" class="wsb-btn-premium"
                                 style="flex:2; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: #fff; border: none; padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content:center; gap: 10px;">
                                 ✨ Apply Customization
@@ -417,7 +442,7 @@ class Wsb_Admin_Design {
                     </div>
 
                     <!-- Right Column: Layout & Deployment -->
-                    <div style="display:flex; flex-direction:column; gap:30px;">
+                    <div class="wsb-design-column-stack">
                         
                         <!-- Section 4: Aesthetic Style Selection -->
                         <div class="wsb-design-section" style="margin:0; border-top: 4px solid var(--wsb-primary);">
