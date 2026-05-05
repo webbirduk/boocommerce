@@ -59,8 +59,24 @@ class Wsb_Admin_Settings
         $enable_notif = get_option('wsb_enable_notifications', 'yes');
         $policy = get_option('wsb_cancellation_policy', 'Please cancel at least 24 hours in advance.');
         ?>
-        <div class="wrap wsb-admin-wrap">
-            <div style="margin-bottom:30px;">
+        <div class="wrap wsb-admin-wrap wsb-settings-wrapper">
+            <style>
+                /* Settings Responsive Layouts */
+                .wsb-settings-header { margin-bottom: 30px; }
+                .wsb-settings-column-stack { display: flex; flex-direction: column; gap: 30px; }
+                .wsb-settings-row { display: flex; align-items: center; justify-content: space-between; }
+                .wsb-settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+                .wsb-settings-action-bar { background: var(--wsb-panel-dark); padding: 25px; border-radius: 16px; border: 1px solid var(--wsb-border); display: flex; gap: 15px; }
+
+                @media (max-width: 768px) {
+                    .wsb-settings-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+                    .wsb-settings-row > select { width: 100% !important; }
+                    .wsb-settings-grid { grid-template-columns: 1fr; }
+                    .wsb-settings-action-bar { flex-direction: column; }
+                    .wsb-settings-action-bar button { width: 100%; }
+                }
+            </style>
+            <div class="wsb-settings-header">
                 <h1 style="margin:0; font-size:28px; font-weight:800; color:#fff;">System Settings</h1>
                 <p style="color:var(--wsb-text-muted); margin-top:5px; font-size:15px;">Configure your global booking
                     architecture, payment gateways, and design language.</p>
@@ -69,7 +85,7 @@ class Wsb_Admin_Settings
             <form method="post">
                 <?php wp_nonce_field('wsb_save_settings', 'wsb_settings_nonce'); ?>
 
-                <div style="display:flex; flex-direction:column; gap:30px;">
+                <div class="wsb-settings-column-stack">
 
                     <!-- General Settings Card -->
                     <div
@@ -135,7 +151,7 @@ class Wsb_Admin_Settings
                             <div style="background:rgba(255,255,255,0.02); padding:25px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                                 <h4 style="color:var(--wsb-primary); margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;">Core Architecture</h4>
                                 <div style="display:flex; flex-direction:column; gap:20px;">
-                                        <div style="display:flex; align-items:center; justify-content:space-between;">
+                                        <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
                                                     System Default Currency
@@ -150,7 +166,7 @@ class Wsb_Admin_Settings
                                                 <option value="INR" <?php selected($currency, 'INR'); ?>>INR (₹)</option>
                                             </select>
                                         </div>
-                                        <div style="display:flex; align-items:center; justify-content:space-between;">
+                                        <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
                                                     Skip Professional Selection
@@ -163,7 +179,7 @@ class Wsb_Admin_Settings
                                                 <span class="wsb-slider"></span>
                                             </label>
                                         </div>
-                                        <div style="display:flex; align-items:center; justify-content:space-between;">
+                                        <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
                                                     Disable Online Payments
@@ -176,7 +192,7 @@ class Wsb_Admin_Settings
                                                 <span class="wsb-slider"></span>
                                             </label>
                                         </div>
-                                        <div style="display:flex; align-items:center; justify-content:space-between;">
+                                        <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
                                                     Filter Staff by Service
@@ -189,7 +205,7 @@ class Wsb_Admin_Settings
                                                 <span class="wsb-slider"></span>
                                             </label>
                                         </div>
-                                        <div style="display:flex; align-items:center; justify-content:space-between;">
+                                        <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
                                                     Enable Split Scheduling
@@ -208,7 +224,7 @@ class Wsb_Admin_Settings
                             <!-- Scheduling Rules & Time Control -->
                             <div style="background:rgba(255,255,255,0.02); padding:25px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                                 <h4 style="color:#10b981; margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;">Scheduling & Time Control</h4>
-                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px;">
+                                <div class="wsb-settings-grid">
                                     <div>
                                         <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:10px;">Booking Buffer (Min)</label>
                                         <input type="number" name="wsb_booking_buffer" value="<?php echo esc_attr($buffer); ?>" style="width:100%; background:#0f172a; color:#fff; border:1px solid var(--wsb-border); padding:12px; border-radius:8px;">
@@ -226,7 +242,7 @@ class Wsb_Admin_Settings
                             <div style="background:rgba(255,255,255,0.02); padding:25px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                                 <h4 style="color:#f59e0b; margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;">Email Settings</h4>
                                 <div style="display:flex; flex-direction:column; gap:20px; margin-bottom:25px;">
-                                    <div style="display:flex; align-items:center; justify-content:space-between;">
+                                    <div class="wsb-settings-row">
                                         <div>
                                             <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
                                                 Instant Confirmation
@@ -239,7 +255,7 @@ class Wsb_Admin_Settings
                                             <span class="wsb-slider"></span>
                                         </label>
                                     </div>
-                                    <div style="display:flex; align-items:center; justify-content:space-between;">
+                                    <div class="wsb-settings-row">
                                         <div>
                                             <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
                                                 Email Notifications
@@ -266,7 +282,7 @@ class Wsb_Admin_Settings
                     </div>
 
                     <!-- Save Actions -->
-                    <div style="background:var(--wsb-panel-dark); padding:25px; border-radius:16px; border:1px solid var(--wsb-border); display:flex; gap:15px;">
+                    <div class="wsb-settings-action-bar">
                         <button type="submit" name="wsb_save_settings" class="wsb-btn-primary" style="flex:2; padding:15px; font-size:16px; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);">Save Settings</button>
                         <button type="submit" name="wsb_restore_defaults" id="wsb-restore-defaults-btn" class="wsb-btn" style="flex:1; background:rgba(255,255,255,0.05); color:#94a3b8; border:1px solid rgba(255,255,255,0.1); padding:15px; font-size:14px; font-weight:700;">Restore Defaults</button>
                     </div>
