@@ -153,22 +153,22 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboard';
         <nav class="wsb-sidebar-nav">
             <?php
             $nav_items = apply_filters('wsb_admin_nav_items', [
-                'dashboard' => ['icon' => 'dashicons-chart-bar', 'label' => 'Overview'],
-                'bookings'  => ['icon' => 'dashicons-calendar-alt', 'label' => 'Bookings'],
-                'finance'   => ['icon' => 'dashicons-money-alt', 'label' => 'Finance'],
-                'services'  => ['icon' => 'dashicons-admin-tools', 'label' => 'Services'],
-                'staff'     => ['icon' => 'dashicons-groups', 'label' => 'Professional Team'],
-                'customers' => ['icon' => 'dashicons-admin-users', 'label' => 'Clients'],
-                'design'    => ['icon' => 'dashicons-art', 'label' => 'Customization'],
-                'integrations' => ['icon' => 'dashicons-networking', 'label' => 'Integrations'],
-                'settings'  => ['icon' => 'dashicons-admin-settings', 'label' => 'System Settings'],
+                'dashboard' => ['icon' => 'dashicons-chart-bar', 'label' => __('Overview', 'wp-service-booking')],
+                'bookings'  => ['icon' => 'dashicons-calendar-alt', 'label' => __('Bookings', 'wp-service-booking')],
+                'finance'   => ['icon' => 'dashicons-money-alt', 'label' => __('Finance', 'wp-service-booking')],
+                'services'  => ['icon' => 'dashicons-admin-tools', 'label' => __('Services', 'wp-service-booking')],
+                'staff'     => ['icon' => 'dashicons-groups', 'label' => __('Professional Team', 'wp-service-booking')],
+                'customers' => ['icon' => 'dashicons-admin-users', 'label' => __('Clients', 'wp-service-booking')],
+                'design'    => ['icon' => 'dashicons-art', 'label' => __('Customization', 'wp-service-booking')],
+                'integrations' => ['icon' => 'dashicons-networking', 'label' => __('Integrations', 'wp-service-booking')],
+                'settings'  => ['icon' => 'dashicons-admin-settings', 'label' => __('System Settings', 'wp-service-booking')],
             ]);
             foreach ($nav_items as $key => $item):
                 $active = ($tab === $key) ? 'active' : '';
             ?>
                 <div class="wsb-nav-item <?php echo $active; ?>" data-tab="<?php echo esc_attr($key); ?>">
                     <span class="wsb-nav-icon dashicons <?php echo esc_attr($item['icon']); ?>" style="font-size: 18px; width: auto; height: auto;"></span>
-                    <span class="wsb-nav-text"><?php echo $item['label']; ?></span>
+                    <span class="wsb-nav-text"><?php echo esc_html($item['label']); ?></span>
                 </div>
             <?php endforeach; ?>
         </nav>
@@ -177,7 +177,7 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboard';
         <div style="padding: 20px; border-top: 1px solid #1e293b;">
             <a href="<?php echo admin_url(); ?>" class="wsb-nav-item" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
                 <span class="wsb-nav-icon dashicons dashicons-wordpress" style="font-size: 20px; width: auto; height: auto;"></span>
-                <span class="wsb-nav-text">Exit to WordPress</span>
+                <span class="wsb-nav-text"><?php _e('Exit to WordPress', 'wp-service-booking'); ?></span>
             </a>
         </div>
     </div>

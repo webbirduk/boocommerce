@@ -104,8 +104,8 @@ class Wsb_Admin
     public function add_plugin_admin_menu()
     {
         add_menu_page(
-            'Service Booking',
-            'Service Booking',
+            __('Service Booking', 'wp-service-booking'),
+            __('Service Booking', 'wp-service-booking'),
             'manage_options',
             'wsb_main',
             array($this, 'display_master_dashboard'),
@@ -144,42 +144,48 @@ class Wsb_Admin
             $subject_parts = array();
 
             if (isset($changes['booking_date'])) {
-                $change_details .= '<div style="margin-bottom:10px;">📅 <strong>Date Changed:</strong> ' . esc_html($changes['booking_date']) . '</div>';
-                $subject_parts[] = "Date";
+                $change_details .= '<div style="margin-bottom:10px;">📅 <strong>' . __('Date Changed:', 'wp-service-booking') . '</strong> ' . esc_html($changes['booking_date']) . '</div>';
+                $subject_parts[] = __('Date', 'wp-service-booking');
             }
             if (isset($changes['start_time'])) {
-                $change_details .= '<div style="margin-bottom:10px;">⏰ <strong>Time Changed:</strong> ' . esc_html($changes['start_time']) . '</div>';
-                $subject_parts[] = "Time";
+                $change_details .= '<div style="margin-bottom:10px;">⏰ <strong>' . __('Time Changed:', 'wp-service-booking') . '</strong> ' . esc_html($changes['start_time']) . '</div>';
+                $subject_parts[] = __('Time', 'wp-service-booking');
             }
             if (isset($changes['staff_id'])) {
                 $staff_name = $wpdb->get_var($wpdb->prepare("SELECT name FROM $staff_table WHERE id = %d", $changes['staff_id']));
-                $change_details .= '<div style="margin-bottom:10px;">👤 <strong>Professional Reassigned:</strong> ' . esc_html($staff_name) . '</div>';
-                $subject_parts[] = "Professional";
+                $change_details .= '<div style="margin-bottom:10px;">👤 <strong>' . __('Professional Reassigned:', 'wp-service-booking') . '</strong> ' . esc_html($staff_name) . '</div>';
+                $subject_parts[] = __('Professional', 'wp-service-booking');
             }
             if (isset($changes['status'])) {
-                $change_details .= '<div style="margin-bottom:10px;">🔄 <strong>Status Updated:</strong> ' . strtoupper(esc_html($changes['status'])) . '</div>';
-                $subject_parts[] = "Status";
+                $change_details .= '<div style="margin-bottom:10px;">🔄 <strong>' . __('Status Updated:', 'wp-service-booking') . '</strong> ' . strtoupper(esc_html($changes['status'])) . '</div>';
+                $subject_parts[] = __('Status', 'wp-service-booking');
             }
 
             if (empty($change_details)) return; // No relevant changes
 
-            $mail_subject = "Update: Your Booking #" . $booking_id . " has been updated (" . implode(", ", $subject_parts) . ")";
+            $mail_subject = sprintf(__('Update: Your Booking #%d has been updated (%s)', 'wp-service-booking'), $booking_id, implode(", ", $subject_parts));
             
             $content_html = '
                 <div style="background:#f8fafc; padding:30px; border-radius:16px; text-align:left;">
-                    <div style="font-size:12px; text-transform:uppercase; color:#94a3b8; font-weight:800; margin-bottom:20px;">Update Details</div>
+                    <div style="font-size:12px; text-transform:uppercase; color:#94a3b8; font-weight:800; margin-bottom:20px;">' . __('Update Details', 'wp-service-booking') . '</div>
                     <div style="color:#1e293b; font-size:15px; line-height:1.6;">
                         ' . $change_details . '
                     </div>
                     <p style="margin-top:20px; color:#475569; font-size:14px; border-top:1px solid #e2e8f0; padding-top:20px;">
-                        The details of your appointment have been updated in our system. If you have any questions regarding these changes, please contact our support team.
+                        ' . __('The details of your appointment have been updated in our system. If you have any questions regarding these changes, please contact our support team.', 'wp-service-booking') . '
                     </p>
                     <div style="text-align:center; margin-top:25px;">
-                        <a href="' . home_url('/booking-dashboard') . '" style="display:inline-block; padding:14px 30px; background:#6366f1; color:#fff; text-decoration:none; border-radius:12px; font-weight:700; box-shadow:0 4px 12px rgba(99, 102, 241, 0.2);">View Full Details</a>
+                        <a href="' . home_url('/booking-dashboard') . '" style="display:inline-block; padding:14px 30px; background:#6366f1; color:#fff; text-decoration:none; border-radius:12px; font-weight:700; box-shadow:0 4px 12px rgba(99, 102, 241, 0.2);">' . __('View Full Details', 'wp-service-booking') . '</a>
                     </div>
                 </div>';
 
-            wsb_send_modern_email($booking->email, $mail_subject, 'Booking Updated', "Hello " . $booking->first_name . ", some details of your booking #" . $booking_id . " have been updated.", $content_html);
+            wsb_send_modern_email(
+                $booking->email, 
+                $mail_subject, 
+                __('Booking Updated', 'wp-service-booking'), 
+                sprintf(__('Hello %s, some details of your booking #%d have been updated.', 'wp-service-booking'), $booking->first_name, $booking_id), 
+                $content_html
+            );
         }
     }
 

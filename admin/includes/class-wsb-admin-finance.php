@@ -68,21 +68,21 @@ class Wsb_Admin_Finance {
                 }
             </style>
             <div class="wsb-finance-header">
-                <h1 style="margin:0;">Financial Ledger & Revenue</h1>
+                <h1 style="margin:0;"><?php _e('Financial Ledger & Revenue', 'wp-service-booking'); ?></h1>
 
                 <!-- Master Dashboard Filter -->
                 <form method="get" class="wsb-finance-filter-form" style="display:flex; align-items:center; gap:10px;">
                     <input type="hidden" name="page" value="wsb_main">
                     <input type="hidden" name="tab" value="finance">
-                    <span style="color:var(--wsb-text-muted); font-size:14px;">Reporting Period:</span>
+                    <span style="color:var(--wsb-text-muted); font-size:14px;"><?php _e('Reporting Period:', 'wp-service-booking'); ?></span>
                     <select name="period"
                         style="background:#0f172a; color:white; border:1px solid var(--wsb-primary); padding:6px 12px; border-radius:6px; font-weight:bold;"
                         onchange="this.form.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}))">
-                        <option value="all" <?php selected($period, 'all'); ?>>All Time</option>
-                        <option value="today" <?php selected($period, 'today'); ?>>Today</option>
-                        <option value="7days" <?php selected($period, '7days'); ?>>Last 7 Days</option>
-                        <option value="30days" <?php selected($period, '30days'); ?>>Last 30 Days</option>
-                        <option value="year" <?php selected($period, 'year'); ?>>This Year</option>
+                        <option value="all" <?php selected($period, 'all'); ?>><?php _e('All Time', 'wp-service-booking'); ?></option>
+                        <option value="today" <?php selected($period, 'today'); ?>><?php _e('Today', 'wp-service-booking'); ?></option>
+                        <option value="7days" <?php selected($period, '7days'); ?>><?php _e('Last 7 Days', 'wp-service-booking'); ?></option>
+                        <option value="30days" <?php selected($period, '30days'); ?>><?php _e('Last 30 Days', 'wp-service-booking'); ?></option>
+                        <option value="year" <?php selected($period, 'year'); ?>><?php _e('This Year', 'wp-service-booking'); ?></option>
                     </select>
                 </form>
             </div>
@@ -90,22 +90,22 @@ class Wsb_Admin_Finance {
             <!-- Metric Cards -->
             <div class="wsb-finance-meta-grid">
                 <div class="wsb-stat-card" style="border-left: 4px solid var(--wsb-success);">
-                    <h3 style="margin-top:0; font-size:16px;">Total Realized Revenue</h3>
+                    <h3 style="margin-top:0; font-size:16px;"><?php _e('Total Realized Revenue', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold; color:var(--wsb-success);">
                         <?php echo wsb_get_currency_symbol(get_option('wsb_currency', 'USD')); ?><?php echo number_format((float) $total_revenue, 2); ?></p>
                 </div>
                 <div class="wsb-stat-card" style="border-left: 4px solid var(--wsb-primary);">
-                    <h3 style="margin-top:0; font-size:16px;">Verified Transactions</h3>
+                    <h3 style="margin-top:0; font-size:16px;"><?php _e('Verified Transactions', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold; color:var(--wsb-primary);">
                         <?php echo intval($total_transactions); ?></p>
                 </div>
                 <div class="wsb-stat-card" style="border-left: 4px solid #10b981;">
-                    <h3 style="margin-top:0; font-size:16px;">Avg. Transaction Value</h3>
+                    <h3 style="margin-top:0; font-size:16px;"><?php _e('Avg. Transaction Value', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold; color:#10b981;">
                         <?php echo wsb_get_currency_symbol(get_option('wsb_currency', 'USD')); ?><?php echo number_format((float) $avg_transaction, 2); ?></p>
                 </div>
                 <div class="wsb-stat-card" style="border-left: 4px solid var(--wsb-warning);">
-                    <h3 style="margin-top:0; font-size:16px;">Pending / Outstanding</h3>
+                    <h3 style="margin-top:0; font-size:16px;"><?php _e('Pending / Outstanding', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold; color:var(--wsb-warning);">
                         <?php echo wsb_get_currency_symbol(get_option('wsb_currency', 'USD')); ?><?php echo number_format((float) $pending_revenue, 2); ?></p>
                 </div>
@@ -114,7 +114,7 @@ class Wsb_Admin_Finance {
             <!-- Dynamic Chart -->
             <div
                 style="background:var(--wsb-panel-dark); padding:20px; border-radius:12px; border:1px solid var(--wsb-border); margin-bottom:30px;">
-                <h3 style="margin:0 0 20px 0; color: #fff;">Revenue Performance Analysis</h3>
+                <h3 style="margin:0 0 20px 0; color: #fff;"><?php _e('Revenue Performance Analysis', 'wp-service-booking'); ?></h3>
                 <div style="position:relative; height:300px; width:100%;">
                     <canvas id="wsbRevenueChart" data-chart='<?php echo $chart_json; ?>'></canvas>
                 </div>
@@ -124,18 +124,18 @@ class Wsb_Admin_Finance {
             <div
                 style="background:var(--wsb-panel-dark); border-radius:12px; border:1px solid var(--wsb-border); overflow:hidden;">
                 <div style="padding: 20px; border-bottom: 1px solid var(--wsb-border);">
-                    <h3 style="margin:0; color: #fff;">Recent Activity</h3>
+                    <h3 style="margin:0; color: #fff;"><?php _e('Recent Activity', 'wp-service-booking'); ?></h3>
                 </div>
                 <div class="wsb-finance-table-wrapper" style="max-height: 450px; overflow-y: auto;">
                     <table class="wsb-modern-table" style="margin:0; width: 100%;">
                         <thead style="position: sticky; top: 0; background: #0f172a; z-index: 10;">
                             <tr>
-                                <th>Transaction ID</th>
-                                <th>Gateway</th>
-                                <th>Amount</th>
-                                <th>Related Booking</th>
-                                <th>Date</th>
-                                <th>Status</th>
+                                <th><?php _e('Transaction ID', 'wp-service-booking'); ?></th>
+                                <th><?php _e('Gateway', 'wp-service-booking'); ?></th>
+                                <th><?php _e('Amount', 'wp-service-booking'); ?></th>
+                                <th><?php _e('Related Booking', 'wp-service-booking'); ?></th>
+                                <th><?php _e('Date', 'wp-service-booking'); ?></th>
+                                <th><?php _e('Status', 'wp-service-booking'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -158,7 +158,7 @@ class Wsb_Admin_Finance {
                                         </td>
                                         <td>
                                             <div class="wsb-customer-info">
-                                                <span class="wsb-customer-name" style="color:var(--wsb-primary);">Booking
+                                                <span class="wsb-customer-name" style="color:var(--wsb-primary);"><?php _e('Booking', 'wp-service-booking'); ?>
                                                     #<?php echo esc_html(str_pad($p->booking_id, 5, '0', STR_PAD_LEFT)); ?></span>
                                                 <span
                                                     class="wsb-customer-meta"><?php echo esc_html($p->first_name . ' ' . $p->last_name . ' - ' . $p->service_name); ?></span>
@@ -171,8 +171,7 @@ class Wsb_Admin_Finance {
                                     </tr>
                                 <?php endforeach; else: ?>
                                 <tr>
-                                    <td colspan="6" style="text-align:center; padding: 40px; color: var(--wsb-text-muted);">No payment
-                                        records found in this timeframe.</td>
+                                    <td colspan="6" style="text-align:center; padding: 40px; color: var(--wsb-text-muted);"><?php _e('No payment records found in this timeframe.', 'wp-service-booking'); ?></td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

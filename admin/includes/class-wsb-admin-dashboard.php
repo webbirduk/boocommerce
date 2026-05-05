@@ -84,11 +84,11 @@ class Wsb_Admin_Dashboard {
             </style>
 
             <div class="wsb-dashboard-header">
-                <h1 style="margin:0;">Dashboard Overview</h1>
+                <h1 style="margin:0;"><?php _e('Dashboard Overview', 'wp-service-booking'); ?></h1>
                 <div>
-                    <a href="?page=wsb_main&tab=bookings&view=calendar" class="wsb-btn-primary">View Calendar</a>
+                    <a href="?page=wsb_main&tab=bookings&view=calendar" class="wsb-btn-primary"><?php _e('View Calendar', 'wp-service-booking'); ?></a>
                     <a href="?page=wsb_main&tab=services&action=add" class="wsb-btn-primary"
-                        style="margin-left:5px; background:var(--wsb-success);">+ New Service</a>
+                        style="margin-left:5px; background:var(--wsb-success);"><?php _e('+ New Service', 'wp-service-booking'); ?></a>
                 </div>
             </div>
             <hr class="wp-header-end" style="margin-bottom:20px;">
@@ -96,17 +96,17 @@ class Wsb_Admin_Dashboard {
             <!-- Quick Actions Row -->
             <div class="wsb-dashboard-grid wsb-quick-actions-row">
                 <a href="?page=wsb_main&tab=bookings&filter_date_start=<?php echo date('Y-m-d'); ?>&filter_date_end=<?php echo date('Y-m-d'); ?>" class="wsb-stat-card wsb-clickable-card" style="border-left-color: #3b82f6;">
-                    <h3 style="margin-top:0; font-size:16px; color:#3b82f6;">Today's Schedule</h3>
+                    <h3 style="margin-top:0; font-size:16px; color:#3b82f6;"><?php _e('Today\'s Schedule', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold;"><?php echo intval($today_bookings); ?></p>
                 </a>
 
                 <a href="?page=wsb_main&tab=bookings&filter_status=pending" class="wsb-stat-card wsb-clickable-card" style="border-left-color: #f59e0b;">
-                    <h3 style="margin-top:0; font-size:16px; color:#f59e0b;">Pending Approvals</h3>
+                    <h3 style="margin-top:0; font-size:16px; color:#f59e0b;"><?php _e('Pending Approvals', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold;"><?php echo intval($pending_approvals); ?></p>
                 </a>
 
                 <a href="?page=wsb_main&tab=bookings&filter_status=pending_requests" class="wsb-stat-card wsb-clickable-card" style="border-left-color: #ef4444;">
-                    <h3 style="margin-top:0; font-size:16px; color:#ef4444;">Client Requests</h3>
+                    <h3 style="margin-top:0; font-size:16px; color:#ef4444;"><?php _e('Client Requests', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold;"><?php echo intval($client_requests); ?></p>
                 </a>
             </div>
@@ -114,25 +114,25 @@ class Wsb_Admin_Dashboard {
             <!-- Global Metrics Row -->
             <div class="wsb-dashboard-grid wsb-metrics-row">
                 <div class="wsb-stat-card">
-                    <h3 style="margin-top:0; font-size:16px;">Total Bookings</h3>
+                    <h3 style="margin-top:0; font-size:16px;"><?php _e('Total Bookings', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold;">
                         <?php echo intval($total_bookings); ?></p>
                 </div>
 
                 <div class="wsb-stat-card">
-                    <h3 style="margin-top:0; font-size:16px;">Total Revenue</h3>
+                    <h3 style="margin-top:0; font-size:16px;"><?php _e('Total Revenue', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold; color:var(--wsb-success);">
                         <?php echo wsb_get_currency_symbol(get_option('wsb_currency', 'USD')); ?><?php echo number_format((float) $total_revenue, 2); ?></p>
                 </div>
 
                 <div class="wsb-stat-card">
-                    <h3 style="margin-top:0; font-size:16px;">Total Customers</h3>
+                    <h3 style="margin-top:0; font-size:16px;"><?php _e('Total Customers', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold;">
                         <?php echo intval($total_customers); ?></p>
                 </div>
 
                 <div class="wsb-stat-card">
-                    <h3 style="margin-top:0; font-size:16px;">Active Services</h3>
+                    <h3 style="margin-top:0; font-size:16px;"><?php _e('Active Services', 'wp-service-booking'); ?></h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold;">
                         <?php echo intval($total_services); ?></p>
                 </div>
@@ -141,28 +141,28 @@ class Wsb_Admin_Dashboard {
             <!-- Insights Section -->
             <div class="wsb-insights-row">
                 <div style="background: var(--wsb-panel-dark); border: 1px solid var(--wsb-border); border-radius:12px; padding:20px;">
-                    <h3 style="margin-top:0; margin-bottom:20px; color:#fff; font-size:16px;">Revenue Trajectory (Last 7 Days)</h3>
+                    <h3 style="margin-top:0; margin-bottom:20px; color:#fff; font-size:16px;"><?php _e('Revenue Trajectory (Last 7 Days)', 'wp-service-booking'); ?></h3>
                     <div style="height:250px; width:100%;">
                         <canvas id="wsb-revenue-chart"></canvas>
                     </div>
                 </div>
 
                 <div style="background: var(--wsb-panel-dark); border: 1px solid var(--wsb-border); border-radius:12px; padding:20px;">
-                    <h3 style="margin-top:0; margin-bottom:20px; color:#fff; font-size:16px;">Top Performing Services</h3>
+                    <h3 style="margin-top:0; margin-bottom:20px; color:#fff; font-size:16px;"><?php _e('Top Performing Services', 'wp-service-booking'); ?></h3>
                     <div class="wsb-top-services-list">
                         <?php if (!empty($top_services)): 
                             foreach($top_services as $ts): ?>
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid rgba(255,255,255,0.05);">
                                 <div>
                                     <div style="font-weight:600; color:#fff; font-size:14px;"><?php echo esc_html($ts->name); ?></div>
-                                    <div style="font-size:11px; color:var(--wsb-text-muted);"><?php echo intval($ts->booking_count); ?> Bookings</div>
+                                    <div style="font-size:11px; color:var(--wsb-text-muted);"><?php echo intval($ts->booking_count); ?> <?php _e('Bookings', 'wp-service-booking'); ?></div>
                                 </div>
                                 <div style="font-weight:bold; color:var(--wsb-success); font-size:14px;">
                                     <?php echo wsb_get_currency_symbol(get_option('wsb_currency', 'USD')); ?><?php echo number_format($ts->total_revenue, 2); ?>
                                 </div>
                             </div>
                         <?php endforeach; else: ?>
-                            <p style="color:var(--wsb-text-muted); font-size:13px; text-align:center; padding:20px;">No performance data available.</p>
+                            <p style="color:var(--wsb-text-muted); font-size:13px; text-align:center; padding:20px;"><?php _e('No performance data available.', 'wp-service-booking'); ?></p>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -183,7 +183,7 @@ class Wsb_Admin_Dashboard {
                             data: {
                                 labels: <?php echo json_encode($revenue_chart_labels); ?>,
                                 datasets: [{
-                                    label: 'Daily Revenue',
+                                    label: '<?php echo esc_js(__('Daily Revenue', 'wp-service-booking')); ?>',
                                     data: <?php echo json_encode($revenue_chart_values); ?>,
                                     borderColor: '#6366f1',
                                     backgroundColor: (function() {
@@ -218,17 +218,17 @@ class Wsb_Admin_Dashboard {
 
             <div style="background: var(--wsb-panel-dark); border-radius:12px; border:1px solid var(--wsb-border); overflow:hidden;">
                 <div style="padding: 20px; border-bottom: 1px solid var(--wsb-border); display:flex; justify-content:space-between; align-items:center;">
-                    <h3 style="margin:0; color: #fff;">Recent Activity</h3>
-                    <a href="?page=wsb_main&tab=bookings" style="color:var(--wsb-primary); text-decoration:none; font-weight:500;">View All</a>
+                    <h3 style="margin:0; color: #fff;"><?php _e('Recent Activity', 'wp-service-booking'); ?></h3>
+                    <a href="?page=wsb_main&tab=bookings" style="color:var(--wsb-primary); text-decoration:none; font-weight:500;"><?php _e('View All', 'wp-service-booking'); ?></a>
                 </div>
                 <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
                     <table style="width:100%; border-collapse:collapse; text-align:left; min-width: 600px;">
                     <thead style="background:rgba(0,0,0,0.2);">
                         <tr>
-                            <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;">Customer</th>
-                            <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;">Service</th>
-                            <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;">Date</th>
-                            <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;">Status</th>
+                            <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;"><?php _e('Customer', 'wp-service-booking'); ?></th>
+                            <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;"><?php _e('Service', 'wp-service-booking'); ?></th>
+                            <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;"><?php _e('Date', 'wp-service-booking'); ?></th>
+                            <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;"><?php _e('Status', 'wp-service-booking'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -242,7 +242,7 @@ class Wsb_Admin_Dashboard {
                                 </tr>
                             <?php endforeach; else: ?>
                             <tr>
-                                <td colspan="4" style="padding:30px; text-align:center; color:var(--wsb-text-muted);">No recent activity.</td>
+                                <td colspan="4" style="padding:30px; text-align:center; color:var(--wsb-text-muted);"><?php _e('No recent activity.', 'wp-service-booking'); ?></td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

@@ -21,7 +21,7 @@ class Wsb_Admin_Services {
         if ($action === 'delete' && $service_id) {
             $wpdb->delete($table_services, array('id' => $service_id));
             if ($wpdb->last_error) echo '<div class="notice notice-error"><p>' . esc_html($wpdb->last_error) . '</p></div>';
-            else echo '<div class="notice notice-success is-dismissible"><p>Service permanently deleted.</p></div>';
+            else echo '<div class="notice notice-success is-dismissible"><p>' . __('Service permanently deleted.', 'wp-service-booking') . '</p></div>';
             $action = 'list';
         }
 
@@ -45,14 +45,14 @@ class Wsb_Admin_Services {
                 // Edit existing
                 $wpdb->update($table_services, $data, array('id' => $service_id));
                 if ($wpdb->last_error) echo '<div class="notice notice-error"><p>' . esc_html($wpdb->last_error) . '</p></div>';
-                else echo '<div class="notice notice-success is-dismissible"><p>Service updated successfully!</p></div>';
+                else echo '<div class="notice notice-success is-dismissible"><p>' . __('Service updated successfully!', 'wp-service-booking') . '</p></div>';
             } else {
                 // Add new
                 $wpdb->insert($table_services, $data);
                 if ($wpdb->last_error) echo '<div class="notice notice-error"><p>' . esc_html($wpdb->last_error) . '</p></div>';
                 else {
                     $service_id = $wpdb->insert_id;
-                    echo '<div class="notice notice-success is-dismissible"><p>Service created successfully!</p></div>';
+                    echo '<div class="notice notice-success is-dismissible"><p>' . __('Service created successfully!', 'wp-service-booking') . '</p></div>';
                 }
             }
 
@@ -98,9 +98,8 @@ class Wsb_Admin_Services {
                     }
                 </style>
                 <div class="wsb-service-edit-header">
-                    <h1 style="margin:0;"><?php echo $action === 'edit' ? 'Manage Service' : 'Add New Service'; ?></h1>
-                    <a href="?page=wsb_main&tab=services" class="wsb-btn-primary" style="background:var(--wsb-border);">Back to
-                        Services</a>
+                    <h1 style="margin:0;"><?php echo $action === 'edit' ? __('Manage Service', 'wp-service-booking') : __('Add New Service', 'wp-service-booking'); ?></h1>
+                    <a href="?page=wsb_main&tab=services" class="wsb-btn-primary" style="background:var(--wsb-border);"><?php _e('Back to Services', 'wp-service-booking'); ?></a>
                 </div>
                 <hr class="wp-header-end" style="margin-bottom:20px;">
 
@@ -116,27 +115,27 @@ class Wsb_Admin_Services {
                             style="background: var(--wsb-panel-dark); padding: 20px; border-radius: 12px; border: 1px solid var(--wsb-border); border-top: 4px solid var(--wsb-primary);">
                             <h3
                                 style="margin-top:0; color:var(--wsb-primary); font-size:18px; display:flex; align-items:center; gap:8px;">
-                                <span class="dashicons dashicons-edit"></span> Basic Information</h3>
+                                <span class="dashicons dashicons-edit"></span> <?php _e('Basic Information', 'wp-service-booking'); ?></h3>
                             <div style="margin-bottom: 15px;">
-                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Service Name</label>
+                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Service Name', 'wp-service-booking'); ?></label>
                                 <input name="service_name" type="text"
                                     value="<?php echo $service ? esc_attr($service->name) : ''; ?>"
                                     style="width:100%; border:1px solid var(--wsb-border); border-radius:6px; padding:10px; background:#0f172a; color:white; font-size:16px;"
                                     required>
                             </div>
                             <div style="margin-bottom: 15px;">
-                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Category</label>
+                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Category', 'wp-service-booking'); ?></label>
                                 <input name="service_category" type="text"
                                     value="<?php echo $service ? esc_attr($service->category) : ''; ?>"
                                     style="width:100%; border:1px solid var(--wsb-border); border-radius:6px; padding:10px; background:#0f172a; color:white;">
                             </div>
                             <div style="margin-bottom: 15px;">
-                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Description</label>
+                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Description', 'wp-service-booking'); ?></label>
                                 <textarea name="service_description" rows="4"
                                     style="width:100%; border:1px solid var(--wsb-border); border-radius:6px; padding:10px; background:#0f172a; color:white;"><?php echo $service ? esc_textarea($service->description) : ''; ?></textarea>
                             </div>
                             <div style="margin-bottom: 15px;">
-                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Featured Image</label>
+                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Featured Image', 'wp-service-booking'); ?></label>
                                 <div style="display:flex; gap:10px; align-items:center;">
                                     <div id="wsb-featured-preview"
                                         style="width:60px; height:60px; border-radius:6px; border:1px dashed var(--wsb-border); background:#0f172a <?php echo $service && $service->image_url ? 'url(' . esc_url($service->image_url) . ') center/cover' : ''; ?>;">
@@ -145,12 +144,11 @@ class Wsb_Admin_Services {
                                         value="<?php echo $service ? esc_url($service->image_url) : ''; ?>">
                                     <button type="button" class="wsb-btn-primary wsb-select-image" data-target="#service_image_url"
                                         data-preview="#wsb-featured-preview"
-                                        style="background:var(--wsb-border); color:white;">Select Image</button>
+                                        style="background:var(--wsb-border); color:white;"><?php _e('Select Image', 'wp-service-booking'); ?></button>
                                 </div>
                             </div>
                             <div style="margin-bottom: 15px;">
-                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Service Gallery
-                                    (Multiple Images)</label>
+                                <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Service Gallery (Multiple Images)', 'wp-service-booking'); ?></label>
                                 <input type="hidden" name="service_gallery_urls" id="service_gallery_urls"
                                     value="<?php echo $service && isset($service->gallery_urls) ? esc_attr($service->gallery_urls) : ''; ?>">
                                 <div id="wsb-gallery-preview" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
@@ -164,7 +162,7 @@ class Wsb_Admin_Services {
                                     ?>
                                 </div>
                                 <button type="button" class="wsb-btn-primary wsb-select-gallery"
-                                    style="background:var(--wsb-border); color:white;">Select Gallery Images</button>
+                                    style="background:var(--wsb-border); color:white;"><?php _e('Select Gallery Images', 'wp-service-booking'); ?></button>
                             </div>
                         </div>
 
@@ -174,19 +172,19 @@ class Wsb_Admin_Services {
                                 style="background: var(--wsb-panel-dark); padding: 20px; border-radius: 12px; border: 1px solid var(--wsb-border); margin-bottom: 20px; border-top: 4px solid var(--wsb-success);">
                                 <h3
                                     style="margin-top:0; color:var(--wsb-success); font-size:18px; display:flex; align-items:center; gap:8px;">
-                                    <span class="dashicons dashicons-money-alt"></span> Pricing & Duration</h3>
+                                    <span class="dashicons dashicons-money-alt"></span> <?php _e('Pricing & Duration', 'wp-service-booking'); ?></h3>
                                 <div class="wsb-service-info-grid" style="margin-bottom: 15px;">
                                     <div>
-                                        <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Price
-                                            ($)</label>
+                                        <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Price', 'wp-service-booking'); ?>
+                                            (<?php echo wsb_get_currency_symbol(get_option('wsb_currency', 'USD')); ?>)</label>
                                         <input name="service_price" type="number" step="0.01"
                                             value="<?php echo $service ? esc_attr($service->price) : '0.00'; ?>"
                                             style="width:100%; background:#0f172a; color:white; border:1px solid var(--wsb-border); border-radius:6px; padding:10px; font-weight:bold;"
                                             required>
                                     </div>
                                     <div>
-                                        <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Duration
-                                            (m)</label>
+                                        <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Duration', 'wp-service-booking'); ?>
+                                            (<?php _e('m', 'wp-service-booking'); ?>)</label>
                                         <input name="service_duration" type="number"
                                             value="<?php echo $service ? esc_attr($service->duration) : '30'; ?>"
                                             style="width:100%; background:#0f172a; color:white; border:1px solid var(--wsb-border); border-radius:6px; padding:10px;"
@@ -195,15 +193,15 @@ class Wsb_Admin_Services {
                                 </div>
                                 <div class="wsb-service-info-grid">
                                     <div>
-                                        <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Buffer
-                                            (m)</label>
+                                        <label style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Buffer', 'wp-service-booking'); ?>
+                                            (<?php _e('m', 'wp-service-booking'); ?>)</label>
                                         <input name="service_buffer_time" type="number"
                                             value="<?php echo $service ? esc_attr($service->buffer_time) : '0'; ?>"
                                             style="width:100%; background:#0f172a; color:white; border:1px solid var(--wsb-border); border-radius:6px; padding:10px;">
                                     </div>
                                     <div>
                                         <label
-                                            style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);">Capacity</label>
+                                            style="display:block; margin-bottom:5px; color:var(--wsb-text-muted);"><?php _e('Capacity', 'wp-service-booking'); ?></label>
                                         <input name="service_capacity" type="number"
                                             value="<?php echo $service ? esc_attr($service->capacity) : '1'; ?>"
                                             style="width:100%; background:#0f172a; color:white; border:1px solid var(--wsb-border); border-radius:6px; padding:10px;"
@@ -216,7 +214,7 @@ class Wsb_Admin_Services {
                                 style="background: var(--wsb-panel-dark); padding: 20px; border-radius: 12px; border: 1px solid var(--wsb-border); border-top: 4px solid var(--wsb-warning);">
                                 <h3
                                     style="margin-top:0; color:var(--wsb-warning); font-size:18px; display:flex; align-items:center; gap:8px;">
-                                    <span class="dashicons dashicons-groups"></span> Assign Staff</h3>
+                                    <span class="dashicons dashicons-groups"></span> <?php _e('Assign Staff', 'wp-service-booking'); ?></h3>
                                 <?php if (!empty($staff_members)): ?>
                                     <div style="max-height:150px; overflow-y:auto; padding-right:10px;">
                                         <?php foreach ($staff_members as $staff): ?>
@@ -228,13 +226,13 @@ class Wsb_Admin_Services {
                                         <?php endforeach; ?>
                                     </div>
                                 <?php else: ?>
-                                    <p class="description" style="color:var(--wsb-warning);">No staff members found.</p>
+                                    <p class="description" style="color:var(--wsb-warning);"><?php _e('No staff members found.', 'wp-service-booking'); ?></p>
                                 <?php endif; ?>
                             </div>
 
                             <button type="submit" class="wsb-btn-primary"
                                 style="width:100%; margin-top:20px; padding:15px; font-size:16px;">
-                                <?php echo $action === 'edit' ? 'Update Service' : 'Publish Service'; ?>
+                                 <?php echo $action === 'edit' ? __('Update Service', 'wp-service-booking') : __('Publish Service', 'wp-service-booking'); ?>
                             </button>
                         </div>
 
@@ -290,10 +288,10 @@ class Wsb_Admin_Services {
                     }
                 </style>
                 <div class="wsb-services-list-header">
-                    <h1 style="margin:0;">Services Repository</h1>
+                    <h1 style="margin:0;"><?php _e('Services Repository', 'wp-service-booking'); ?></h1>
                     <div>
 
-                        <a href="?page=wsb_main&tab=services&action=add" class="wsb-btn-primary">+ Add New Service</a>
+                        <a href="?page=wsb_main&tab=services&action=add" class="wsb-btn-primary"><?php _e('+ Add New Service', 'wp-service-booking'); ?></a>
                     </div>
                 </div>
 
@@ -324,19 +322,19 @@ class Wsb_Admin_Services {
                 <div class="wsb-services-meta-grid">
                     <a href="<?php echo $page_url; ?>&filter_status=all"
                         class="service-filter-card <?php echo $filter_status === 'all' ? 'card-active' : ''; ?>">
-                        <h3 style="margin-top:0; font-size:15px; color:var(--wsb-text-muted);">Total Services</h3>
+                        <h3 style="margin-top:0; font-size:15px; color:var(--wsb-text-muted);"><?php _e('Total Services', 'wp-service-booking'); ?></h3>
                         <p style="margin:0; font-size:28px; font-weight:bold; color:var(--wsb-text-main);">
                             <?php echo intval($total_services); ?></p>
                     </a>
                     <a href="<?php echo $page_url; ?>&filter_status=active"
                         class="service-filter-card <?php echo $filter_status === 'active' ? 'card-active' : ''; ?>">
-                        <h3 style="margin-top:0; font-size:15px; color:var(--wsb-success);">Live Offerings</h3>
+                        <h3 style="margin-top:0; font-size:15px; color:var(--wsb-success);"><?php _e('Live Offerings', 'wp-service-booking'); ?></h3>
                         <p style="margin:0; font-size:28px; font-weight:bold; color:var(--wsb-text-main);">
                             <?php echo intval($active_services); ?></p>
                     </a>
                     <a href="<?php echo $page_url; ?>&filter_status=inactive"
                         class="service-filter-card <?php echo $filter_status === 'inactive' ? 'card-active' : ''; ?>">
-                        <h3 style="margin-top:0; font-size:15px; color:var(--wsb-warning);">Draft / Inactive</h3>
+                        <h3 style="margin-top:0; font-size:15px; color:var(--wsb-warning);"><?php _e('Draft / Inactive', 'wp-service-booking'); ?></h3>
                         <p style="margin:0; font-size:28px; font-weight:bold; color:var(--wsb-text-main);">
                             <?php echo intval($inactive_services); ?></p>
                     </a>
@@ -348,19 +346,19 @@ class Wsb_Admin_Services {
                     <?php if ($filter_status !== 'all'): ?>
                         <input type="hidden" name="filter_status" value="<?php echo esc_attr($filter_status); ?>">
                     <?php endif; ?>
-                    <input type="text" name="s" placeholder="Search services..." value="<?php echo esc_attr($search); ?>"
+                    <input type="text" name="s" placeholder="<?php esc_attr_e('Search services...', 'wp-service-booking'); ?>" value="<?php echo esc_attr($search); ?>"
                         style="background:#0f172a; border:1px solid var(--wsb-border); color:white; padding:8px 12px; border-radius:6px; flex-grow:1;">
                     <select name="cat"
                         style="background:#0f172a; border:1px solid var(--wsb-border); color:white; padding:8px 12px; border-radius:6px;">
-                        <option value="">All Categories</option>
+                        <option value=""><?php _e('All Categories', 'wp-service-booking'); ?></option>
                         <?php foreach ($categories as $cat): ?>
                             <option value="<?php echo esc_attr($cat); ?>" <?php selected($filter, $cat); ?>>
                                 <?php echo esc_html($cat); ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <button type="submit" class="wsb-btn-primary" style="padding:8px 20px;">Filter</button>
+                    <button type="submit" class="wsb-btn-primary" style="padding:8px 20px;"><?php _e('Filter', 'wp-service-booking'); ?></button>
                     <?php if ($search || $filter): ?>
-                        <a href="?page=wsb_main&tab=services" class="wsb-btn-primary" style="background:var(--wsb-danger);">Clear</a>
+                        <a href="?page=wsb_main&tab=services" class="wsb-btn-primary" style="background:var(--wsb-danger);"><?php _e('Clear', 'wp-service-booking'); ?></a>
                     <?php endif; ?>
                 </form>
 
@@ -368,12 +366,12 @@ class Wsb_Admin_Services {
                     <table class="wsb-modern-table">
                     <thead>
                         <tr>
-                            <th style="width:40px; color:var(--wsb-primary);">ID</th>
-                            <th style="width:60px;">Image</th>
-                            <th>Service Name</th>
-                            <th>Pricing & Duration</th>
-                            <th>Category</th>
-                            <th align="right">Actions</th>
+                            <th style="width:40px; color:var(--wsb-primary);"><?php _e('ID', 'wp-service-booking'); ?></th>
+                            <th style="width:60px;"><?php _e('Image', 'wp-service-booking'); ?></th>
+                            <th><?php _e('Service Name', 'wp-service-booking'); ?></th>
+                            <th><?php _e('Pricing & Duration', 'wp-service-booking'); ?></th>
+                            <th><?php _e('Category', 'wp-service-booking'); ?></th>
+                            <th align="right"><?php _e('Actions', 'wp-service-booking'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -399,31 +397,31 @@ class Wsb_Admin_Services {
                                         <div class="wsb-customer-info">
                                             <span class="wsb-customer-name"
                                                 style="font-size:15px;"><?php echo esc_html($service->name); ?></span>
-                                            <span class="wsb-customer-meta">Cap: <?php echo esc_html($service->capacity); ?> | Buffer:
-                                                <?php echo esc_html($service->buffer_time); ?>m</span>
+                                            <span class="wsb-customer-meta"><?php _e('Cap:', 'wp-service-booking'); ?> <?php echo esc_html($service->capacity); ?> | <?php _e('Buffer:', 'wp-service-booking'); ?>
+                                                <?php echo esc_html($service->buffer_time); ?><?php _e('m', 'wp-service-booking'); ?></span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="wsb-customer-info">
                                             <span class="wsb-customer-name"><?php echo wsb_get_currency_symbol(get_option('wsb_currency', 'USD')); ?><?php echo esc_html($service->price); ?></span>
-                                            <span class="wsb-customer-meta"><?php echo esc_html($service->duration); ?> minutes</span>
+                                            <span class="wsb-customer-meta"><?php echo esc_html($service->duration); ?> <?php _e('minutes', 'wp-service-booking'); ?></span>
                                         </div>
                                     </td>
                                     <td><span
-                                            style="background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:4px; font-size:12px;"><?php echo esc_html($service->category ?: 'Uncategorized'); ?></span>
+                                            style="background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:4px; font-size:12px;"><?php echo esc_html($service->category ?: __('Uncategorized', 'wp-service-booking')); ?></span>
                                     </td>
                                     <td align="right">
                                         <div class="wsb-row-actions">
                                             <a href="<?php echo esc_url(home_url('/booking/?wsb_service_id=' . $service->id)); ?>"
                                                 target="_blank"
-                                                class="wsb-row-action wsb-action-view" title="View Service">
+                                                class="wsb-row-action wsb-action-view" title="<?php esc_attr_e('View Service', 'wp-service-booking'); ?>">
                                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                                     <circle cx="12" cy="12" r="3"></circle>
                                                 </svg>
                                             </a>
                                             <a href="?page=wsb_main&tab=services&action=edit&id=<?php echo $service->id; ?>"
-                                                class="wsb-row-action wsb-action-edit" title="Edit Service">
+                                                class="wsb-row-action wsb-action-edit" title="<?php esc_attr_e('Edit Service', 'wp-service-booking'); ?>">
                                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -431,8 +429,8 @@ class Wsb_Admin_Services {
                                                 </svg>
                                             </a>
                                             <a href="?page=wsb_main&tab=services&action=delete&id=<?php echo $service->id; ?>"
-                                                class="wsb-row-action wsb-action-delete" title="Delete Service"
-                                                onclick="return confirm('Are you sure you want to completely delete this service?');">
+                                                class="wsb-row-action wsb-action-delete" title="<?php esc_attr_e('Delete Service', 'wp-service-booking'); ?>"
+                                                onclick="return confirm('<?php esc_attr_e('Are you sure you want to completely delete this service?', 'wp-service-booking'); ?>');">
                                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                                     <polyline points="3 6 5 6 21 6"></polyline>
@@ -449,8 +447,7 @@ class Wsb_Admin_Services {
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="5" style="text-align:center; padding: 40px; color: var(--wsb-text-muted);">No services
-                                    match your criteria.</td>
+                                <td colspan="5" style="text-align:center; padding: 40px; color: var(--wsb-text-muted);"><?php _e('No services match your criteria.', 'wp-service-booking'); ?></td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

@@ -36,7 +36,7 @@ class Wsb_Ajax {
                 $holidays = array_filter($holidays);
                 
                 if (in_array($date, $holidays)) {
-                    wp_send_json_success(array('slots' => array(), 'message' => 'Staff is currently on holiday/time-off.'));
+                    wp_send_json_success(array('slots' => array(), 'message' => __('Staff is currently on holiday/time-off.', 'wp-service-booking')));
                     return;
                 }
             }
@@ -111,9 +111,9 @@ class Wsb_Ajax {
     public function create_booking() {
         $booking_id = $this->internal_create_booking($_POST);
         if ($booking_id) {
-            wp_send_json_success(array('message' => 'Booking #' . $booking_id . ' confirmed & saved!', 'booking_id' => $booking_id));
+            wp_send_json_success(array('message' => sprintf(__('Booking #%d confirmed & saved!', 'wp-service-booking'), $booking_id), 'booking_id' => $booking_id));
         } else {
-            wp_send_json_error(array('message' => 'Failed to create booking.'));
+            wp_send_json_error(array('message' => __('Failed to create booking.', 'wp-service-booking')));
         }
     }
 
@@ -214,19 +214,25 @@ class Wsb_Ajax {
 
         // Send Welcome Email immediately if account was created (Guest -> User)
         if ($created_account) {
-            $welcome_subject = 'Welcome to ' . get_bloginfo('name') . ' - Your Secure Client Portal';
+            $welcome_subject = sprintf(__('Welcome to %s - Your Secure Client Portal', 'wp-service-booking'), get_bloginfo('name'));
             $welcome_content = '
             <div class="info-card" style="text-align:center;">
-                <div style="font-size:12px; text-transform:uppercase; color:#6366f1; font-weight:800; letter-spacing:0.1em; margin-bottom:15px;">Security Credentials</div>
+                <div style="font-size:12px; text-transform:uppercase; color:#6366f1; font-weight:800; letter-spacing:0.1em; margin-bottom:15px;">' . __('Security Credentials', 'wp-service-booking') . '</div>
                 <div style="background:#ffffff; border:1px solid #e2e8f0; padding:25px; border-radius:16px; display:inline-block; text-align:left; min-width:250px;">
-                    <div style="margin-bottom:12px;"><strong style="color:#64748b;">Username:</strong> <span style="font-family:monospace; color:#0f172a; font-weight:600;">' . $email . '</span></div>
-                    <div><strong style="color:#64748b;">Temp Password:</strong> <span style="font-family:monospace; color:#0f172a; font-weight:600;">' . $generated_password . '</span></div>
+                    <div style="margin-bottom:12px;"><strong style="color:#64748b;">' . __('Username:', 'wp-service-booking') . '</strong> <span style="font-family:monospace; color:#0f172a; font-weight:600;">' . $email . '</span></div>
+                    <div><strong style="color:#64748b;">' . __('Temp Password:', 'wp-service-booking') . '</strong> <span style="font-family:monospace; color:#0f172a; font-weight:600;">' . $generated_password . '</span></div>
                 </div>
                 <br>
-                <a href="' . wp_login_url() . '" class="btn-primary">Access Your Secure Portal</a>
+                <a href="' . wp_login_url() . '" class="btn-primary">' . __('Access Your Secure Portal', 'wp-service-booking') . '</a>
             </div>';
             
-            wsb_send_modern_email($email, $welcome_subject, 'Identity Verified', "Hello $first_name, we've established a secure client profile for you to manage your appointments.", $welcome_content);
+            wsb_send_modern_email(
+                $email, 
+                $welcome_subject, 
+                __('Identity Verified', 'wp-service-booking'), 
+                sprintf(__('Hello %s, we\'ve established a secure client profile for you to manage your appointments.', 'wp-service-booking'), $first_name), 
+                $welcome_content
+            );
         }
 
         // 3. Process Booking
@@ -273,25 +279,25 @@ class Wsb_Ajax {
             }
 
             // Booking Receipt Email (Sent for BOTH confirmed and pending)
-            $email_title = ($status === 'confirmed') ? 'Booking Secured' : 'Booking Received';
-            $subject = $email_title . ': Appointment #' . $booking_id;
+            $email_title = ($status === 'confirmed') ? __('Booking Secured', 'wp-service-booking') : __('Booking Received', 'wp-service-booking');
+            $subject = $email_title . ': ' . sprintf(__('Appointment #%d', 'wp-service-booking'), $booking_id);
             $intro_text = ($status === 'confirmed') 
-                ? "Hello $first_name, your appointment has been successfully registered and confirmed." 
-                : "Hello $first_name, we have received your booking request. Our team will review it and confirm shortly.";
+                ? sprintf(__('Hello %s, your appointment has been successfully registered and confirmed.', 'wp-service-booking'), $first_name) 
+                : sprintf(__('Hello %s, we have received your booking request. Our team will review it and confirm shortly.', 'wp-service-booking'), $first_name);
 
             $details_html = '
                 <div class="info-card">
-                    <div style="margin-bottom:12px; font-size:15px;"><strong style="color:#64748b;">ID:</strong> <span style="color:#0f172a; font-weight:600;">#' . $booking_id . '</span></div>
-                    <div style="margin-bottom:12px; font-size:15px;"><strong style="color:#64748b;">Date:</strong> <span style="color:#0f172a; font-weight:600;">' . $booking_date . '</span></div>
-                    <div style="margin-bottom:12px; font-size:15px;"><strong style="color:#64748b;">Time:</strong> <span style="color:#0f172a; font-weight:600;">' . $start_time . '</span></div>
-                    <div style="font-size:15px;"><strong style="color:#64748b;">Status:</strong> <span style="color:' . ($status === 'confirmed' ? '#10b981' : '#6366f1') . '; font-weight:800; text-transform:uppercase;">' . $status . '</span></div>
+                    <div style="margin-bottom:12px; font-size:15px;"><strong style="color:#64748b;">' . __('ID:', 'wp-service-booking') . '</strong> <span style="color:#0f172a; font-weight:600;">#' . $booking_id . '</span></div>
+                    <div style="margin-bottom:12px; font-size:15px;"><strong style="color:#64748b;">' . __('Date:', 'wp-service-booking') . '</strong> <span style="color:#0f172a; font-weight:600;">' . $booking_date . '</span></div>
+                    <div style="margin-bottom:12px; font-size:15px;"><strong style="color:#64748b;">' . __('Time:', 'wp-service-booking') . '</strong> <span style="color:#0f172a; font-weight:600;">' . $start_time . '</span></div>
+                    <div style="font-size:15px;"><strong style="color:#64748b;">' . __('Status:', 'wp-service-booking') . '</strong> <span style="color:' . ($status === 'confirmed' ? '#10b981' : '#6366f1') . '; font-weight:800; text-transform:uppercase;">' . $status . '</span></div>
                 </div>';
 
             // Add Cancellation Policy
             $cancellation_policy = get_option('wsb_cancellation_policy', 'Cancellations must be made at least 24 hours in advance.');
             $details_html .= '
                 <div style="margin-top:25px; padding:20px; background:#fff1f2; border:1px solid #fecdd3; border-radius:16px;">
-                    <div style="font-size:11px; text-transform:uppercase; color:#e11d48; font-weight:800; margin-bottom:8px; letter-spacing:0.05em;">Cancellation Policy</div>
+                    <div style="font-size:11px; text-transform:uppercase; color:#e11d48; font-weight:800; margin-bottom:8px; letter-spacing:0.05em;">' . __('Cancellation Policy', 'wp-service-booking') . '</div>
                     <div style="font-size:13px; color:#9f1239; line-height:1.5;">' . wp_kses_post($cancellation_policy) . '</div>
                 </div>';
 
@@ -301,11 +307,17 @@ class Wsb_Ajax {
             $admin_email = get_option('admin_email');
             $admin_details = '
                 <div class="info-card">
-                    <strong style="color:#64748b;">Client:</strong> ' . $first_name . ' ' . $last_name . '<br>
-                    <strong style="color:#64748b;">Email:</strong> ' . $email . '<br>
-                    <strong style="color:#64748b;">Status:</strong> ' . strtoupper($status) . '
+                    <strong style="color:#64748b;">' . __('Client:', 'wp-service-booking') . '</strong> ' . $first_name . ' ' . $last_name . '<br>
+                    <strong style="color:#64748b;">' . __('Email:', 'wp-service-booking') . '</strong> ' . $email . '<br>
+                    <strong style="color:#64748b;">' . __('Status:', 'wp-service-booking') . '</strong> ' . strtoupper($status) . '
                 </div>';
-            wsb_send_modern_email($admin_email, 'New Lead: Booking #' . $booking_id, 'Lead Captured', "A new reservation has been logged in the system.", $admin_details);
+            wsb_send_modern_email(
+                $admin_email, 
+                sprintf(__('New Lead: Booking #%d', 'wp-service-booking'), $booking_id), 
+                __('Lead Captured', 'wp-service-booking'), 
+                __('A new reservation has been logged in the system.', 'wp-service-booking'), 
+                $admin_details
+            );
         }
 
         return $booking_id;
@@ -315,18 +327,18 @@ class Wsb_Ajax {
         global $wpdb;
         
         if(!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'wsb_nonce')){
-            wp_send_json_error(array('message' => 'Security verification failed.'));
+            wp_send_json_error(array('message' => __('Security verification failed.', 'wp-service-booking')));
         }
         
         if(!is_user_logged_in()) {
-            wp_send_json_error(array('message' => 'Access Denied. Please login.'));
+            wp_send_json_error(array('message' => __('Access Denied. Please login.', 'wp-service-booking')));
         }
         
         $booking_id = isset($_POST['booking_id']) ? intval($_POST['booking_id']) : 0;
         $client_action = isset($_POST['client_action']) ? sanitize_text_field($_POST['client_action']) : '';
         
         if(!$booking_id || !in_array($client_action, array('cancel', 'reschedule'))) {
-            wp_send_json_error(array('message' => 'Invalid request parameters.'));
+            wp_send_json_error(array('message' => __('Invalid request parameters.', 'wp-service-booking')));
         }
         
         $booking_table = $wpdb->prefix . 'wsb_bookings';
@@ -335,7 +347,7 @@ class Wsb_Ajax {
         $booking = $wpdb->get_row($wpdb->prepare("SELECT * FROM $booking_table WHERE id = %d", $booking_id));
         
         if(!$booking) {
-            wp_send_json_error(array('message' => 'Booking record not found.'));
+            wp_send_json_error(array('message' => __('Booking record not found.', 'wp-service-booking')));
         }
         
         $admin_email = get_option('admin_email');
@@ -345,26 +357,26 @@ class Wsb_Ajax {
             $wpdb->update($booking_table, array('status' => 'pending', 'request_type' => 'cancel'), array('id' => $booking_id));
             
             // Admin Notification
-            $admin_subject = "[Action Required] Cancellation Request: #" . $booking_id;
+            $admin_subject = sprintf(__('[Action Required] Cancellation Request: #%d', 'wp-service-booking'), $booking_id);
             $admin_details = '<div style="background:#fef2f2; padding:20px; border-radius:12px; border:1px solid #fee2e2;">
-                <strong>Client Name:</strong> ' . $current_user->display_name . '<br>
-                <strong>Booking ID:</strong> #' . $booking_id . '
+                <strong>' . __('Client Name:', 'wp-service-booking') . '</strong> ' . $current_user->display_name . '<br>
+                <strong>' . __('Booking ID:', 'wp-service-booking') . '</strong> #' . $booking_id . '
             </div>';
-            wsb_send_modern_email($admin_email, $admin_subject, 'Cancellation Request', 'A client has requested to cancel their scheduled appointment.', $admin_details);
+            wsb_send_modern_email($admin_email, $admin_subject, __('Cancellation Request', 'wp-service-booking'), __('A client has requested to cancel their scheduled appointment.', 'wp-service-booking'), $admin_details);
             
             // Client Notification
-            $client_subject = "Cancellation Request Logged: #" . $booking_id;
-            $client_content = '<p>Your request to cancel appointment #' . $booking_id . ' has been logged. Our team will review this shortly and update your status.</p>';
-            wsb_send_modern_email($current_user->user_email, $client_subject, 'Request Received', "Hello " . $current_user->display_name . ",", $client_content);
+            $client_subject = sprintf(__('Cancellation Request Logged: #%d', 'wp-service-booking'), $booking_id);
+            $client_content = '<p>' . sprintf(__('Your request to cancel appointment #%d has been logged. Our team will review this shortly and update your status.', 'wp-service-booking'), $booking_id) . '</p>';
+            wsb_send_modern_email($current_user->user_email, $client_subject, __('Request Received', 'wp-service-booking'), sprintf(__('Hello %s,', 'wp-service-booking'), $current_user->display_name), $client_content);
             
-            wp_send_json_success(array('message' => 'Cancellation request submitted successfully!'));
+            wp_send_json_success(array('message' => __('Cancellation request submitted successfully!', 'wp-service-booking')));
         } else {
             $reschedule_staff = isset($_POST['reschedule_staff']) ? intval($_POST['reschedule_staff']) : 0;
             $reschedule_date  = isset($_POST['reschedule_date']) ? sanitize_text_field($_POST['reschedule_date']) : '';
             $reschedule_time  = isset($_POST['reschedule_time']) ? sanitize_text_field($_POST['reschedule_time']) : '';
             
             if (!$reschedule_staff || !$reschedule_date || !$reschedule_time) {
-                wp_send_json_error(array('message' => 'Please fill all fields correctly.'));
+                wp_send_json_error(array('message' => __('Please fill all fields correctly.', 'wp-service-booking')));
             }
             
             $wpdb->query("ALTER TABLE {$booking_table} ADD COLUMN IF NOT EXISTS requested_date DATE DEFAULT NULL");
@@ -380,20 +392,20 @@ class Wsb_Ajax {
             ), array('id' => $booking_id));
             
             // Admin Notification
-            $admin_subject = "[Action Required] Reschedule Request: #" . $booking_id;
+            $admin_subject = sprintf(__('[Action Required] Reschedule Request: #%d', 'wp-service-booking'), $booking_id);
             $admin_details = '<div style="background:#f0f9ff; padding:20px; border-radius:12px; border:1px solid #e0f2fe;">
-                <strong>Client:</strong> ' . $current_user->display_name . '<br>
-                <strong>Requested Date:</strong> ' . $reschedule_date . '<br>
-                <strong>Requested Time:</strong> ' . $reschedule_time . '
+                <strong>' . __('Client:', 'wp-service-booking') . '</strong> ' . $current_user->display_name . '<br>
+                <strong>' . __('Requested Date:', 'wp-service-booking') . '</strong> ' . $reschedule_date . '<br>
+                <strong>' . __('Requested Time:', 'wp-service-booking') . '</strong> ' . $reschedule_time . '
             </div>';
-            wsb_send_modern_email($admin_email, $admin_subject, 'Reschedule Requested', 'A client has requested to move their appointment.', $admin_details);
+            wsb_send_modern_email($admin_email, $admin_subject, __('Reschedule Requested', 'wp-service-booking'), __('A client has requested to move their appointment.', 'wp-service-booking'), $admin_details);
             
             // Client Notification
-            $client_subject = "Reschedule Request Logged: #" . $booking_id;
-            $client_content = '<p>We have received your request to reschedule appointment #' . $booking_id . '. Our team will check availability and confirm the change shortly.</p>';
-            wsb_send_modern_email($current_user->user_email, $client_subject, 'Request Received', "Hello " . $current_user->display_name . ",", $client_content);
+            $client_subject = sprintf(__('Reschedule Request Logged: #%d', 'wp-service-booking'), $booking_id);
+            $client_content = '<p>' . sprintf(__('We have received your request to reschedule appointment #%d. Our team will check availability and confirm the change shortly.', 'wp-service-booking'), $booking_id) . '</p>';
+            wsb_send_modern_email($current_user->user_email, $client_subject, __('Request Received', 'wp-service-booking'), sprintf(__('Hello %s,', 'wp-service-booking'), $current_user->display_name), $client_content);
 
-            wp_send_json_success(array('message' => 'Reschedule request submitted successfully!'));
+            wp_send_json_success(array('message' => __('Reschedule request submitted successfully!', 'wp-service-booking')));
         }
     }
 
@@ -401,11 +413,11 @@ class Wsb_Ajax {
         global $wpdb;
         
         if(!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'wsb_nonce')){
-            wp_send_json_error(array('message' => 'Security verification failed.'));
+            wp_send_json_error(array('message' => __('Security verification failed.', 'wp-service-booking')));
         }
         
         if(!is_user_logged_in()) {
-            wp_send_json_error(array('message' => 'Access Denied. Please login.'));
+            wp_send_json_error(array('message' => __('Access Denied. Please login.', 'wp-service-booking')));
         }
         
         $current_user = wp_get_current_user();
@@ -417,7 +429,7 @@ class Wsb_Ajax {
         $password   = sanitize_text_field($_POST['password']);
         
         if (empty($first_name) || empty($last_name)) {
-            wp_send_json_error(array('message' => 'First and Last name are required fields.'));
+            wp_send_json_error(array('message' => __('First and Last name are required fields.', 'wp-service-booking')));
         }
         
         wp_update_user(array(
@@ -432,7 +444,7 @@ class Wsb_Ajax {
         
         if (!empty($password)) {
             if (strlen($password) < 6) {
-                wp_send_json_error(array('message' => 'Password must be at least 6 characters long.'));
+                wp_send_json_error(array('message' => __('Password must be at least 6 characters long.', 'wp-service-booking')));
             }
             wp_set_password($password, $current_user->ID);
         }
@@ -444,7 +456,7 @@ class Wsb_Ajax {
             array('email' => $current_user->user_email)
         );
         
-        wp_send_json_success(array('message' => 'Account details successfully updated!'));
+        wp_send_json_success(array('message' => __('Account details successfully updated!', 'wp-service-booking')));
     }
 
     public function create_checkout_session() {
@@ -461,7 +473,7 @@ class Wsb_Ajax {
         $time       = sanitize_text_field($_POST['start_time']);
 
         if (empty($service_ids_str) || !$email) {
-            wp_send_json_error(array('message' => 'Missing required booking details.'));
+            wp_send_json_error(array('message' => __('Missing required booking details.', 'wp-service-booking')));
         }
 
         $ids = array_map('intval', explode(',', $service_ids_str));
@@ -469,12 +481,12 @@ class Wsb_Ajax {
         $services = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}wsb_services WHERE id IN ($placeholders)", $ids));
         
         if (empty($services)) {
-            wp_send_json_error(array('message' => 'Services not found.'));
+            wp_send_json_error(array('message' => __('Services not found.', 'wp-service-booking')));
         }
 
         $stripe_sk = get_option('wsb_stripe_secret_key', '');
         if (empty($stripe_sk)) {
-            wp_send_json_error(array('message' => 'Stripe is not configured.'));
+            wp_send_json_error(array('message' => __('Stripe is not configured.', 'wp-service-booking')));
         }
 
         // Create Pending Booking
@@ -492,7 +504,7 @@ class Wsb_Ajax {
         ));
 
         if (!$booking_id) {
-            wp_send_json_error(array('message' => 'Failed to log pending booking.'));
+            wp_send_json_error(array('message' => __('Failed to log pending booking.', 'wp-service-booking')));
         }
 
         $currency = strtolower(get_option('wsb_currency', 'gbp'));
@@ -504,7 +516,7 @@ class Wsb_Ajax {
                     'currency' => $currency,
                     'product_data' => array(
                         'name' => $s->name,
-                        'description' => 'Professional booking for ' . $date . ' at ' . $time,
+                        'description' => sprintf(__('Professional booking for %s at %s', 'wp-service-booking'), $date, $time),
                     ),
                     'unit_amount' => intval($s->price * 100),
                 ),
@@ -546,16 +558,14 @@ class Wsb_Ajax {
         ));
 
         if (is_wp_error($response)) {
-            wp_send_json_error(array('message' => 'Stripe Error: ' . $response->get_error_message()));
+            wp_send_json_error(array('message' => sprintf(__('Stripe Error: %s', 'wp-service-booking'), $response->get_error_message())));
         }
 
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
-
         if (isset($data['error'])) {
-            wp_send_json_error(array('message' => $data['error']['message']));
+            wp_send_json_error(array('message' => esc_html($data['error']['message'])));
         }
-
         wp_send_json_success(array('url' => $data['url']));
     }
 
@@ -565,7 +575,7 @@ class Wsb_Ajax {
 
         $service_ids_str = isset($_POST['service_id']) ? sanitize_text_field($_POST['service_id']) : '';
         if (empty($service_ids_str)) {
-            wp_send_json_error(array('message' => 'Services not selected.'));
+            wp_send_json_error(array('message' => __('Services not selected.', 'wp-service-booking')));
         }
 
         $ids = array_map('intval', explode(',', $service_ids_str));
@@ -573,12 +583,12 @@ class Wsb_Ajax {
         $services = $wpdb->get_results($wpdb->prepare("SELECT price FROM {$wpdb->prefix}wsb_services WHERE id IN ($placeholders)", $ids));
         
         if (empty($services)) {
-            wp_send_json_error(array('message' => 'Services not found.'));
+            wp_send_json_error(array('message' => __('Services not found.', 'wp-service-booking')));
         }
 
         $stripe_sk = get_option('wsb_stripe_secret_key', '');
         if (empty($stripe_sk)) {
-            wp_send_json_error(array('message' => 'Stripe is not configured.'));
+            wp_send_json_error(array('message' => __('Stripe is not configured.', 'wp-service-booking')));
         }
 
         $total_amount = 0;
@@ -605,14 +615,14 @@ class Wsb_Ajax {
         ));
 
         if (is_wp_error($response)) {
-            wp_send_json_error(array('message' => 'Stripe Error: ' . $response->get_error_message()));
+            wp_send_json_error(array('message' => sprintf(__('Stripe Error: %s', 'wp-service-booking'), $response->get_error_message())));
         }
 
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
 
         if (isset($data['error'])) {
-            wp_send_json_error(array('message' => $data['error']['message']));
+            wp_send_json_error(array('message' => esc_html($data['error']['message'])));
         }
 
         wp_send_json_success(array('client_secret' => $data['client_secret']));
@@ -622,12 +632,12 @@ class Wsb_Ajax {
         check_ajax_referer('wsb_admin_nonce', 'nonce');
         
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(array('message' => 'Access denied.'));
+            wp_send_json_error(array('message' => __('Access denied.', 'wp-service-booking')));
         }
 
         $stripe_sk = isset($_POST['stripe_sk']) ? sanitize_text_field($_POST['stripe_sk']) : '';
         if (empty($stripe_sk)) {
-            wp_send_json_error(array('message' => 'Please enter a valid Stripe Secret Key to test.'));
+            wp_send_json_error(array('message' => __('Please enter a valid Stripe Secret Key to test.', 'wp-service-booking')));
         }
 
         $response = wp_remote_get('https://api.stripe.com/v1/balance', array(
@@ -637,16 +647,16 @@ class Wsb_Ajax {
         ));
 
         if (is_wp_error($response)) {
-            wp_send_json_error(array('message' => 'API request failed: ' . $response->get_error_message()));
+            wp_send_json_error(array('message' => sprintf(__('API request failed: %s', 'wp-service-booking'), $response->get_error_message())));
         }
 
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
 
         if (isset($data['error'])) {
-            wp_send_json_error(array('message' => 'Connection Failed: ' . $data['error']['message']));
+            wp_send_json_error(array('message' => sprintf(__('Connection Failed: %s', 'wp-service-booking'), $data['error']['message'])));
         }
 
-        wp_send_json_success(array('message' => 'Connection Successful! Credentials validated securely.'));
+        wp_send_json_success(array('message' => __('Connection Successful! Credentials validated securely.', 'wp-service-booking')));
     }
 }

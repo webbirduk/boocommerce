@@ -18,7 +18,7 @@ class Wsb_Admin_Design {
                 delete_option('wsb_menu_basket_text');
                 delete_option('wsb_menu_basket_pos');
                 delete_option('wsb_menu_basket_icon');
-                echo '<div class="notice notice-info is-dismissible wsb-custom-notice"><p>Factory default settings restored successfully!</p></div>';
+                echo '<div class="notice notice-info is-dismissible wsb-custom-notice"><p>' . __('Factory default settings restored successfully!', 'wp-service-booking') . '</p></div>';
             } else {
                 // Layout & Colors
                 update_option('wsb_service_layout', sanitize_text_field($_POST['wsb_service_layout']));
@@ -62,7 +62,7 @@ class Wsb_Admin_Design {
                 update_option('wsb_menu_basket_icon', sanitize_text_field($_POST['wsb_menu_basket_icon']));
                 update_option('wsb_showcase_layout', sanitize_text_field($_POST['wsb_showcase_layout']));
 
-                echo '<div class="notice notice-success is-dismissible wsb-custom-notice"><p>Advanced customization settings applied successfully!</p></div>';
+                echo '<div class="notice notice-success is-dismissible wsb-custom-notice"><p>' . __('Advanced customization settings applied successfully!', 'wp-service-booking') . '</p></div>';
             }
         }
 
@@ -134,8 +134,8 @@ class Wsb_Admin_Design {
                     .wsb-action-bar button { width: 100%; }
                 }
             </style>
-            <h1 class="wsb-design-header">System Customization & Branding</h1>
-            <p style="color:var(--wsb-text-muted); margin-bottom:30px;">Fully loaded control center for your premium booking ecosystem.</p>
+            <h1 class="wsb-design-header"><?php _e('System Customization & Branding', 'wp-service-booking'); ?></h1>
+            <p style="color:var(--wsb-text-muted); margin-bottom:30px;"><?php _e('Fully loaded control center for your premium booking ecosystem.', 'wp-service-booking'); ?></p>
 
             <link rel="stylesheet" href="<?php echo esc_url(WSB_PLUGIN_URL . 'assets/all.min.css'); ?>"  />
             <style>
@@ -158,31 +158,31 @@ class Wsb_Admin_Design {
                         <!-- Section 1: Brand Identity & Palette -->
                         <div class="wsb-design-section" style="margin:0; border-left: 4px solid var(--wsb-primary);">
                             <h2 style="color:white; margin-bottom:20px; font-weight: 700; letter-spacing: -0.02em; display:flex; align-items:center; gap:10px;">
-                                <span class="dashicons dashicons-art"></span> 01. Brand Identity & Aesthetic Palette
+                                <span class="dashicons dashicons-art"></span> <?php _e('01. Brand Identity & Aesthetic Palette', 'wp-service-booking'); ?>
                             </h2>
-                            <p style="color:var(--wsb-text-muted); font-size:12px; margin-bottom:25px; line-height:1.6;">Fine-tune your visual identity. These colors define the primary mood, interactions, and granular elements of your booking system.</p>
+                            <p style="color:var(--wsb-text-muted); font-size:12px; margin-bottom:25px; line-height:1.6;"><?php _e('Fine-tune your visual identity. These colors define the primary mood, interactions, and granular elements of your booking system.', 'wp-service-booking'); ?></p>
                             
                             <div class="wsb-palette-grid">
                                 <!-- Primary Brand Group -->
                                 <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
-                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; display:block; margin-bottom:10px;">Core Identity</label>
+                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; display:block; margin-bottom:10px;"><?php _e('Core Identity', 'wp-service-booking'); ?></label>
                                     <div style="display:flex; flex-direction:column; gap:12px;">
                                         <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                                            <span style="color:white; font-size:13px;">Primary Color</span>
+                                            <span style="color:white; font-size:13px;"><?php _e('Primary Color', 'wp-service-booking'); ?></span>
                                             <div class="wsb-color-picker-wrapper" style="margin:0;">
                                                 <div class="wsb-color-swatch" style="background: <?php echo esc_attr($brand_color); ?>; width:28px; height:28px;"></div>
                                                 <input type="color" name="wsb_brand_color" value="<?php echo esc_attr($brand_color); ?>" class="wsb-hidden-color-input" onchange="this.previousElementSibling.style.background = this.value;">
                                             </div>
                                         </label>
                                         <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                                            <span style="color:white; font-size:13px;">Gradient Accent</span>
+                                            <span style="color:white; font-size:13px;"><?php _e('Gradient Accent', 'wp-service-booking'); ?></span>
                                             <div class="wsb-color-picker-wrapper" style="margin:0;">
                                                 <div class="wsb-color-swatch" style="background: <?php echo esc_attr($brand_color_end); ?>; width:28px; height:28px;"></div>
                                                 <input type="color" name="wsb_brand_color_end" value="<?php echo esc_attr($brand_color_end); ?>" class="wsb-hidden-color-input" onchange="this.previousElementSibling.style.background = this.value;">
                                             </div>
                                         </label>
                                         <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                                            <span style="color:white; font-size:13px;">Interactions</span>
+                                            <span style="color:white; font-size:13px;"><?php _e('Interactions', 'wp-service-booking'); ?></span>
                                             <div class="wsb-color-picker-wrapper" style="margin:0;">
                                                 <div class="wsb-color-swatch" style="background: <?php echo esc_attr($accent_color); ?>; width:28px; height:28px;"></div>
                                                 <input type="color" name="wsb_accent_color" value="<?php echo esc_attr($accent_color); ?>" class="wsb-hidden-color-input" onchange="this.previousElementSibling.style.background = this.value;">
@@ -193,24 +193,24 @@ class Wsb_Admin_Design {
 
                                 <!-- Surface & Text Group -->
                                 <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
-                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; display:block; margin-bottom:10px;">Surfaces & Text</label>
+                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; display:block; margin-bottom:10px;"><?php _e('Surfaces & Text', 'wp-service-booking'); ?></label>
                                     <div style="display:flex; flex-direction:column; gap:12px;">
                                         <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                                            <span style="color:white; font-size:13px;">Card BG</span>
+                                            <span style="color:white; font-size:13px;"><?php _e('Card BG', 'wp-service-booking'); ?></span>
                                             <div class="wsb-color-picker-wrapper" style="margin:0;">
                                                 <div class="wsb-color-swatch" style="background: <?php echo esc_attr($card_bg); ?>; width:28px; height:28px;"></div>
                                                 <input type="color" name="wsb_card_bg_color" value="<?php echo esc_attr($card_bg); ?>" class="wsb-hidden-color-input" onchange="this.previousElementSibling.style.background = this.value;">
                                             </div>
                                         </label>
                                         <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                                            <span style="color:white; font-size:13px;">Heading Text</span>
+                                            <span style="color:white; font-size:13px;"><?php _e('Heading Text', 'wp-service-booking'); ?></span>
                                             <div class="wsb-color-picker-wrapper" style="margin:0;">
                                                 <div class="wsb-color-swatch" style="background: <?php echo esc_attr($heading_color); ?>; width:28px; height:28px;"></div>
                                                 <input type="color" name="wsb_heading_text_color" value="<?php echo esc_attr($heading_color); ?>" class="wsb-hidden-color-input" onchange="this.previousElementSibling.style.background = this.value;">
                                             </div>
                                         </label>
                                         <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                                            <span style="color:white; font-size:13px;">Body Text</span>
+                                            <span style="color:white; font-size:13px;"><?php _e('Body Text', 'wp-service-booking'); ?></span>
                                             <div class="wsb-color-picker-wrapper" style="margin:0;">
                                                 <div class="wsb-color-swatch" style="background: <?php echo esc_attr($body_color); ?>; width:28px; height:28px;"></div>
                                                 <input type="color" name="wsb_body_text_color" value="<?php echo esc_attr($body_color); ?>" class="wsb-hidden-color-input" onchange="this.previousElementSibling.style.background = this.value;">
@@ -221,17 +221,17 @@ class Wsb_Admin_Design {
 
                                 <!-- Forms & Inputs Group -->
                                 <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
-                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; display:block; margin-bottom:10px;">Forms & Inputs</label>
+                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; display:block; margin-bottom:10px;"><?php _e('Forms & Inputs', 'wp-service-booking'); ?></label>
                                     <div style="display:flex; flex-direction:column; gap:12px;">
                                         <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                                            <span style="color:white; font-size:13px;">Input BG</span>
+                                            <span style="color:white; font-size:13px;"><?php _e('Input BG', 'wp-service-booking'); ?></span>
                                             <div class="wsb-color-picker-wrapper" style="margin:0;">
                                                 <div class="wsb-color-swatch" style="background: <?php echo esc_attr($input_bg); ?>; width:28px; height:28px;"></div>
                                                 <input type="color" name="wsb_input_bg_color" value="<?php echo esc_attr($input_bg); ?>" class="wsb-hidden-color-input" onchange="this.previousElementSibling.style.background = this.value;">
                                             </div>
                                         </label>
                                         <label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
-                                            <span style="color:white; font-size:13px;">Input Border</span>
+                                            <span style="color:white; font-size:13px;"><?php _e('Input Border', 'wp-service-booking'); ?></span>
                                             <div class="wsb-color-picker-wrapper" style="margin:0;">
                                                 <div class="wsb-color-swatch" style="background: <?php echo esc_attr($input_border); ?>; width:28px; height:28px;"></div>
                                                 <input type="color" name="wsb_input_border_color" value="<?php echo esc_attr($input_border); ?>" class="wsb-hidden-color-input" onchange="this.previousElementSibling.style.background = this.value;">
@@ -245,12 +245,12 @@ class Wsb_Admin_Design {
                         <!-- Section 2: UI Components & Effects -->
                         <div class="wsb-design-section" style="margin:0;">
                             <h2 style="color:white; margin-bottom:25px; font-weight: 700; letter-spacing: -0.02em; display:flex; align-items:center; gap:10px;">
-                                <span class="dashicons dashicons-admin-appearance"></span> 02. Component Styling & Effects
+                                <span class="dashicons dashicons-admin-appearance"></span> <?php _e('02. Component Styling & Effects', 'wp-service-booking'); ?>
                             </h2>
                             
                             <div class="wsb-effect-grid">
                                 <div>
-                                    <label style="display:block; color:white; font-weight:600; font-size:14px; margin-bottom:10px;">Typography Engine</label>
+                                    <label style="display:block; color:white; font-weight:600; font-size:14px; margin-bottom:10px;"><?php _e('Typography Engine', 'wp-service-booking'); ?></label>
                                     <select name="wsb_font_family" style="width:100%; background:rgba(255,255,255,0.05); color:white; border:1px solid rgba(255,255,255,0.1); padding:12px; border-radius:10px;">
                                         <optgroup label="Modern Sans-Serif">
                                             <option value="Inter" <?php selected($font_family, 'Inter'); ?>>Inter (Default - High Clarity)</option>
@@ -274,7 +274,7 @@ class Wsb_Admin_Design {
                                 </div>
                                 
                                 <div>
-                                    <label style="display:block; color:white; font-weight:600; font-size:14px; margin-bottom:10px;">Shadow Depth</label>
+                                    <label style="display:block; color:white; font-weight:600; font-size:14px; margin-bottom:10px;"><?php _e('Shadow Depth', 'wp-service-booking'); ?></label>
                                     <select name="wsb_shadow_intensity" style="width:100%; background:rgba(255,255,255,0.05); color:white; border:1px solid rgba(255,255,255,0.1); padding:12px; border-radius:10px;">
                                         <option value="none" <?php selected($shadow_intensity, 'none'); ?>>None (Flat Design)</option>
                                         <option value="low" <?php selected($shadow_intensity, 'low'); ?>>Subtle (Minimalist)</option>
@@ -300,31 +300,31 @@ class Wsb_Admin_Design {
                         <!-- Section 3: Content & Labeling -->
                         <div class="wsb-design-section" style="margin:0;">
                             <h2 style="color:white; margin-bottom:25px; font-weight: 700; letter-spacing: -0.02em; display:flex; align-items:center; gap:10px;">
-                                <span class="dashicons dashicons-editor-textcolor"></span> 03. Content & Dynamic Labeling
+                                <span class="dashicons dashicons-editor-textcolor"></span> <?php _e('03. Content & Dynamic Labeling', 'wp-service-booking'); ?>
                             </h2>
                             <div class="wsb-label-grid">
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;">Step 1 Title</label>
+                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;"><?php _e('Step 1 Title', 'wp-service-booking'); ?></label>
                                     <input type="text" name="wsb_label_step1" value="<?php echo esc_attr($l_step1); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                 </div>
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;">Step 2 Title</label>
+                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;"><?php _e('Step 2 Title', 'wp-service-booking'); ?></label>
                                     <input type="text" name="wsb_label_step2" value="<?php echo esc_attr($l_step2); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                 </div>
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;">Step 3 Title</label>
+                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;"><?php _e('Step 3 Title', 'wp-service-booking'); ?></label>
                                     <input type="text" name="wsb_label_step3" value="<?php echo esc_attr($l_step3); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                 </div>
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;">Step 4 Title</label>
+                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;"><?php _e('Step 4 Title', 'wp-service-booking'); ?></label>
                                     <input type="text" name="wsb_label_step4" value="<?php echo esc_attr($l_step4); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                 </div>
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;">Primary Action Button</label>
+                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;"><?php _e('Primary Action Button', 'wp-service-booking'); ?></label>
                                     <input type="text" name="wsb_label_next_btn" value="<?php echo esc_attr($l_next); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                 </div>
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;">Secondary Back Button</label>
+                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:5px;"><?php _e('Secondary Back Button', 'wp-service-booking'); ?></label>
                                     <input type="text" name="wsb_label_prev_btn" value="<?php echo esc_attr($l_prev); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                 </div>
                             </div>
@@ -333,17 +333,17 @@ class Wsb_Admin_Design {
                         <!-- Section 4: Basket & Interaction Ecosystem -->
                         <div class="wsb-design-section" style="margin:0; border-top: 4px solid #f59e0b; background: rgba(245, 158, 11, 0.02);">
                             <h2 style="color:white; margin-bottom:25px; font-weight: 800; display:flex; align-items:center; gap:12px; font-size:18px;">
-                                <span class="dashicons dashicons-cart" style="color:#f59e0b; font-size:24px; width:24px; height:24px;"></span> 04. Basket & Interaction Ecosystem
+                                <span class="dashicons dashicons-cart" style="color:#f59e0b; font-size:24px; width:24px; height:24px;"></span> <?php _e('04. Basket & Interaction Ecosystem', 'wp-service-booking'); ?>
                             </h2>
                             
                             <div class="wsb-basket-toggle-grid">
                                 <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.03); padding:20px; border-radius:14px; border:1px solid rgba(255,255,255,0.05);">
                                     <div>
                                         <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                            Show Basket in Menu
-                                            <span class="wsb-info-icon" data-tooltip="Integrates the service selection basket directly into your primary WordPress navigation menu.">?</span>
+                                            <?php _e('Show Basket in Menu', 'wp-service-booking'); ?>
+                                            <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('Integrates the service selection basket directly into your primary WordPress navigation menu.', 'wp-service-booking'); ?>">?</span>
                                         </label>
-                                        <span style="color:var(--wsb-text-muted); font-size:12px;">Integrate selection into main nav.</span>
+                                        <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Integrate selection into main nav.', 'wp-service-booking'); ?></span>
                                     </div>
                                     <label class="wsb-switch">
                                         <input type="checkbox" name="wsb_menu_basket_enable" value="yes" <?php checked($m_basket_enable, 'yes'); ?>>
@@ -352,7 +352,7 @@ class Wsb_Admin_Design {
                                 </div>
 
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:8px; font-weight:600;">Interaction Mode</label>
+                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:8px; font-weight:600;"><?php _e('Interaction Mode', 'wp-service-booking'); ?></label>
                                     <select name="wsb_basket_mode" style="width:100%; background:rgba(255,255,255,0.05); color:white; border:1px solid rgba(255,255,255,0.1); padding:12px; border-radius:10px;">
                                         <option value="hover" <?php selected($basket_mode, 'hover'); ?>>Open on Hover (Premium)</option>
                                         <option value="click" <?php selected($basket_mode, 'click'); ?>>Open on Click (Standard)</option>
@@ -362,21 +362,21 @@ class Wsb_Admin_Design {
 
                             <div class="wsb-basket-detail-grid">
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Basket Icon</label>
+                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;"><?php _e('Basket Icon', 'wp-service-booking'); ?></label>
                                     <div style="display:flex; gap:8px;">
                                         <input type="text" id="wsb_input_basket" name="wsb_icon_basket_btn" value="<?php echo esc_attr($i_basket); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                         <button type="button" class="wsb-icon-picker-btn" data-target="wsb_input_basket" style="background:rgba(255,255,255,0.1); border:none; color:white; border-radius:8px; padding:0 15px; cursor:pointer; font-weight:600;" title="Browse Library"><span class="dashicons dashicons-search" style="margin-top:4px;"></span></button>
                                     </div>
                                 </div>
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Details Icon</label>
+                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;"><?php _e('Details Icon', 'wp-service-booking'); ?></label>
                                     <div style="display:flex; gap:8px;">
                                         <input type="text" id="wsb_input_details" name="wsb_icon_view_details" value="<?php echo esc_attr($i_view); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                         <button type="button" class="wsb-icon-picker-btn" data-target="wsb_input_details" style="background:rgba(255,255,255,0.1); border:none; color:white; border-radius:8px; padding:0 15px; cursor:pointer; font-weight:600;" title="Browse Library"><span class="dashicons dashicons-search" style="margin-top:4px;"></span></button>
                                     </div>
                                 </div>
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Menu Label</label>
+                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;"><?php _e('Menu Label', 'wp-service-booking'); ?></label>
                                     <input type="text" name="wsb_menu_basket_text" value="<?php echo esc_attr($m_basket_text); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                 </div>
                             </div>
@@ -385,17 +385,17 @@ class Wsb_Admin_Design {
                         <!-- Section 5: Floating Booking Widget -->
                         <div class="wsb-design-section" style="margin:0; border-top: 4px solid var(--wsb-success); background: rgba(16, 185, 129, 0.02);">
                             <h2 style="color:white; margin-bottom:25px; font-weight: 800; display:flex; align-items:center; gap:12px; font-size:18px;">
-                                <span class="dashicons dashicons-calendar-alt" style="color:var(--wsb-success); font-size:24px; width:24px; height:24px;"></span> 05. Floating Booking Assistant
+                                <span class="dashicons dashicons-calendar-alt" style="color:var(--wsb-success); font-size:24px; width:24px; height:24px;"></span> <?php _e('05. Floating Booking Assistant', 'wp-service-booking'); ?>
                             </h2>
 
                             <div class="wsb-float-assistant-grid">
                                 <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.03); padding:20px; border-radius:14px; border:1px solid rgba(255,255,255,0.05);">
                                     <div>
                                         <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                            Display Floating Widget
-                                            <span class="wsb-info-icon" data-tooltip="Enables a persistent floating mini-basket button that follows users across your entire website.">?</span>
+                                            <?php _e('Display Floating Widget', 'wp-service-booking'); ?>
+                                            <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('Enables a persistent floating mini-basket button that follows users across your entire website.', 'wp-service-booking'); ?>">?</span>
                                         </label>
-                                        <span style="color:var(--wsb-text-muted); font-size:12px;">Persistent site-wide mini-basket.</span>
+                                        <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Persistent site-wide mini-basket.', 'wp-service-booking'); ?></span>
                                     </div>
                                     <label class="wsb-switch">
                                         <input type="checkbox" name="wsb_float_btn_enable" value="yes" <?php checked($float_enable, 'yes'); ?>>
@@ -404,7 +404,7 @@ class Wsb_Admin_Design {
                                 </div>
 
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:8px; font-weight:600;">Button Position</label>
+                                    <label style="color:rgba(255,255,255,0.6); font-size:12px; display:block; margin-bottom:8px; font-weight:600;"><?php _e('Button Position', 'wp-service-booking'); ?></label>
                                     <select name="wsb_float_btn_pos" style="width:100%; background:rgba(255,255,255,0.05); color:white; border:1px solid rgba(255,255,255,0.1); padding:12px; border-radius:10px;">
                                         <option value="bottom-right" <?php selected($float_pos, 'bottom-right'); ?>>Bottom Right Corner</option>
                                         <option value="bottom-left" <?php selected($float_pos, 'bottom-left'); ?>>Bottom Left Corner</option>
@@ -414,7 +414,7 @@ class Wsb_Admin_Design {
 
                             <div class="wsb-float-detail-grid">
                                 <div class="wsb-input-wrap">
-                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Floating Widget Icon</label>
+                                    <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;"><?php _e('Floating Widget Icon', 'wp-service-booking'); ?></label>
                                     <div style="display:flex; gap:8px;">
                                         <input type="text" id="wsb_input_float" name="wsb_float_btn_icon" value="<?php echo esc_attr($float_icon); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
                                         <button type="button" class="wsb-icon-picker-btn" data-target="wsb_input_float" style="background:rgba(255,255,255,0.1); border:none; color:white; border-radius:8px; padding:0 15px; cursor:pointer; font-weight:600;" title="Browse Library"><span class="dashicons dashicons-search" style="margin-top:4px;"></span></button>
@@ -422,7 +422,7 @@ class Wsb_Admin_Design {
                                 </div>
                                 <div style="background:rgba(16, 185, 129, 0.05); padding:15px; border-radius:12px; border:1px solid rgba(16, 185, 129, 0.1); display:flex; align-items:center; gap:12px;">
                                     <span class="dashicons dashicons-info" style="color:var(--wsb-success);"></span>
-                                    <span style="color:rgba(255,255,255,0.6); font-size:11px; line-height:1.4;">The floating widget acts as a mini-basket that expands on click, allowing users to manage their selection from any page.</span>
+                                    <span style="color:rgba(255,255,255,0.6); font-size:11px; line-height:1.4;"><?php _e('The floating widget acts as a mini-basket that expands on click, allowing users to manage their selection from any page.', 'wp-service-booking'); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -431,11 +431,11 @@ class Wsb_Admin_Design {
                         <div class="wsb-action-bar">
                             <button type="submit" class="wsb-btn-premium"
                                 style="flex:2; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: #fff; border: none; padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content:center; gap: 10px;">
-                                ✨ Apply Customization
+                                ✨ <?php _e('Apply Customization', 'wp-service-booking'); ?>
                             </button>
                             <button type="button" id="wsb-reset-trigger-btn"
                                 style="flex:1; background: rgba(255,255,255,0.05); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); padding: 15px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content:center; gap: 8px;">
-                                <span class="dashicons dashicons-undo" style="font-size:16px; width:16px; height:16px;"></span> Restore Defaults
+                                <span class="dashicons dashicons-undo" style="font-size:16px; width:16px; height:16px;"></span> <?php _e('Restore Defaults', 'wp-service-booking'); ?>
                             </button>
                         </div>
 
@@ -447,9 +447,9 @@ class Wsb_Admin_Design {
                         <!-- Section 4: Aesthetic Style Selection -->
                         <div class="wsb-design-section" style="margin:0; border-top: 4px solid var(--wsb-primary);">
                             <h2 style="color:white; margin-bottom:15px; display:flex; align-items:center; gap:10px; font-size:16px;">
-                                <span class="dashicons dashicons-layout"></span> 04. Service Booking Page Style
+                                <span class="dashicons dashicons-layout"></span> <?php _e('04. Service Booking Page Style', 'wp-service-booking'); ?>
                             </h2>
-                            <p style="color:var(--wsb-text-muted); font-size:12px; margin-bottom:20px; line-height:1.5;">Select the core design language for your frontend booking experience.</p>
+                            <p style="color:var(--wsb-text-muted); font-size:12px; margin-bottom:20px; line-height:1.5;"><?php _e('Select the core design language for your frontend booking experience.', 'wp-service-booking'); ?></p>
                             
                             <div style="display:grid; grid-template-columns: 1fr; gap:15px;">
                                 <?php
@@ -536,7 +536,7 @@ class Wsb_Admin_Design {
                         <div style="background:var(--wsb-panel-dark); border-radius:16px; border:1px solid var(--wsb-border); overflow:hidden; border-top:4px solid var(--wsb-success);">
                             <div style="padding:20px; border-bottom:1px solid var(--wsb-border);">
                                 <h3 style="margin:0; color:#fff; display:flex; align-items:center; gap:10px; font-size:15px;">
-                                    <span class="dashicons dashicons-shortcode" style="color:var(--wsb-success);"></span> 05. Frontend Deployment
+                                    <span class="dashicons dashicons-shortcode" style="color:var(--wsb-success);"></span> <?php _e('05. Frontend Deployment', 'wp-service-booking'); ?>
                                 </h3>
                             </div>
                             <div style="padding:20px;">
@@ -551,9 +551,9 @@ class Wsb_Admin_Design {
                         <!-- Section 06: Service Display Showcase -->
                         <div class="wsb-design-section" style="margin:0; border-left: 4px solid #0ea5e9;">
                             <h2 style="color:white; margin-bottom:10px; font-weight: 700; letter-spacing: -0.02em; display:flex; align-items:center; gap:10px;">
-                                <span class="dashicons dashicons-layout" style="color:#0ea5e9;"></span> 06. Service Display Showcase
+                                <span class="dashicons dashicons-layout" style="color:#0ea5e9;"></span> <?php _e('06. Service Display Showcase', 'wp-service-booking'); ?>
                             </h2>
-                            <p style="color:var(--wsb-text-muted); font-size:12px; margin-bottom:25px; line-height:1.6;">Embed your services anywhere on your site using these advanced shortcodes. Clients can view service details and jump directly into the booking flow.</p>
+                            <p style="color:var(--wsb-text-muted); font-size:12px; margin-bottom:25px; line-height:1.6;"><?php _e('Embed your services anywhere on your site using these advanced shortcodes. Clients can view service details and jump directly into the booking flow.', 'wp-service-booking'); ?></p>
 
                             <!-- Shortcode Guide -->
                             <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:35px;">
@@ -592,9 +592,9 @@ class Wsb_Admin_Design {
 
                             <div style="padding:15px; background:rgba(14, 165, 233, 0.05); border-radius:12px; border:1px solid rgba(14, 165, 233, 0.1); margin-bottom:15px;">
                                 <div style="display:flex; align-items:center; gap:8px; color:#0ea5e9; font-weight:700; font-size:12px; margin-bottom:5px;">
-                                    <span class="dashicons dashicons-info" style="font-size:16px; width:16px; height:16px;"></span> Shortcode Power
+                                    <span class="dashicons dashicons-info" style="font-size:16px; width:16px; height:16px;"></span> <?php _e('Shortcode Power', 'wp-service-booking'); ?>
                                 </div>
-                                <p style="color:var(--wsb-text-muted); font-size:11px; margin:0; line-height:1.5;">You can combine your own styles by using the <code>layout="grid"</code> or <code>layout="carousel"</code> attribute in the shortcode.</p>
+                                <p style="color:var(--wsb-text-muted); font-size:11px; margin:0; line-height:1.5;"><?php _e('You can combine your own styles by using the <code>layout="grid"</code> or <code>layout="carousel"</code> attribute in the shortcode.', 'wp-service-booking'); ?></p>
                             </div>
                         </div>
 
@@ -611,17 +611,17 @@ class Wsb_Admin_Design {
                 <div style="width:80px; height:80px; background:rgba(239, 68, 68, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 25px;">
                     <span class="dashicons dashicons-undo" style="color:#ef4444; font-size:40px; width:40px; height:40px;"></span>
                 </div>
-                <h2 style="color:white; margin-bottom:15px; font-size:24px; font-weight:800;">Restore Factory Defaults?</h2>
-                <p style="color:rgba(255,255,255,0.6); line-height:1.6; margin-bottom:35px; font-size:14px;">This action will permanently remove all your custom branding, color palettes, and typography settings. This cannot be undone.</p>
+                <h2 style="color:white; margin-bottom:15px; font-size:24px; font-weight:800;"><?php _e('Restore Factory Defaults?', 'wp-service-booking'); ?></h2>
+                <p style="color:rgba(255,255,255,0.6); line-height:1.6; margin-bottom:35px; font-size:14px;"><?php _e('This action will permanently remove all your custom branding, color palettes, and typography settings. This cannot be undone.', 'wp-service-booking'); ?></p>
                 
                 <div style="display:flex; gap:15px;">
                     <button type="button" onclick="document.getElementById('wsb-reset-modal').style.display='none'" 
                         style="flex:1; background:rgba(255,255,255,0.05); color:white; border:1px solid rgba(255,255,255,0.1); padding:14px; border-radius:12px; font-weight:600; cursor:pointer;">
-                        Cancel
+                        <?php _e('Cancel', 'wp-service-booking'); ?>
                     </button>
                     <button type="button" onclick="document.getElementById('wsb-actual-reset-trigger').click();" 
                         style="flex:1; background:#ef4444; color:white; border:none; padding:14px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:0 10px 15px -3px rgba(239, 68, 68, 0.3);">
-                        Confirm Reset
+                        <?php _e('Confirm Reset', 'wp-service-booking'); ?>
                     </button>
                 </div>
             </div>
@@ -637,12 +637,12 @@ class Wsb_Admin_Design {
         <div id="wsb-icon-library-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px); z-index:99999; align-items:center; justify-content:center; padding:20px;">
             <div style="background:#1e293b; border:1px solid rgba(255,255,255,0.1); border-radius:16px; width:100%; max-width:600px; padding:30px; display:flex; flex-direction:column; max-height:80vh;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px;">
-                    <h2 style="color:white; margin:0; font-size:20px; font-weight:700;">Select an Icon</h2>
+                    <h2 style="color:white; margin:0; font-size:20px; font-weight:700;"><?php _e('Select an Icon', 'wp-service-booking'); ?></h2>
                     <span style="color:rgba(255,255,255,0.5); cursor:pointer; font-size:24px;" onclick="document.getElementById('wsb-icon-library-modal').style.display='none'">&times;</span>
                 </div>
                 
                 <div style="margin-bottom:20px;">
-                    <input type="text" id="wsb-icon-search" placeholder="Search icons... (e.g., 'cart', 'calendar')" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px; outline:none;">
+                    <input type="text" id="wsb-icon-search" placeholder="<?php esc_attr_e('Search icons... (e.g., \'cart\', \'calendar\')', 'wp-service-booking'); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px; outline:none;">
                 </div>
 
                 <div id="wsb-icon-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap:15px; overflow-y:auto; flex:1; padding-right:10px; max-height:400px;">

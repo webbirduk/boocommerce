@@ -18,7 +18,7 @@ class Wsb_Admin_Integrations {
                 update_option('wsb_enable_aura_luxe', isset($_POST['wsb_enable_aura_luxe']) ? 'yes' : 'no');
 
                 do_action('wsb_after_save_integrations', $_POST);
-                echo '<div class="notice notice-success is-dismissible"><p>Integrations and gateways securely updated!</p></div>';
+                echo '<div class="notice notice-success is-dismissible"><p>' . __('Integrations and gateways securely updated!', 'wp-service-booking') . '</p></div>';
             }
         }
 
@@ -27,8 +27,8 @@ class Wsb_Admin_Integrations {
         ?>
         <div class="wrap wsb-admin-wrap">
             <div style="margin-bottom:30px;">
-                <h1 style="margin:0; font-size:28px; font-weight:800; color:#fff;">Integrations & Ecosystem</h1>
-                <p style="color:var(--wsb-text-muted); margin-top:5px; font-size:15px;">Connect your booking engine to external payment processors, marketing tools, and third-party APIs.</p>
+                <h1 style="margin:0; font-size:28px; font-weight:800; color:#fff;"><?php _e('Integrations & Ecosystem', 'wp-service-booking'); ?></h1>
+                <p style="color:var(--wsb-text-muted); margin-top:5px; font-size:15px;"><?php _e('Connect your booking engine to external payment processors, marketing tools, and third-party APIs.', 'wp-service-booking'); ?></p>
             </div>
 
             <form method="post">
@@ -52,9 +52,9 @@ class Wsb_Admin_Integrations {
                         <div style="background:var(--wsb-panel-dark); border-radius:16px; border:1px solid var(--wsb-border); overflow:hidden; border-top:4px solid #22c55e;">
                             <div style="padding:25px; border-bottom:1px solid var(--wsb-border); display:flex; align-items:center; justify-content:space-between;">
                                 <h3 style="margin:0; color:#fff; display:flex; align-items:center; gap:10px;">
-                                    <span class="dashicons dashicons-money-alt" style="color:#22c55e;"></span> Payment Gateway Ecosystem
+                                    <span class="dashicons dashicons-money-alt" style="color:#22c55e;"></span> <?php _e('Payment Gateway Ecosystem', 'wp-service-booking'); ?>
                                 </h3>
-                                <span style="background:rgba(34, 197, 94, 0.1); color:#22c55e; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em;">Stripe Active</span>
+                                <span style="background:rgba(34, 197, 94, 0.1); color:#22c55e; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em;"><?php _e('Stripe Active', 'wp-service-booking'); ?></span>
                             </div>
                             
                             <div style="padding:25px; display:flex; flex-direction:column; gap:30px;">
@@ -63,16 +63,16 @@ class Wsb_Admin_Integrations {
                                 <div>
                                     <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
                                         <img src="<?php echo WSB_PLUGIN_URL . 'assets/images/stripe.png'; ?>" style="height:32px; width:auto; display:block;" alt="Stripe Logo">
-                                        <h4 style="margin:0; color:#fff; font-size:16px;">Stripe Professional</h4>
+                                        <h4 style="margin:0; color:#fff; font-size:16px;"><?php _e('Stripe Professional', 'wp-service-booking'); ?></h4>
                                     </div>
                                     <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
                                         <div>
-                                            <label style="display:block; margin-bottom:8px; color:var(--wsb-text-muted); font-size:13px;">Publishable API Key</label>
+                                            <label style="display:block; margin-bottom:8px; color:var(--wsb-text-muted); font-size:13px;"><?php _e('Publishable API Key', 'wp-service-booking'); ?></label>
                                             <input name="wsb_stripe_publishable_key" type="text" value="<?php echo esc_attr($stripe_pk); ?>" placeholder="pk_test_..."
                                                 style="width:100%; background:#0f172a; color:#fff; border:1px solid var(--wsb-border); padding:12px; border-radius:8px;">
                                         </div>
                                         <div>
-                                            <label style="display:block; margin-bottom:8px; color:var(--wsb-text-muted); font-size:13px;">Secret API Key</label>
+                                            <label style="display:block; margin-bottom:8px; color:var(--wsb-text-muted); font-size:13px;"><?php _e('Secret API Key', 'wp-service-booking'); ?></label>
                                             <input name="wsb_stripe_secret_key" id="wsb_stripe_secret_key" type="password" value="<?php echo esc_attr($stripe_sk); ?>" placeholder="sk_test_..."
                                                 style="width:100%; background:#0f172a; color:#fff; border:1px solid var(--wsb-border); padding:12px; border-radius:8px;">
                                         </div>
@@ -87,7 +87,7 @@ class Wsb_Admin_Integrations {
                         <div style="background:var(--wsb-panel-dark); border-radius:16px; border:1px solid var(--wsb-border); overflow:hidden;">
                             <div style="padding:25px; border-bottom:1px solid var(--wsb-border);">
                                 <h3 style="margin:0; color:#fff; display:flex; align-items:center; gap:10px;">
-                                    <span class="dashicons dashicons-networking" style="color:var(--wsb-primary);"></span> Active Ecosystem Extensions
+                                    <span class="dashicons dashicons-networking" style="color:var(--wsb-primary);"></span> <?php _e('Active Ecosystem Extensions', 'wp-service-booking'); ?>
                                 </h3>
                             </div>
                             <div style="padding:25px; display:flex; flex-direction:column; gap:15px;">
@@ -97,20 +97,20 @@ class Wsb_Admin_Integrations {
                                 if (class_exists('Wsb_Paypal_Integration')) {
                                     $extensions[] = [
                                         'id' => 'paypal',
-                                        'name' => 'PayPal Professional Gateway', 
+                                        'name' => __('PayPal Professional Gateway', 'wp-service-booking'), 
                                         'icon' => 'dashicons-money-alt', 
                                         'color' => '#f59e0b', 
-                                        'desc' => 'High-conversion checkout engine.',
+                                        'desc' => __('High-conversion checkout engine.', 'wp-service-booking'),
                                         'enabled' => get_option('wsb_enable_paypal', 'yes') === 'yes'
                                     ];
                                 }
                                 if (class_exists('WSB_Aura_Luxe_Integration')) {
                                     $extensions[] = [
                                         'id' => 'aura_luxe',
-                                        'name' => 'Aura Luxe Design Pack', 
+                                        'name' => __('Aura Luxe Design Pack', 'wp-service-booking'), 
                                         'icon' => 'dashicons-art', 
                                         'color' => '#c084fc', 
-                                        'desc' => 'Premium aesthetic and layout engine.',
+                                        'desc' => __('Premium aesthetic and layout engine.', 'wp-service-booking'),
                                         'enabled' => get_option('wsb_enable_aura_luxe', 'yes') === 'yes'
                                     ];
                                 }
@@ -131,7 +131,7 @@ class Wsb_Admin_Integrations {
                                         <div style="display:flex; align-items:center; gap:20px;">
                                             <div style="text-align:right;">
                                                 <span style="display:block; color:<?php echo $int['enabled'] ? '#22c55e' : '#64748b'; ?>; font-size:10px; font-weight:800; text-transform:uppercase; margin-bottom:4px;">
-                                                    <?php echo $int['enabled'] ? 'Enabled' : 'Disabled'; ?>
+                                                    <?php echo $int['enabled'] ? __('Enabled', 'wp-service-booking') : __('Disabled', 'wp-service-booking'); ?>
                                                 </span>
                                                 <label class="wsb-switch">
                                                     <input type="checkbox" name="wsb_enable_<?php echo $int['id']; ?>" value="yes" <?php checked($int['enabled']); ?>>
@@ -151,8 +151,8 @@ class Wsb_Admin_Integrations {
                                     ?>
                                     <div style="text-align:center; padding:40px 20px; background:rgba(255,255,255,0.02); border-radius:12px; border:1px dashed rgba(255,255,255,0.1);">
                                         <span class="dashicons dashicons-admin-plugins" style="font-size:48px; width:48px; height:48px; color:rgba(255,255,255,0.1); margin-bottom:15px; display:block; margin-left:auto; margin-right:auto;"></span>
-                                        <p style="color:var(--wsb-text-muted); margin:0; font-size:14px;">No additional third-party integrations detected.</p>
-                                        <p style="color:rgba(255,255,255,0.3); font-size:12px; margin-top:5px;">Install official extensions to enable more features.</p>
+                                        <p style="color:var(--wsb-text-muted); margin:0; font-size:14px;"><?php _e('No additional third-party integrations detected.', 'wp-service-booking'); ?></p>
+                                        <p style="color:rgba(255,255,255,0.3); font-size:12px; margin-top:5px;"><?php _e('Install official extensions to enable more features.', 'wp-service-booking'); ?></p>
                                     </div>
                                     <?php
                                 }
@@ -162,7 +162,7 @@ class Wsb_Admin_Integrations {
 
                         <!-- Save Actions -->
                         <div style="background:var(--wsb-panel-dark); padding:25px; border-radius:16px; border:1px solid var(--wsb-border); display:flex; flex-direction:column; gap:15px;">
-                            <button type="submit" class="wsb-btn-primary" style="width:100%; padding:15px; font-size:16px; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);">Save Integration Ecosystem</button>
+                            <button type="submit" class="wsb-btn-primary" style="width:100%; padding:15px; font-size:16px; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);"><?php _e('Save Integration Ecosystem', 'wp-service-booking'); ?></button>
                         </div>
 
                     </div>

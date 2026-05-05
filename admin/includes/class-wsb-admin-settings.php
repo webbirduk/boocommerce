@@ -25,7 +25,7 @@ class Wsb_Admin_Settings
                 delete_option('wsb_enable_notifications');
                 delete_option('wsb_cancellation_policy');
                 
-                echo '<div class="notice notice-warning is-dismissible wsb-custom-notice"><p>All settings have been restored to factory defaults.</p></div>';
+                echo '<div class="notice notice-warning is-dismissible wsb-custom-notice"><p>' . __('All settings have been restored to factory defaults.', 'wp-service-booking') . '</p></div>';
             } elseif (isset($_POST['wsb_settings_nonce']) && wp_verify_nonce($_POST['wsb_settings_nonce'], 'wsb_save_settings')) {
                 do_action('wsb_before_save_settings', $_POST);
                 update_option('wsb_currency', sanitize_text_field($_POST['wsb_currency']));
@@ -44,7 +44,7 @@ class Wsb_Admin_Settings
                 update_option('wsb_cancellation_policy', sanitize_textarea_field($_POST['wsb_cancellation_policy']));
 
                 do_action('wsb_after_save_settings', $_POST);
-                echo '<div class="notice notice-success is-dismissible wsb-custom-notice"><p>System Integration Settings securely saved!</p></div>';
+                echo '<div class="notice notice-success is-dismissible wsb-custom-notice"><p>' . __('System Integration Settings securely saved!', 'wp-service-booking') . '</p></div>';
             }
         }
 
@@ -77,9 +77,8 @@ class Wsb_Admin_Settings
                 }
             </style>
             <div class="wsb-settings-header">
-                <h1 style="margin:0; font-size:28px; font-weight:800; color:#fff;">System Settings</h1>
-                <p style="color:var(--wsb-text-muted); margin-top:5px; font-size:15px;">Configure your global booking
-                    architecture, payment gateways, and design language.</p>
+                <h1 style="margin:0; font-size:28px; font-weight:800; color:#fff;"><?php _e('System Settings', 'wp-service-booking'); ?></h1>
+                <p style="color:var(--wsb-text-muted); margin-top:5px; font-size:15px;"><?php _e('Configure your global booking architecture, payment gateways, and design language.', 'wp-service-booking'); ?></p>
             </div>
 
             <form method="post">
@@ -92,7 +91,7 @@ class Wsb_Admin_Settings
                         style="background:var(--wsb-panel-dark); border-radius:16px; border:1px solid var(--wsb-border); overflow:hidden; border-top:4px solid #6366f1;">
                         <div style="padding:25px; border-bottom:1px solid var(--wsb-border);">
                             <h3 style="margin:0; color:#fff; display:flex; align-items:center; gap:10px;">
-                                <span class="dashicons dashicons-admin-settings" style="color:#6366f1;"></span> General Settings
+                                <span class="dashicons dashicons-admin-settings" style="color:#6366f1;"></span> <?php _e('General Settings', 'wp-service-booking'); ?>
                             </h3>
                         </div>
                         <div style="padding:25px; display:flex; flex-direction:column; gap:30px;">
@@ -149,15 +148,15 @@ class Wsb_Admin_Settings
 
                             <!-- Core Architecture -->
                             <div style="background:rgba(255,255,255,0.02); padding:25px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
-                                <h4 style="color:var(--wsb-primary); margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;">Core Architecture</h4>
+                                <h4 style="color:var(--wsb-primary); margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;"><?php _e('Core Architecture', 'wp-service-booking'); ?></h4>
                                 <div style="display:flex; flex-direction:column; gap:20px;">
                                         <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                                    System Default Currency
-                                                    <span class="wsb-info-icon" data-tooltip="Sets the primary currency used for all pricing and checkout transactions throughout the plugin.">?</span>
+                                                    <?php _e('System Default Currency', 'wp-service-booking'); ?>
+                                                    <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('Sets the primary currency used for all pricing and checkout transactions throughout the plugin.', 'wp-service-booking'); ?>">?</span>
                                                 </label>
-                                                <span style="color:var(--wsb-text-muted); font-size:12px;">Primary currency for all financial transactions.</span>
+                                                <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Primary currency for all financial transactions.', 'wp-service-booking'); ?></span>
                                             </div>
                                             <select name="wsb_currency" style="width:180px; background:#0f172a; color:#fff; border:1px solid var(--wsb-border); padding:10px; border-radius:8px;">
                                                 <option value="USD" <?php selected($currency, 'USD'); ?>>USD ($)</option>
@@ -169,10 +168,10 @@ class Wsb_Admin_Settings
                                         <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                                    Skip Professional Selection
-                                                    <span class="wsb-info-icon" data-tooltip="If enabled, the 'Choose Professional' step will be removed, and bookings will be assigned automatically.">?</span>
+                                                    <?php _e('Skip Professional Selection', 'wp-service-booking'); ?>
+                                                    <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('If enabled, the \'Choose Professional\' step will be removed, and bookings will be assigned automatically.', 'wp-service-booking'); ?>">?</span>
                                                 </label>
-                                                <span style="color:var(--wsb-text-muted); font-size:12px;">Automatically bypass the team step if not required.</span>
+                                                <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Automatically bypass the team step if not required.', 'wp-service-booking'); ?></span>
                                             </div>
                                             <label class="wsb-switch">
                                                 <input type="checkbox" name="wsb_skip_professional_step" value="yes" <?php checked($skip_prof, 'yes'); ?>>
@@ -182,10 +181,10 @@ class Wsb_Admin_Settings
                                         <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                                    Disable Online Payments
-                                                    <span class="wsb-info-icon" data-tooltip="Hides Stripe/PayPal options and allows users to submit booking requests without immediate payment.">?</span>
+                                                    <?php _e('Disable Online Payments', 'wp-service-booking'); ?>
+                                                    <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('Hides Stripe/PayPal options and allows users to submit booking requests without immediate payment.', 'wp-service-booking'); ?>">?</span>
                                                 </label>
-                                                <span style="color:var(--wsb-text-muted); font-size:12px;">Skip checkout and confirm bookings instantly.</span>
+                                                <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Skip checkout and confirm bookings instantly.', 'wp-service-booking'); ?></span>
                                             </div>
                                             <label class="wsb-switch">
                                                 <input type="checkbox" name="wsb_skip_payment_step" value="yes" <?php checked($skip_pay, 'yes'); ?>>
@@ -195,10 +194,10 @@ class Wsb_Admin_Settings
                                         <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                                    Filter Staff by Service
-                                                    <span class="wsb-info-icon" data-tooltip="When selecting a service, only professionals who are marked as specialists for that service will be displayed.">?</span>
+                                                    <?php _e('Filter Staff by Service', 'wp-service-booking'); ?>
+                                                    <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('When selecting a service, only professionals who are marked as specialists for that service will be displayed.', 'wp-service-booking'); ?>">?</span>
                                                 </label>
-                                                <span style="color:var(--wsb-text-muted); font-size:12px;">Only show professionals assigned to selected services.</span>
+                                                <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Only show professionals assigned to selected services.', 'wp-service-booking'); ?></span>
                                             </div>
                                             <label class="wsb-switch">
                                                 <input type="checkbox" name="wsb_filter_staff_by_service" value="yes" <?php checked($filter_staff, 'yes'); ?>>
@@ -208,10 +207,10 @@ class Wsb_Admin_Settings
                                         <div class="wsb-settings-row">
                                             <div>
                                                 <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                                    Enable Split Scheduling
-                                                    <span class="wsb-info-icon" data-tooltip="Allows customers to book multiple services with different team members and at different times within one session.">?</span>
+                                                    <?php _e('Enable Split Scheduling', 'wp-service-booking'); ?>
+                                                    <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('Allows customers to book multiple services with different team members and at different times within one session.', 'wp-service-booking'); ?>">?</span>
                                                 </label>
-                                                <span style="color:var(--wsb-text-muted); font-size:12px;">Allow customers to pick different pros/times for each service.</span>
+                                                <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Allow customers to pick different pros/times for each service.', 'wp-service-booking'); ?></span>
                                             </div>
                                             <label class="wsb-switch">
                                                 <input type="checkbox" name="wsb_enable_split_scheduling" value="yes" <?php checked($enable_split, 'yes'); ?>>
@@ -223,32 +222,32 @@ class Wsb_Admin_Settings
 
                             <!-- Scheduling Rules & Time Control -->
                             <div style="background:rgba(255,255,255,0.02); padding:25px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
-                                <h4 style="color:#10b981; margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;">Scheduling & Time Control</h4>
+                                <h4 style="color:#10b981; margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;"><?php _e('Scheduling & Time Control', 'wp-service-booking'); ?></h4>
                                 <div class="wsb-settings-grid">
                                     <div>
-                                        <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:10px;">Booking Buffer (Min)</label>
+                                        <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:10px;"><?php _e('Booking Buffer (Min)', 'wp-service-booking'); ?></label>
                                         <input type="number" name="wsb_booking_buffer" value="<?php echo esc_attr($buffer); ?>" style="width:100%; background:#0f172a; color:#fff; border:1px solid var(--wsb-border); padding:12px; border-radius:8px;">
-                                        <span style="color:var(--wsb-text-muted); font-size:11px; margin-top:5px; display:block;">Time between slots for preparation.</span>
+                                        <span style="color:var(--wsb-text-muted); font-size:11px; margin-top:5px; display:block;"><?php _e('Time between slots for preparation.', 'wp-service-booking'); ?></span>
                                     </div>
                                     <div>
-                                        <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:10px;">Min. Notice Time (Hrs)</label>
+                                        <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:10px;"><?php _e('Min. Notice Time (Hrs)', 'wp-service-booking'); ?></label>
                                         <input type="number" name="wsb_min_notice" value="<?php echo esc_attr($min_notice); ?>" style="width:100%; background:#0f172a; color:#fff; border:1px solid var(--wsb-border); padding:12px; border-radius:8px;">
-                                        <span style="color:var(--wsb-text-muted); font-size:11px; margin-top:5px; display:block;">How far in advance clients must book.</span>
+                                        <span style="color:var(--wsb-text-muted); font-size:11px; margin-top:5px; display:block;"><?php _e('How far in advance clients must book.', 'wp-service-booking'); ?></span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Email Settings -->
                             <div style="background:rgba(255,255,255,0.02); padding:25px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
-                                <h4 style="color:#f59e0b; margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;">Email Settings</h4>
+                                <h4 style="color:#f59e0b; margin:0 0 20px 0; font-size:13px; text-transform:uppercase; letter-spacing:0.1em; font-weight:800;"><?php _e('Email Settings', 'wp-service-booking'); ?></h4>
                                 <div style="display:flex; flex-direction:column; gap:20px; margin-bottom:25px;">
                                     <div class="wsb-settings-row">
                                         <div>
                                             <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                                Instant Confirmation
-                                                <span class="wsb-info-icon" data-tooltip="If enabled, all new bookings will be automatically marked as 'Confirmed' without requiring administrative approval.">?</span>
+                                                <?php _e('Instant Confirmation', 'wp-service-booking'); ?>
+                                                <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('If enabled, all new bookings will be automatically marked as \'Confirmed\' without requiring administrative approval.', 'wp-service-booking'); ?>">?</span>
                                             </label>
-                                            <span style="color:var(--wsb-text-muted); font-size:12px;">Auto-confirm new bookings without manual review.</span>
+                                            <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Auto-confirm new bookings without manual review.', 'wp-service-booking'); ?></span>
                                         </div>
                                         <label class="wsb-switch">
                                             <input type="checkbox" name="wsb_instant_confirm" value="yes" <?php checked($instant_confirm, 'yes'); ?>>
@@ -258,10 +257,10 @@ class Wsb_Admin_Settings
                                     <div class="wsb-settings-row">
                                         <div>
                                             <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:4px;">
-                                                Email Notifications
-                                                <span class="wsb-info-icon" data-tooltip="Toggles the automated delivery of professional HTML receipts and welcome emails to your customers.">?</span>
+                                                <?php _e('Email Notifications', 'wp-service-booking'); ?>
+                                                <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('Toggles the automated delivery of professional HTML receipts and welcome emails to your customers.', 'wp-service-booking'); ?>">?</span>
                                             </label>
-                                            <span style="color:var(--wsb-text-muted); font-size:12px;">Send automated confirmation emails to customers.</span>
+                                            <span style="color:var(--wsb-text-muted); font-size:12px;"><?php _e('Send automated confirmation emails to customers.', 'wp-service-booking'); ?></span>
                                         </div>
                                         <label class="wsb-switch">
                                             <input type="checkbox" name="wsb_enable_notifications" value="yes" <?php checked($enable_notif, 'yes'); ?>>
@@ -271,8 +270,8 @@ class Wsb_Admin_Settings
                                 </div>
                                 <div>
                                     <label style="display:block; color:#fff; font-weight:700; font-size:15px; margin-bottom:10px;">
-                                        Cancellation Policy
-                                        <span class="wsb-info-icon" data-tooltip="This legal text will be prominently displayed in all booking confirmation emails and receipts sent to customers.">?</span>
+                                        <?php _e('Cancellation Policy', 'wp-service-booking'); ?>
+                                        <span class="wsb-info-icon" data-tooltip="<?php esc_attr_e('This legal text will be prominently displayed in all booking confirmation emails and receipts sent to customers.', 'wp-service-booking'); ?>">?</span>
                                     </label>
                                     <textarea name="wsb_cancellation_policy" rows="3" style="width:100%; background:#0f172a; color:#fff; border:1px solid var(--wsb-border); padding:15px; border-radius:8px; line-height:1.5;"><?php echo esc_textarea($policy); ?></textarea>
                                 </div>
@@ -283,8 +282,8 @@ class Wsb_Admin_Settings
 
                     <!-- Save Actions -->
                     <div class="wsb-settings-action-bar">
-                        <button type="submit" name="wsb_save_settings" class="wsb-btn-primary" style="flex:2; padding:15px; font-size:16px; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);">Save Settings</button>
-                        <button type="submit" name="wsb_restore_defaults" id="wsb-restore-defaults-btn" class="wsb-btn" style="flex:1; background:rgba(255,255,255,0.05); color:#94a3b8; border:1px solid rgba(255,255,255,0.1); padding:15px; font-size:14px; font-weight:700;">Restore Defaults</button>
+                        <button type="submit" name="wsb_save_settings" class="wsb-btn-primary" style="flex:2; padding:15px; font-size:16px; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);"><?php _e('Save Settings', 'wp-service-booking'); ?></button>
+                        <button type="submit" name="wsb_restore_defaults" id="wsb-restore-defaults-btn" class="wsb-btn" style="flex:1; background:rgba(255,255,255,0.05); color:#94a3b8; border:1px solid rgba(255,255,255,0.1); padding:15px; font-size:14px; font-weight:700;"><?php _e('Restore Defaults', 'wp-service-booking'); ?></button>
                     </div>
 
                 </div>

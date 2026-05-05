@@ -84,7 +84,7 @@ class Wsb_Admin_Customers {
                 }
             </style>
             <div class="wsb-crm-header">
-                <h1 style="margin:0;">Client CRM & Directory</h1>
+                <h1 style="margin:0;"><?php _e('Client CRM & Directory', 'wp-service-booking'); ?></h1>
 
             </div>
 
@@ -92,19 +92,19 @@ class Wsb_Admin_Customers {
             <div class="wsb-crm-meta-grid">
                 <a href="<?php echo $page_url; ?>&filter_status=all"
                     class="customer-filter-card <?php echo $filter_status === 'all' ? 'card-active' : ''; ?>">
-                    <h3 style="margin-top:0; font-size:15px; color:var(--wsb-text-muted);">Total Client Base</h3>
+                    <h3 style="margin-top:0; font-size:15px; color:var(--wsb-text-muted);"><?php _e('Total Client Base', 'wp-service-booking'); ?></h3>
                     <p style="margin:0; font-size:28px; font-weight:bold; color:var(--wsb-text-main);">
                         <?php echo intval($total_customers); ?></p>
                 </a>
                 <a href="<?php echo $page_url; ?>&filter_status=recent"
                     class="customer-filter-card <?php echo $filter_status === 'recent' ? 'card-active' : ''; ?>">
-                    <h3 style="margin-top:0; font-size:15px; color:var(--wsb-success);">Recent Signups (30d)</h3>
+                    <h3 style="margin-top:0; font-size:15px; color:var(--wsb-success);"><?php _e('Recent Signups (30d)', 'wp-service-booking'); ?></h3>
                     <p style="margin:0; font-size:28px; font-weight:bold; color:var(--wsb-text-main);">
                         <?php echo intval($recent_customers); ?></p>
                 </a>
                 <a href="<?php echo $page_url; ?>&filter_status=vip"
                     class="customer-filter-card <?php echo $filter_status === 'vip' ? 'card-active' : ''; ?>">
-                    <h3 style="margin-top:0; font-size:15px; color:var(--wsb-warning);">VIP Clients (LTV)</h3>
+                    <h3 style="margin-top:0; font-size:15px; color:var(--wsb-warning);"><?php _e('VIP Clients (LTV)', 'wp-service-booking'); ?></h3>
                     <p style="margin:0; font-size:28px; font-weight:bold; color:var(--wsb-text-main);">
                         <?php echo intval($vip_customers); ?></p>
                 </a>
@@ -117,13 +117,13 @@ class Wsb_Admin_Customers {
                 <input type="hidden" name="filter_status" value="<?php echo esc_attr($filter_status); ?>">
                 
                 <input type="text" name="filter_search" value="<?php echo esc_attr($filter_search); ?>" 
-                    placeholder="Search by name, email or phone..." 
+                    placeholder="<?php esc_attr_e('Search by name, email or phone...', 'wp-service-booking'); ?>" 
                     style="flex-grow:1; background:#0f172a; border:1px solid var(--wsb-border); color:white; padding:10px 15px; border-radius:8px;">
                 
-                <button type="submit" class="wsb-btn-primary">Search Clients</button>
+                <button type="submit" class="wsb-btn-primary"><?php _e('Search Clients', 'wp-service-booking'); ?></button>
                 <?php if (!empty($filter_search)): ?>
                     <a href="?page=wsb_main&tab=customers&filter_status=<?php echo esc_attr($filter_status); ?>" 
-                        class="wsb-btn-primary" style="background:var(--wsb-border);">Clear</a>
+                        class="wsb-btn-primary" style="background:var(--wsb-border);"><?php _e('Clear', 'wp-service-booking'); ?></a>
                 <?php endif; ?>
             </form>
 
@@ -131,10 +131,10 @@ class Wsb_Admin_Customers {
                 <table class="wsb-modern-table" style="margin:0; width:100%;">
                     <thead>
                         <tr>
-                            <th>Client Identity</th>
-                            <th>Contact Information</th>
-                            <th>Platform History</th>
-                            <th style="text-align:right;">Lifetime Value (LTV)</th>
+                            <th><?php _e('Client Identity', 'wp-service-booking'); ?></th>
+                            <th><?php _e('Contact Information', 'wp-service-booking'); ?></th>
+                            <th><?php _e('Platform History', 'wp-service-booking'); ?></th>
+                            <th style="text-align:right;"><?php _e('Lifetime Value (LTV)', 'wp-service-booking'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -150,7 +150,7 @@ class Wsb_Admin_Customers {
                                             <div>
                                                 <strong
                                                     style="color:white; font-size:15px; display:block;"><?php echo esc_html($c->first_name . ' ' . $c->last_name); ?></strong>
-                                                <span style="color:var(--wsb-text-muted); font-size:12px; font-family:monospace;">ID:
+                                                <span style="color:var(--wsb-text-muted); font-size:12px; font-family:monospace;"><?php _e('ID:', 'wp-service-booking'); ?>
                                                     #<?php echo esc_html(str_pad($c->id, 5, '0', STR_PAD_LEFT)); ?></span>
                                             </div>
                                         </div>
@@ -160,25 +160,24 @@ class Wsb_Admin_Customers {
                                             <span style="color:var(--wsb-text-muted); font-size:13px;">✉️
                                                 <?php echo esc_html($c->email); ?></span>
                                             <span style="color:var(--wsb-text-muted); font-size:13px; margin-top:3px;">📞
-                                                <?php echo esc_html($c->phone ?: 'N/A'); ?></span>
+                                                <?php echo esc_html($c->phone ?: __('N/A', 'wp-service-booking')); ?></span>
                                         </div>
                                     </td>
                                     <td>
-                                        <span style="color:var(--wsb-text-muted); font-size:13px; display:block;">Joined:
+                                        <span style="color:var(--wsb-text-muted); font-size:13px; display:block;"><?php _e('Joined:', 'wp-service-booking'); ?>
                                             <?php echo esc_html(date('M d, Y', strtotime($c->created_at))); ?></span>
                                         <span
-                                            style="color:var(--wsb-primary); font-size:12px; font-weight:bold; margin-top:3px; display:block;">Bookings:
+                                            style="color:var(--wsb-primary); font-size:12px; font-weight:bold; margin-top:3px; display:block;"><?php _e('Bookings:', 'wp-service-booking'); ?>
                                             <?php echo intval($c->booking_count); ?></span>
                                     </td>
                                     <td align="right">
                                         <strong
-                                            style="color:var(--wsb-success); font-size:16px;"><?php echo $c->total_spent > 0 ? '$' . number_format($c->total_spent, 2) : '-'; ?></strong>
+                                            style="color:var(--wsb-success); font-size:16px;"><?php echo $c->total_spent > 0 ? wsb_get_currency_symbol(get_option('wsb_currency', 'USD')) . number_format($c->total_spent, 2) : '-'; ?></strong>
                                     </td>
                                 </tr>
                             <?php endforeach; else: ?>
                             <tr>
-                                <td colspan="4" style="text-align:center; padding: 40px; color: var(--wsb-text-muted);">No client
-                                    records found.</td>
+                                <td colspan="4" style="text-align:center; padding: 40px; color: var(--wsb-text-muted);"><?php _e('No client records found.', 'wp-service-booking'); ?></td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

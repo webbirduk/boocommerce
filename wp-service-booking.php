@@ -179,11 +179,11 @@ function wsb_send_modern_email($to, $subject, $title, $intro, $content_html) {
                 <div class="email-content-box">
                     ' . $content_html . '
                 </div>
-                <p style="margin-top:40px; font-size:14px; color:#94a3b8; font-weight:500;">Sent via the ' . esc_html($blog_name) . ' secure scheduling engine.</p>
+                <p style="margin-top:40px; font-size:14px; color:#94a3b8; font-weight:500;">' . sprintf(__('Sent via the %s secure scheduling engine.', 'wp-service-booking'), esc_html($blog_name)) . '</p>
             </div>
             <div class="email-footer">
-                &copy; ' . date('Y') . ' ' . esc_html($blog_name) . '. All rights reserved.
-                <div style="margin-top:10px;">Security Verified &bullet; GDPR Compliant</div>
+                &copy; ' . date('Y') . ' ' . esc_html($blog_name) . '. ' . __('All rights reserved.', 'wp-service-booking') . '
+                <div style="margin-top:10px;">' . __('Security Verified &bullet; GDPR Compliant', 'wp-service-booking') . '</div>
             </div>
         </div>
     </body>
@@ -191,6 +191,14 @@ function wsb_send_modern_email($to, $subject, $title, $intro, $content_html) {
 
     wp_mail($to, $subject, $body, $headers);
 }
+
+/**
+ * Load the plugin text domain for translation.
+ */
+function wsb_load_textdomain() {
+    load_plugin_textdomain('wp-service-booking', false, dirname(plugin_basename(__FILE__)) . '/languages');
+}
+add_action('plugins_loaded', 'wsb_load_textdomain');
 
 /**
  * The code that runs during plugin activation.
