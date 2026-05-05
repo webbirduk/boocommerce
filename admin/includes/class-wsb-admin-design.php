@@ -112,7 +112,7 @@ class Wsb_Admin_Design {
             <h1 style="margin-bottom:20px;">System Customization & Branding</h1>
             <p style="color:var(--wsb-text-muted); margin-bottom:30px;">Fully loaded control center for your premium booking ecosystem.</p>
 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"  />
+            <link rel="stylesheet" href="<?php echo esc_url(WSB_PLUGIN_URL . 'assets/all.min.css'); ?>"  />
             <style>
                 .wsb-switch { position: relative; display: inline-block; width: 44px; height: 22px; }
                 .wsb-switch input { opacity: 0; width: 0; height: 0; }
@@ -627,111 +627,127 @@ class Wsb_Admin_Design {
         </div>
 
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let icons = [
-                // Dashicons
-                'dashicons-cart', 'dashicons-visibility', 'dashicons-calendar-alt', 'dashicons-admin-users', 'dashicons-store',
-                'dashicons-heart', 'dashicons-star-filled', 'dashicons-clock', 'dashicons-location', 'dashicons-phone',
-                'dashicons-camera', 'dashicons-video-alt3', 'dashicons-money-alt', 'dashicons-smiley', 'dashicons-awards',
-                'dashicons-email', 'dashicons-yes', 'dashicons-no', 'dashicons-info', 'dashicons-lightbulb'
-            ];
+        jQuery(document).ready(function($) {
+            // 1. Initialize global cache if not present
+            if (typeof window.wsbIconsCache === 'undefined') {
+                window.wsbIconsCache = [
+                    // Dashicons
+                    'dashicons-cart', 'dashicons-visibility', 'dashicons-calendar-alt', 'dashicons-admin-users', 'dashicons-store',
+                    'dashicons-heart', 'dashicons-star-filled', 'dashicons-clock', 'dashicons-location', 'dashicons-phone',
+                    'dashicons-camera', 'dashicons-video-alt3', 'dashicons-money-alt', 'dashicons-smiley', 'dashicons-awards',
+                    'dashicons-email', 'dashicons-yes', 'dashicons-no', 'dashicons-info', 'dashicons-lightbulb'
+                ];
 
-            // Dynamically fetch all Font Awesome icons from the stylesheet
-            fetch('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css')
-                .then(response => response.text())
-                .then(css => {
-                    const iconSet = new Set();
-                    const brandIndex = css.indexOf('Font Awesome 7 Brands');
-                    const parts = css.split('{--fa:');
-                    let currentPos = 0;
-                    
-                    parts.forEach((part, index) => {
-                        currentPos += part.length + 6; // account for split string length
-                        if (index === parts.length - 1) return;
+                // Fetch FA 7 icons exactly once
+                fetch('<?php echo esc_url(WSB_PLUGIN_URL . 'assets/all.min.css'); ?>')
+                    .then(response => response.text())
+                    .then(css => {
+                        const iconSet = new Set();
+                        const brandIndex = css.indexOf('Font Awesome 7 Brands');
+                        const blockRegex = /((?:\.fa-[a-zA-Z0-9-]+\s*,\s*)*\.fa-[a-zA-Z0-9-]+)\s*\{[^}]*--fa:/g;
+                        let match;
                         
-                        let isBrand = brandIndex !== -1 && currentPos > brandIndex;
-                        let prefix = isBrand ? 'fa-brands' : 'fa-solid';
-                        
-                        let lastBrace = part.lastIndexOf('}');
-                        let selectors = part.substring(lastBrace + 1);
-                        let classMatches = selectors.match(/\.fa-([a-zA-Z0-9-]+)/g);
-                        
-                        if (classMatches) {
-                            classMatches.forEach(cls => {
-                                let name = cls.substring(1);
-                                // Exclude utility classes
-                                if (!name.match(/^fa-(solid|regular|brands|light|thin|duotone|beat|bounce|fade|flip|shake|spin|fw|ul|li|border|pull|stack|inverse)$/)) {
-                                    iconSet.add(prefix + ' ' + name);
-                                }
-                            });
-                        }
-                    });
-                    
-                    icons = icons.concat(Array.from(iconSet));
-                    
-                    // Refresh the grid if modal is currently open
-                    if (document.getElementById('wsb-icon-library-modal').style.display !== 'none') {
-                        document.getElementById('wsb-icon-search').dispatchEvent(new Event('input'));
-                    }
-                })
-                .catch(err => console.log('Failed to fetch all Font Awesome icons', err));
-
-            const modal = document.getElementById('wsb-icon-library-modal');
-            const grid = document.getElementById('wsb-icon-grid');
-            const search = document.getElementById('wsb-icon-search');
-            let currentTargetInput = null;
-
-            function renderIcons(filter = '') {
-                grid.innerHTML = '';
-                icons.forEach(icon => {
-                    if (icon.toLowerCase().includes(filter.toLowerCase())) {
-                        const div = document.createElement('div');
-                        div.style.cssText = 'background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; height:60px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:24px; color:white; transition:all 0.2s;';
-                        div.title = icon;
-                        
-                        const i = document.createElement('i');
-                        if (icon.startsWith('dashicons-')) {
-                            i.className = 'dashicons ' + icon;
-                            i.style.width = '24px';
-                            i.style.height = '24px';
-                            i.style.fontSize = '24px';
-                        } else {
-                            i.className = icon;
-                        }
-                        div.appendChild(i);
-                        
-                        div.addEventListener('mouseover', () => { div.style.background = 'rgba(99,102,241,0.2)'; div.style.transform = 'scale(1.05)'; });
-                        div.addEventListener('mouseout', () => { div.style.background = 'rgba(255,255,255,0.05)'; div.style.transform = 'scale(1)'; });
-                        div.addEventListener('click', () => {
-                            if (currentTargetInput) {
-                                currentTargetInput.value = icon;
+                        while ((match = blockRegex.exec(css)) !== null) {
+                            let selectors = match[1];
+                            let currentPos = match.index;
+                            
+                            let isBrand = brandIndex !== -1 && currentPos > brandIndex;
+                            let prefix = isBrand ? 'fa-brands' : 'fa-solid';
+                            
+                            let classMatches = selectors.match(/\.fa-([a-zA-Z0-9-]+)/g);
+                            if (classMatches) {
+                                classMatches.forEach(cls => {
+                                    let name = cls.substring(1);
+                                    if (!name.match(/^fa-(solid|regular|brands|light|thin|duotone|beat|bounce|fade|flip|shake|spin|fw|ul|li|border|pull|stack|inverse)$/)) {
+                                        iconSet.add(prefix + ' ' + name);
+                                    }
+                                });
                             }
-                            modal.style.display = 'none';
-                        });
+                        }
                         
-                        grid.appendChild(div);
-                    }
-                });
+                        window.wsbIconsCache = window.wsbIconsCache.concat(Array.from(iconSet));
+                        
+                        // Render immediately if modal is currently open
+                        if ($('#wsb-icon-library-modal').is(':visible')) {
+                            $('#wsb-icon-search').trigger('input');
+                        }
+                    })
+                    .catch(err => console.log('FA Fetch Error', err));
             }
 
-            document.querySelectorAll('.wsb-icon-picker-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    currentTargetInput = document.getElementById(this.getAttribute('data-target'));
-                    search.value = '';
-                    renderIcons();
-                    modal.style.display = 'flex';
-                });
+            // 2. Define universal render function
+            window.wsbRenderIcons = function(filter = '') {
+                const grid = $('#wsb-icon-grid');
+                if (!grid.length) return;
+
+                grid.empty();
+                
+                const filterLower = filter.toLowerCase();
+                const matchedIcons = window.wsbIconsCache.filter(icon => icon.toLowerCase().includes(filterLower));
+                
+                // For performance, cap rendering if no filter to prevent DOM freezing
+                const renderLimit = filterLower === '' ? 200 : matchedIcons.length;
+                
+                for (let i = 0; i < Math.min(matchedIcons.length, renderLimit); i++) {
+                    const icon = matchedIcons[i];
+                    const div = $('<div></div>')
+                        .attr('title', icon)
+                        .css({
+                            'background': 'rgba(255,255,255,0.05)',
+                            'border': '1px solid rgba(255,255,255,0.1)',
+                            'border-radius': '12px',
+                            'height': '60px',
+                            'display': 'flex',
+                            'align-items': 'center',
+                            'justify-content': 'center',
+                            'cursor': 'pointer',
+                            'font-size': '24px',
+                            'color': 'white',
+                            'transition': 'all 0.2s'
+                        });
+
+                    const iconEl = $('<i></i>');
+                    if (icon.startsWith('dashicons-')) {
+                        iconEl.addClass('dashicons ' + icon).css({ width: '24px', height: '24px', fontSize: '24px' });
+                    } else {
+                        iconEl.addClass(icon);
+                    }
+                    div.append(iconEl);
+
+                    div.hover(
+                        function() { $(this).css({ 'background': 'rgba(99,102,241,0.2)', 'transform': 'scale(1.05)' }); },
+                        function() { $(this).css({ 'background': 'rgba(255,255,255,0.05)', 'transform': 'scale(1)' }); }
+                    );
+
+                    div.on('click', function() {
+                        if (window.wsbCurrentTargetInput) {
+                            $(window.wsbCurrentTargetInput).val(icon);
+                        }
+                        $('#wsb-icon-library-modal').hide();
+                    });
+
+                    grid.append(div);
+                }
+            };
+
+            // 3. Bind robust delegated events (using off.on to prevent duplicates)
+            $(document).off('click.wsbIconPicker').on('click.wsbIconPicker', '.wsb-icon-picker-btn', function(e) {
+                e.preventDefault();
+                const targetId = $(this).attr('data-target');
+                window.wsbCurrentTargetInput = document.getElementById(targetId);
+                
+                $('#wsb-icon-search').val('');
+                window.wsbRenderIcons();
+                $('#wsb-icon-library-modal').css('display', 'flex');
             });
 
-            search.addEventListener('input', (e) => {
-                renderIcons(e.target.value);
+            $(document).off('input.wsbIconSearch').on('input.wsbIconSearch', '#wsb-icon-search', function(e) {
+                window.wsbRenderIcons($(this).val());
             });
-            
-            // Close modal on click outside
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
+
+            $(document).off('click.wsbIconClose').on('click.wsbIconClose', '#wsb-icon-library-modal', function(e) {
+                if (e.target === this) {
+                    $(this).hide();
                 }
             });
         });

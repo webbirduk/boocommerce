@@ -20,7 +20,7 @@ class Wsb_Public
     public function enqueue_styles()
     {
         wp_enqueue_style('dashicons');
-        wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css', array(), '7.0.1', 'all');
+        wp_enqueue_style('font-awesome', WSB_PLUGIN_URL . 'assets/all.min.css', array(), '7.0.1', 'all');
         wp_enqueue_style($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/public/css/wsb-public.css', array(), time(), 'all');
     }
 
