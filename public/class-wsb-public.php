@@ -10,9 +10,17 @@ class Wsb_Public
         $this->version = $version;
     }
 
+    public static function get_icon_class($icon) {
+        if (strpos($icon, 'fa-') !== false || strpos($icon, 'fas ') !== false || strpos($icon, 'fab ') !== false || strpos($icon, 'far ') !== false) {
+            return esc_attr($icon);
+        }
+        return 'dashicons ' . esc_attr($icon);
+    }
+
     public function enqueue_styles()
     {
         wp_enqueue_style('dashicons');
+        wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css', array(), '7.0.1', 'all');
         wp_enqueue_style($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/public/css/wsb-public.css', array(), time(), 'all');
     }
 
@@ -297,7 +305,7 @@ class Wsb_Public
                             <div id="wsb-basket-trigger" class="wsb-basket-trigger-btn wsb-btn"
                                 style="position:relative; display:inline-flex; align-items:center; background:var(--wsb-gradient); color:#fff; cursor:pointer; font-size: 13px; padding: 10px 26px; border-radius: 12px; font-weight: 700; transition:all 0.3s; gap:12px; box-shadow: 0 4px 12px var(--wsb-ring);">
                                 <div style="position:relative; display:flex; align-items:center; justify-content:center;">
-                                    <span class="dashicons <?php echo esc_attr($i_basket); ?>" style="font-size:20px; width:20px; height:20px;"></span> 
+                                    <span class="<?php echo Wsb_Public::get_icon_class($i_basket); ?>" style="font-size:20px; width:20px; height:20px;"></span> 
                                     <span class="wsb-basket-count-val" style="position:absolute; top:-10px; right:-12px; background:var(--wsb-brand-alt); color:#fff; min-width:18px; height:18px; border-radius:10px; font-size:10px; display:flex; align-items:center; justify-content:center; padding:0 4px; border:2px solid #fff; font-weight:900; line-height:1; box-shadow:0 2px 4px rgba(0,0,0,0.1);">0</span>
                                 </div>
                                 <span><?php echo esc_html($l_basket); ?></span>
@@ -353,7 +361,7 @@ class Wsb_Public
                                             style="background: #f8fafc <?php echo $s->image_url ? 'url(' . esc_url($s->image_url) . ') center/cover' : ''; ?>;">
                                         </div>
                                         <a href="<?php echo esc_url(add_query_arg('wsb_service_id', $s->id)); ?>" class="wsb-view-service-btn" title="View Product Details">
-                                            <span class="dashicons <?php echo esc_attr(get_option('wsb_icon_view_details', 'dashicons-visibility')); ?>"></span>
+                                            <span class="<?php echo Wsb_Public::get_icon_class(get_option('wsb_icon_view_details', 'dashicons-visibility')); ?>"></span>
                                         </a>
                                     </div>
                                 <?php endif; ?>
@@ -1697,7 +1705,7 @@ class Wsb_Public
             <div id="wsb-basket-trigger" class="wsb-basket-trigger-btn wsb-btn"
                 style="position:relative; display:inline-flex; align-items:center; background:var(--wsb-gradient); color:#fff; cursor:pointer; font-size: 13px; padding: 10px 26px; border-radius: 12px; font-weight: 700; transition:all 0.3s; gap:12px; box-shadow: 0 4px 12px var(--wsb-ring);">
                 <div style="position:relative; display:flex; align-items:center; justify-content:center;">
-                    <span class="dashicons <?php echo esc_attr($i_basket); ?>" style="font-size:20px; width:20px; height:20px;"></span> 
+                    <span class="<?php echo Wsb_Public::get_icon_class($i_basket); ?>" style="font-size:20px; width:20px; height:20px;"></span> 
                     <span class="wsb-basket-count-val" style="position:absolute; top:-10px; right:-12px; background:var(--wsb-brand-alt); color:#fff; min-width:18px; height:18px; border-radius:10px; font-size:10px; display:flex; align-items:center; justify-content:center; padding:0 4px; border:2px solid #fff; font-weight:900; line-height:1; box-shadow:0 2px 4px rgba(0,0,0,0.1);">0</span>
                 </div>
                 <span><?php echo esc_html($l_basket); ?></span>
@@ -1745,7 +1753,7 @@ class Wsb_Public
         <li class="menu-item wsb-menu-basket-wrap" style="position:relative; display:inline-flex; align-items:center;">
             <a href="#" class="wsb-basket-trigger-btn" style="display:flex; align-items:center; gap:8px; text-decoration:none;">
                 <div style="position:relative; display:flex; align-items:center; justify-content:center;">
-                    <span class="dashicons ' . esc_attr($icon) . '"></span>
+                    <span class="' . Wsb_Public::get_icon_class($icon) . '"></span>
                     <span class="wsb-basket-count-val" style="position:absolute; top:-8px; right:-10px; background:var(--wsb-brand-alt, #ef4444); color:#fff; min-width:16px; height:16px; border-radius:50%; font-size:9px; display:flex; align-items:center; justify-content:center; padding:0 3px; border:1px solid #fff; font-weight:900;">0</span>
                 </div>
                 ' . ( !empty($text) ? '<span style="margin-left:5px;">' . esc_html($text) . '</span>' : '' ) . '
@@ -1793,7 +1801,7 @@ class Wsb_Public
         echo '
         <div class="wsb-standalone-basket wsb-floating-basket-wrap" style="position: fixed; bottom: 30px; ' . $side . ' z-index: 99999;">
             <div class="wsb-basket-trigger-btn" style="width: 60px; height: 60px; background: var(--wsb-gradient, linear-gradient(135deg, #6366f1 0%, #a855f7 100%)); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4); position: relative; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-                <span class="dashicons ' . esc_attr($icon) . '" style="font-size: 24px; width: 24px; height: 24px;"></span>
+                <span class="' . Wsb_Public::get_icon_class($icon) . '" style="font-size: 24px; width: 24px; height: 24px;"></span>
                 <span class="wsb-basket-count-val" style="position:absolute; top:-5px; right:-5px; background:var(--wsb-brand-alt, #ef4444); color:#fff; min-width:22px; height:22px; border-radius:50%; font-size:10px; display:flex; align-items:center; justify-content:center; padding:0 4px; border:2px solid #fff; font-weight:900; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">0</span>
             </div>
             

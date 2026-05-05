@@ -112,6 +112,7 @@ class Wsb_Admin_Design {
             <h1 style="margin-bottom:20px;">System Customization & Branding</h1>
             <p style="color:var(--wsb-text-muted); margin-bottom:30px;">Fully loaded control center for your premium booking ecosystem.</p>
 
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"  />
             <style>
                 .wsb-switch { position: relative; display: inline-block; width: 44px; height: 22px; }
                 .wsb-switch input { opacity: 0; width: 0; height: 0; }
@@ -337,11 +338,17 @@ class Wsb_Admin_Design {
                             <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px; padding:20px; background:rgba(0,0,0,0.1); border-radius:16px;">
                                 <div class="wsb-input-wrap">
                                     <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Basket Icon</label>
-                                    <input type="text" name="wsb_icon_basket_btn" value="<?php echo esc_attr($i_basket); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="wsb_input_basket" name="wsb_icon_basket_btn" value="<?php echo esc_attr($i_basket); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
+                                        <button type="button" class="wsb-icon-picker-btn" data-target="wsb_input_basket" style="background:rgba(255,255,255,0.1); border:none; color:white; border-radius:8px; padding:0 15px; cursor:pointer; font-weight:600;" title="Browse Library"><span class="dashicons dashicons-search" style="margin-top:4px;"></span></button>
+                                    </div>
                                 </div>
                                 <div class="wsb-input-wrap">
                                     <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Details Icon</label>
-                                    <input type="text" name="wsb_icon_view_details" value="<?php echo esc_attr($i_view); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="wsb_input_details" name="wsb_icon_view_details" value="<?php echo esc_attr($i_view); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
+                                        <button type="button" class="wsb-icon-picker-btn" data-target="wsb_input_details" style="background:rgba(255,255,255,0.1); border:none; color:white; border-radius:8px; padding:0 15px; cursor:pointer; font-weight:600;" title="Browse Library"><span class="dashicons dashicons-search" style="margin-top:4px;"></span></button>
+                                    </div>
                                 </div>
                                 <div class="wsb-input-wrap">
                                     <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Menu Label</label>
@@ -383,7 +390,10 @@ class Wsb_Admin_Design {
                             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
                                 <div class="wsb-input-wrap">
                                     <label style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; margin-bottom:8px; display:block;">Floating Widget Icon</label>
-                                    <input type="text" name="wsb_float_btn_icon" value="<?php echo esc_attr($float_icon); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="wsb_input_float" name="wsb_float_btn_icon" value="<?php echo esc_attr($float_icon); ?>" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px;">
+                                        <button type="button" class="wsb-icon-picker-btn" data-target="wsb_input_float" style="background:rgba(255,255,255,0.1); border:none; color:white; border-radius:8px; padding:0 15px; cursor:pointer; font-weight:600;" title="Browse Library"><span class="dashicons dashicons-search" style="margin-top:4px;"></span></button>
+                                    </div>
                                 </div>
                                 <div style="background:rgba(16, 185, 129, 0.05); padding:15px; border-radius:12px; border:1px solid rgba(16, 185, 129, 0.1); display:flex; align-items:center; gap:12px;">
                                     <span class="dashicons dashicons-info" style="color:var(--wsb-success);"></span>
@@ -514,9 +524,9 @@ class Wsb_Admin_Design {
                         </div>
 
                         <!-- Section 06: Service Display Showcase -->
-                        <div class="wsb-design-section" style="margin:0; border-left: 4px solid #f43f5e;">
+                        <div class="wsb-design-section" style="margin:0; border-left: 4px solid #0ea5e9;">
                             <h2 style="color:white; margin-bottom:10px; font-weight: 700; letter-spacing: -0.02em; display:flex; align-items:center; gap:10px;">
-                                <span class="dashicons dashicons-layout"></span> 06. Service Display Showcase
+                                <span class="dashicons dashicons-layout" style="color:#0ea5e9;"></span> 06. Service Display Showcase
                             </h2>
                             <p style="color:var(--wsb-text-muted); font-size:12px; margin-bottom:25px; line-height:1.6;">Embed your services anywhere on your site using these advanced shortcodes. Clients can view service details and jump directly into the booking flow.</p>
 
@@ -524,27 +534,39 @@ class Wsb_Admin_Design {
                             <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:35px;">
                                 <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                                     <label style="display:block; color:rgba(255,255,255,0.5); font-size:10px; text-transform:uppercase; margin-bottom:8px; font-weight:700;">01. Show All Services</label>
-                                    <code style="background:rgba(244, 63, 94, 0.1); color:#f43f5e; padding:4px 8px; border-radius:6px; font-size:13px; font-weight:700;">[wsb_services]</code>
+                                    <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(14, 165, 233, 0.1); padding:4px 8px; border-radius:6px;">
+                                        <code style="background:none; color:#0ea5e9; padding:0; font-size:13px; font-weight:700;">[wsb_services]</code>
+                                        <span class="dashicons dashicons-admin-page" style="color:#0ea5e9; cursor:pointer; font-size:14px; width:14px; height:14px; transition:0.3s;" onclick="navigator.clipboard.writeText('[wsb_services]'); this.style.color='#10b981'; setTimeout(() => this.style.color='#0ea5e9', 1000);" title="Copy"></span>
+                                    </div>
                                 </div>
                                 
                                 <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                                     <label style="display:block; color:rgba(255,255,255,0.5); font-size:10px; text-transform:uppercase; margin-bottom:8px; font-weight:700;">02. Override Layout</label>
-                                    <code style="background:rgba(244, 63, 94, 0.1); color:#f43f5e; padding:4px 8px; border-radius:6px; font-size:13px; font-weight:700;">[wsb_services layout="carousel"]</code>
+                                    <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(14, 165, 233, 0.1); padding:4px 8px; border-radius:6px;">
+                                        <code style="background:none; color:#0ea5e9; padding:0; font-size:13px; font-weight:700;">[wsb_services layout="carousel"]</code>
+                                        <span class="dashicons dashicons-admin-page" style="color:#0ea5e9; cursor:pointer; font-size:14px; width:14px; height:14px; transition:0.3s;" onclick="navigator.clipboard.writeText('[wsb_services layout=&quot;carousel&quot;]'); this.style.color='#10b981'; setTimeout(() => this.style.color='#0ea5e9', 1000);" title="Copy"></span>
+                                    </div>
                                 </div>
 
                                 <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                                     <label style="display:block; color:rgba(255,255,255,0.5); font-size:10px; text-transform:uppercase; margin-bottom:8px; font-weight:700;">03. Specific IDs</label>
-                                    <code style="background:rgba(244, 63, 94, 0.1); color:#f43f5e; padding:4px 8px; border-radius:6px; font-size:13px; font-weight:700;">[wsb_services ids="1,5,8"]</code>
+                                    <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(14, 165, 233, 0.1); padding:4px 8px; border-radius:6px;">
+                                        <code style="background:none; color:#0ea5e9; padding:0; font-size:13px; font-weight:700;">[wsb_services ids="1,5,8"]</code>
+                                        <span class="dashicons dashicons-admin-page" style="color:#0ea5e9; cursor:pointer; font-size:14px; width:14px; height:14px; transition:0.3s;" onclick="navigator.clipboard.writeText('[wsb_services ids=&quot;1,5,8&quot;]'); this.style.color='#10b981'; setTimeout(() => this.style.color='#0ea5e9', 1000);" title="Copy"></span>
+                                    </div>
                                 </div>
 
                                 <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                                     <label style="display:block; color:rgba(255,255,255,0.5); font-size:10px; text-transform:uppercase; margin-bottom:8px; font-weight:700;">04. Category + Grid</label>
-                                    <code style="background:rgba(244, 63, 94, 0.1); color:#f43f5e; padding:4px 8px; border-radius:6px; font-size:13px; font-weight:700;">[wsb_services category="Hair" layout="grid"]</code>
+                                    <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(14, 165, 233, 0.1); padding:4px 8px; border-radius:6px;">
+                                        <code style="background:none; color:#0ea5e9; padding:0; font-size:13px; font-weight:700;">[wsb_services category="Hair" layout="grid"]</code>
+                                        <span class="dashicons dashicons-admin-page" style="color:#0ea5e9; cursor:pointer; font-size:14px; width:14px; height:14px; transition:0.3s;" onclick="navigator.clipboard.writeText('[wsb_services category=&quot;Hair&quot; layout=&quot;grid&quot;]'); this.style.color='#10b981'; setTimeout(() => this.style.color='#0ea5e9', 1000);" title="Copy"></span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div style="padding:15px; background:rgba(244, 63, 94, 0.05); border-radius:12px; border:1px solid rgba(244, 63, 94, 0.1); margin-bottom:15px;">
-                                <div style="display:flex; align-items:center; gap:8px; color:#f43f5e; font-weight:700; font-size:12px; margin-bottom:5px;">
+                            <div style="padding:15px; background:rgba(14, 165, 233, 0.05); border-radius:12px; border:1px solid rgba(14, 165, 233, 0.1); margin-bottom:15px;">
+                                <div style="display:flex; align-items:center; gap:8px; color:#0ea5e9; font-weight:700; font-size:12px; margin-bottom:5px;">
                                     <span class="dashicons dashicons-info" style="font-size:16px; width:16px; height:16px;"></span> Shortcode Power
                                 </div>
                                 <p style="color:var(--wsb-text-muted); font-size:11px; margin:0; line-height:1.5;">You can combine your own styles by using the <code>layout="grid"</code> or <code>layout="carousel"</code> attribute in the shortcode.</p>
@@ -585,6 +607,135 @@ class Wsb_Admin_Design {
             <input type="hidden" name="wsb_reset_design" value="1">
             <button type="submit" id="wsb-actual-reset-trigger"></button>
         </form>
+
+        <!-- Icon Library Modal -->
+        <div id="wsb-icon-library-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px); z-index:99999; align-items:center; justify-content:center; padding:20px;">
+            <div style="background:#1e293b; border:1px solid rgba(255,255,255,0.1); border-radius:16px; width:100%; max-width:600px; padding:30px; display:flex; flex-direction:column; max-height:80vh;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px;">
+                    <h2 style="color:white; margin:0; font-size:20px; font-weight:700;">Select an Icon</h2>
+                    <span style="color:rgba(255,255,255,0.5); cursor:pointer; font-size:24px;" onclick="document.getElementById('wsb-icon-library-modal').style.display='none'">&times;</span>
+                </div>
+                
+                <div style="margin-bottom:20px;">
+                    <input type="text" id="wsb-icon-search" placeholder="Search icons... (e.g., 'cart', 'calendar')" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; padding:12px; border-radius:8px; outline:none;">
+                </div>
+
+                <div id="wsb-icon-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap:15px; overflow-y:auto; flex:1; padding-right:10px; max-height:400px;">
+                    <!-- Icons injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let icons = [
+                // Dashicons
+                'dashicons-cart', 'dashicons-visibility', 'dashicons-calendar-alt', 'dashicons-admin-users', 'dashicons-store',
+                'dashicons-heart', 'dashicons-star-filled', 'dashicons-clock', 'dashicons-location', 'dashicons-phone',
+                'dashicons-camera', 'dashicons-video-alt3', 'dashicons-money-alt', 'dashicons-smiley', 'dashicons-awards',
+                'dashicons-email', 'dashicons-yes', 'dashicons-no', 'dashicons-info', 'dashicons-lightbulb'
+            ];
+
+            // Dynamically fetch all Font Awesome icons from the stylesheet
+            fetch('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css')
+                .then(response => response.text())
+                .then(css => {
+                    const iconSet = new Set();
+                    const brandIndex = css.indexOf('Font Awesome 7 Brands');
+                    const parts = css.split('{--fa:');
+                    let currentPos = 0;
+                    
+                    parts.forEach((part, index) => {
+                        currentPos += part.length + 6; // account for split string length
+                        if (index === parts.length - 1) return;
+                        
+                        let isBrand = brandIndex !== -1 && currentPos > brandIndex;
+                        let prefix = isBrand ? 'fa-brands' : 'fa-solid';
+                        
+                        let lastBrace = part.lastIndexOf('}');
+                        let selectors = part.substring(lastBrace + 1);
+                        let classMatches = selectors.match(/\.fa-([a-zA-Z0-9-]+)/g);
+                        
+                        if (classMatches) {
+                            classMatches.forEach(cls => {
+                                let name = cls.substring(1);
+                                // Exclude utility classes
+                                if (!name.match(/^fa-(solid|regular|brands|light|thin|duotone|beat|bounce|fade|flip|shake|spin|fw|ul|li|border|pull|stack|inverse)$/)) {
+                                    iconSet.add(prefix + ' ' + name);
+                                }
+                            });
+                        }
+                    });
+                    
+                    icons = icons.concat(Array.from(iconSet));
+                    
+                    // Refresh the grid if modal is currently open
+                    if (document.getElementById('wsb-icon-library-modal').style.display !== 'none') {
+                        document.getElementById('wsb-icon-search').dispatchEvent(new Event('input'));
+                    }
+                })
+                .catch(err => console.log('Failed to fetch all Font Awesome icons', err));
+
+            const modal = document.getElementById('wsb-icon-library-modal');
+            const grid = document.getElementById('wsb-icon-grid');
+            const search = document.getElementById('wsb-icon-search');
+            let currentTargetInput = null;
+
+            function renderIcons(filter = '') {
+                grid.innerHTML = '';
+                icons.forEach(icon => {
+                    if (icon.toLowerCase().includes(filter.toLowerCase())) {
+                        const div = document.createElement('div');
+                        div.style.cssText = 'background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; height:60px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:24px; color:white; transition:all 0.2s;';
+                        div.title = icon;
+                        
+                        const i = document.createElement('i');
+                        if (icon.startsWith('dashicons-')) {
+                            i.className = 'dashicons ' + icon;
+                            i.style.width = '24px';
+                            i.style.height = '24px';
+                            i.style.fontSize = '24px';
+                        } else {
+                            i.className = icon;
+                        }
+                        div.appendChild(i);
+                        
+                        div.addEventListener('mouseover', () => { div.style.background = 'rgba(99,102,241,0.2)'; div.style.transform = 'scale(1.05)'; });
+                        div.addEventListener('mouseout', () => { div.style.background = 'rgba(255,255,255,0.05)'; div.style.transform = 'scale(1)'; });
+                        div.addEventListener('click', () => {
+                            if (currentTargetInput) {
+                                currentTargetInput.value = icon;
+                            }
+                            modal.style.display = 'none';
+                        });
+                        
+                        grid.appendChild(div);
+                    }
+                });
+            }
+
+            document.querySelectorAll('.wsb-icon-picker-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    currentTargetInput = document.getElementById(this.getAttribute('data-target'));
+                    search.value = '';
+                    renderIcons();
+                    modal.style.display = 'flex';
+                });
+            });
+
+            search.addEventListener('input', (e) => {
+                renderIcons(e.target.value);
+            });
+            
+            // Close modal on click outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+        </script>
 
         <script>
         document.addEventListener('DOMContentLoaded', function() {
