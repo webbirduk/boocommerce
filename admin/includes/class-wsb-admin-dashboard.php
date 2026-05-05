@@ -61,8 +61,29 @@ class Wsb_Admin_Dashboard {
         ");
 
         ?>
-        <div class="wrap wsb-admin-wrap">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="wrap wsb-admin-wrap wsb-dashboard-wrapper">
+            <style>
+                /* Dashboard Responsive Layouts */
+                .wsb-dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+                .wsb-quick-actions-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; }
+                .wsb-metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+                .wsb-insights-row { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px; }
+                
+                @media (max-width: 1024px) {
+                    .wsb-metrics-row { grid-template-columns: repeat(2, 1fr); }
+                    .wsb-insights-row { grid-template-columns: 1fr; }
+                }
+                
+                @media (max-width: 768px) {
+                    .wsb-dashboard-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+                    .wsb-quick-actions-row { grid-template-columns: 1fr; }
+                    .wsb-metrics-row { grid-template-columns: 1fr; }
+                    .wsb-dashboard-wrapper .wsb-btn-primary { width: 100%; text-align: center; display: block; margin-left: 0 !important; margin-bottom: 10px; }
+                    .wsb-dashboard-header > div { width: 100%; }
+                }
+            </style>
+
+            <div class="wsb-dashboard-header">
                 <h1 style="margin:0;">Dashboard Overview</h1>
                 <div>
                     <a href="?page=wsb_main&tab=bookings&view=calendar" class="wsb-btn-primary">View Calendar</a>
@@ -73,7 +94,7 @@ class Wsb_Admin_Dashboard {
             <hr class="wp-header-end" style="margin-bottom:20px;">
 
             <!-- Quick Actions Row -->
-            <div class="wsb-dashboard-grid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom:30px;">
+            <div class="wsb-dashboard-grid wsb-quick-actions-row">
                 <a href="?page=wsb_main&tab=bookings&filter_date_start=<?php echo date('Y-m-d'); ?>&filter_date_end=<?php echo date('Y-m-d'); ?>" class="wsb-stat-card wsb-clickable-card" style="border-left-color: #3b82f6;">
                     <h3 style="margin-top:0; font-size:16px; color:#3b82f6;">Today's Schedule</h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold;"><?php echo intval($today_bookings); ?></p>
@@ -91,8 +112,7 @@ class Wsb_Admin_Dashboard {
             </div>
 
             <!-- Global Metrics Row -->
-            <div class="wsb-dashboard-grid"
-                style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom:30px;">
+            <div class="wsb-dashboard-grid wsb-metrics-row">
                 <div class="wsb-stat-card">
                     <h3 style="margin-top:0; font-size:16px;">Total Bookings</h3>
                     <p class="wsb-stat-value" style="margin:0; font-size:32px; font-weight:bold;">
@@ -119,7 +139,7 @@ class Wsb_Admin_Dashboard {
             </div>
 
             <!-- Insights Section -->
-            <div style="display:grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom:30px;">
+            <div class="wsb-insights-row">
                 <div style="background: var(--wsb-panel-dark); border: 1px solid var(--wsb-border); border-radius:12px; padding:20px;">
                     <h3 style="margin-top:0; margin-bottom:20px; color:#fff; font-size:16px;">Revenue Trajectory (Last 7 Days)</h3>
                     <div style="height:250px; width:100%;">
@@ -201,8 +221,8 @@ class Wsb_Admin_Dashboard {
                     <h3 style="margin:0; color: #fff;">Recent Activity</h3>
                     <a href="?page=wsb_main&tab=bookings" style="color:var(--wsb-primary); text-decoration:none; font-weight:500;">View All</a>
                 </div>
-                <div style="max-height: 400px; overflow-y: auto;">
-                    <table style="width:100%; border-collapse:collapse; text-align:left;">
+                <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
+                    <table style="width:100%; border-collapse:collapse; text-align:left; min-width: 600px;">
                     <thead style="background:rgba(0,0,0,0.2);">
                         <tr>
                             <th style="padding:15px 20px; color:var(--wsb-text-muted); font-weight:500; font-size:13px;">Customer</th>
