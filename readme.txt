@@ -1,4 +1,4 @@
-=== BooCommerce - Appointment Booking & Service Scheduling ===
+=== BooCommerce ===
 Contributors: arafatrahmanbd, webbird
 Tags: booking, appointments, scheduling, salon booking, reservation
 Requires at least: 5.8
