@@ -614,6 +614,18 @@
 .bc-master-wrapper .notice-error { border-left-color: #ef4444 !important; }
 .bc-master-wrapper .notice-warning { border-left-color: #f59e0b !important; }
 
+/* Category Pills */
+.bc-cat-pill:hover {
+    background: rgba(255,255,255,0.1) !important;
+    border-color: var(--bc-primary) !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+.bc-cat-pill.active:hover {
+    background: var(--bc-primary) !important;
+    transform: none;
+}
+
 /* Tooltips */
 .bc-info-icon {
     display: inline-flex;

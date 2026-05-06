@@ -69,6 +69,7 @@ class Bc_Services {
 
         if ($action === 'add' || $action === 'edit') {
             $staff_members = $wpdb->get_results("SELECT id, name FROM $table_staff");
+            $existing_categories = $wpdb->get_col("SELECT DISTINCT category FROM $table_services WHERE category != ''");
             $service = null;
             $assigned_staff_ids = [];
 
@@ -123,11 +124,73 @@ class Bc_Services {
                                     style="width:100%; border:1px solid var(--bc-border); border-radius:6px; padding:10px; background:#0f172a; color:white; font-size:16px;"
                                     required>
                             </div>
-                            <div style="margin-bottom: 15px;">
-                                <label style="display:block; margin-bottom:5px; color:var(--bc-text-muted);"><?php _e('Category', 'boocommerce'); ?></label>
-                                <input name="service_category" type="text"
-                                    value="<?php echo $service ? esc_attr($service->category) : ''; ?>"
-                                    style="width:100%; border:1px solid var(--bc-border); border-radius:6px; padding:10px; background:#0f172a; color:white;">
+                            <div style="margin-bottom: 25px;">
+                                <label style="display:block; margin-bottom:10px; color:var(--bc-text-muted); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.05em;"><?php _e('Service Category', 'boocommerce'); ?></label>
+                                
+                                <!-- Modern Category Selector -->
+                                <div class="bc-category-selector-container">
+                                    <div style="position:relative; margin-bottom:12px;">
+                                        <input name="service_category" type="text" id="bc-category-main-input"
+                                            value="<?php echo $service ? esc_attr($service->category) : ''; ?>"
+                                            placeholder="<?php esc_attr_e('Type a new category or select below...', 'boocommerce'); ?>"
+                                            style="width:100%; border:1px solid var(--bc-border); border-radius:12px; padding:12px 15px; background:#0f172a; color:white; font-size:15px; transition:all 0.3s; box-shadow:inset 0 2px 4px rgba(0,0,0,0.1);">
+                                        <span class="dashicons dashicons-tag" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); color:var(--bc-text-muted); opacity:0.5;"></span>
+                                    </div>
+
+                                    <?php if (!empty($existing_categories)): ?>
+                                        <div style="display:flex; flex-wrap:wrap; gap:8px;" id="bc-category-pills-wrapper">
+                                            <?php foreach ($existing_categories as $cat): 
+                                                $is_active = ($service && $service->category === $cat);
+                                            ?>
+                                                <div class="bc-cat-pill <?php echo $is_active ? 'active' : ''; ?>" 
+                                                     data-value="<?php echo esc_attr($cat); ?>"
+                                                     style="cursor:pointer; padding:6px 14px; border-radius:20px; background:<?php echo $is_active ? 'var(--bc-primary)' : 'rgba(255,255,255,0.05)'; ?>; border:1px solid <?php echo $is_active ? 'var(--bc-primary)' : 'var(--bc-border)'; ?>; color:<?php echo $is_active ? '#fff' : 'var(--bc-text-muted)'; ?>; font-size:13px; font-weight:600; transition:all 0.2s;">
+                                                    <?php echo esc_html($cat); ?>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+
+                                <script>
+                                    jQuery(document).ready(function($) {
+                                        $(document).on('click', '.bc-cat-pill', function() {
+                                            var val = $(this).data('value');
+                                            $('#bc-category-main-input').val(val).trigger('change');
+                                            
+                                            $('.bc-cat-pill').removeClass('active').css({
+                                                'background': 'rgba(255,255,255,0.05)',
+                                                'border-color': 'var(--bc-border)',
+                                                'color': 'var(--bc-text-muted)'
+                                            });
+                                            
+                                            $(this).addClass('active').css({
+                                                'background': 'var(--bc-primary)',
+                                                'border-color': 'var(--bc-primary)',
+                                                'color': '#fff'
+                                            });
+                                        });
+
+                                        $('#bc-category-main-input').on('input', function() {
+                                            var val = $(this).val();
+                                            $('.bc-cat-pill').removeClass('active').css({
+                                                'background': 'rgba(255,255,255,0.05)',
+                                                'border-color': 'var(--bc-border)',
+                                                'color': 'var(--bc-text-muted)'
+                                            });
+                                            
+                                            $('.bc-cat-pill').each(function() {
+                                                if ($(this).data('value') === val) {
+                                                    $(this).addClass('active').css({
+                                                        'background': 'var(--bc-primary)',
+                                                        'border-color': 'var(--bc-primary)',
+                                                        'color': '#fff'
+                                                    });
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
                             </div>
                             <div style="margin-bottom: 15px;">
                                 <label style="display:block; margin-bottom:5px; color:var(--bc-text-muted);"><?php _e('Description', 'boocommerce'); ?></label>
