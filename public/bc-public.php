@@ -17,16 +17,24 @@ class Bc_Public
 
     public static function get_icon_class($icon) {
         $icon = apply_filters('bc_public_icon_class_raw', $icon);
-        if (strpos($icon, 'fa-') !== false || strpos($icon, 'fas ') !== false || strpos($icon, 'fab ') !== false || strpos($icon, 'far ') !== false) {
+        
+        // Font Awesome Detection
+        if (strpos($icon, 'fa-') !== false) {
+            // If user only provided the icon name like 'fa-user', prepend the solid weight class
+            if (strpos($icon, 'fas ') === false && strpos($icon, 'fab ') === false && strpos($icon, 'far ') === false && strpos($icon, 'fa-solid') === false) {
+                return 'fa-solid ' . esc_attr($icon);
+            }
             return esc_attr($icon);
         }
+        
+        // Default to Dashicons
         return 'dashicons ' . esc_attr($icon);
     }
 
     public function enqueue_styles()
     {
         wp_enqueue_style('dashicons');
-        wp_enqueue_style('font-awesome', BC_PLUGIN_URL . 'assets/all.min.css', array(), '7.0.1', 'all');
+        wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1', 'all');
         wp_enqueue_style($this->plugin_name, plugin_dir_url(dirname(__FILE__)) . 'assets/public/css/bc-public.css', array(), time(), 'all');
     }
 
