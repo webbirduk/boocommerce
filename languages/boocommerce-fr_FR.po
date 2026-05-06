@@ -1,0 +1,1445 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BooCommerce 1.0.0\n"
+"POT-Creation-Date: 2026-05-06 09:30+0200\n"
+"PO-Revision-Date: 2026-05-06 09:30+0200\n"
+"Last-Translator: WebBird\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Domain: boocommerce\n"
+
+msgid "Service Booking"
+msgstr "Réservation de Services"
+
+msgid "Date Changed:"
+msgstr "Date Changed:"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Time Changed:"
+msgstr "Time Changed:"
+
+msgid "Time"
+msgstr "Heure"
+
+msgid "Professional Reassigned:"
+msgstr "Professional Reassigned:"
+
+msgid "Professional"
+msgstr "Professionnel"
+
+msgid "Status Updated:"
+msgstr "Status Updated:"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Update: Your Booking #%d has been updated (%s)"
+msgstr "Update: Your Booking #%d has been updated (%s)"
+
+msgid "Update Details"
+msgstr "Update Details"
+
+msgid "The details of your appointment have been updated in our system. If you have any questions regarding these changes, please contact our support team."
+msgstr "The details of your appointment have been updated in our system. If you have any questions regarding these changes, please contact our support team."
+
+msgid "View Full Details"
+msgstr "View Full Details"
+
+msgid "Booking Updated"
+msgstr "Booking Updated"
+
+msgid "Hello %s, some details of your booking #%d have been updated."
+msgstr "Hello %s, some details of your booking #%d have been updated."
+
+msgid "Reschedule request approved and applied successfully."
+msgstr "Reschedule request approved and applied successfully."
+
+msgid "Cancellation request approved successfully."
+msgstr "Cancellation request approved successfully."
+
+msgid "Client request declined. Booking remains active."
+msgstr "Client request declined. Booking remains active."
+
+msgid "Status updated cleanly."
+msgstr "Status updated cleanly."
+
+msgid "Database Error: Could not update booking."
+msgstr "Database Error: Could not update booking."
+
+msgid "Booking information updated successfully."
+msgstr "Booking information updated successfully."
+
+msgid "Security Check Failed: Nonce verification unsuccessful. Please refresh and try again."
+msgstr "Security Check Failed: Nonce verification unsuccessful. Please refresh and try again."
+
+msgid "Unknown Service"
+msgstr "Unknown Service"
+
+msgid "Manage Booking"
+msgstr "Manage Booking"
+
+msgid "Back to Bookings"
+msgstr "Back to Bookings"
+
+msgid "Customer Information"
+msgstr "Customer Information"
+
+msgid "Full Name"
+msgstr "Nom Complet"
+
+msgid "Contact Email"
+msgstr "Email de Contact"
+
+msgid "Phone Number"
+msgstr "Numéro de Téléphone"
+
+msgid "No phone provided"
+msgstr "No phone provided"
+
+msgid "Assigned Professional"
+msgstr "Assigned Professional"
+
+msgid "Schedule & Service"
+msgstr "Schedule & Service"
+
+msgid "Selected Services"
+msgstr "Selected Services"
+
+msgid "Booking Date"
+msgstr "Booking Date"
+
+msgid "Start Time"
+msgstr "Start Time"
+
+msgid "End Time"
+msgstr "End Time"
+
+msgid "Total Duration (Auto)"
+msgstr "Total Duration (Auto)"
+
+msgid "Calculated from start/end"
+msgstr "Calculated from start/end"
+
+msgid "Booking Status"
+msgstr "Booking Status"
+
+msgid "Pending Approval"
+msgstr "Attente d'Approbation"
+
+msgid "Confirmed"
+msgstr "Confirmé"
+
+msgid "Completed"
+msgstr "Terminé"
+
+msgid "Cancelled"
+msgstr "Annulé"
+
+msgid "Updating the status will automatically trigger a notification email to the customer."
+msgstr "Updating the status will automatically trigger a notification email to the customer."
+
+msgid "Financial Details"
+msgstr "Financial Details"
+
+msgid "Amount Receivable"
+msgstr "Amount Receivable"
+
+msgid "Payment Strategy"
+msgstr "Payment Strategy"
+
+msgid "Secured"
+msgstr "Secured"
+
+msgid "Gateway"
+msgstr "Passerelle"
+
+msgid "Transaction ID"
+msgstr "ID Transaction"
+
+msgid "Payment Status"
+msgstr "Statut du Paiement"
+
+msgid "No payment transaction linked to this booking yet."
+msgstr "No payment transaction linked to this booking yet."
+
+msgid "Update Booking Details"
+msgstr "Update Booking Details"
+
+msgid "Discard Changes"
+msgstr "Abandonner"
+
+msgid "Manage Bookings"
+msgstr "Manage Bookings"
+
+msgid "List View"
+msgstr "List View"
+
+msgid "Calendar View"
+msgstr "Calendar View"
+
+msgid "Search Bookings"
+msgstr "Rechercher des Réservations"
+
+msgid "All Professionals"
+msgstr "All Professionals"
+
+msgid "Service"
+msgstr "Service"
+
+msgid "All Services"
+msgstr "All Services"
+
+msgid "Start Date"
+msgstr "Start Date"
+
+msgid "End Date"
+msgstr "End Date"
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "Clear"
+msgstr "Effacer"
+
+msgid "Total Bookings"
+msgstr "Total Bookings"
+
+msgid "Pending Approvals"
+msgstr "Pending Approvals"
+
+msgid "Confirmed / Completed"
+msgstr "Confirmed / Completed"
+
+msgid "Client Requests"
+msgstr "Client Requests"
+
+msgid "Booking REF"
+msgstr "Booking REF"
+
+msgid "Customer Info"
+msgstr "Customer Info"
+
+msgid "Service & Staff"
+msgstr "Service & Staff"
+
+msgid "Date & Time"
+msgstr "Date & Time"
+
+msgid "Amount"
+msgstr "Montant"
+
+msgid "with"
+msgstr "with"
+
+msgid "Request"
+msgstr "Request"
+
+msgid "Accept"
+msgstr "Accept"
+
+msgid "Reject"
+msgstr "Reject"
+
+msgid "No bookings found."
+msgstr "No bookings found."
+
+msgid "Client CRM & Directory"
+msgstr "Client CRM & Directory"
+
+msgid "Total Client Base"
+msgstr "Total Client Base"
+
+msgid "Recent Signups (30d)"
+msgstr "Recent Signups (30d)"
+
+msgid "VIP Clients (LTV)"
+msgstr "VIP Clients (LTV)"
+
+msgid "Search Clients"
+msgstr "Rechercher des Clients"
+
+msgid "Client Identity"
+msgstr "Client Identity"
+
+msgid "Contact Information"
+msgstr "Contact Information"
+
+msgid "Platform History"
+msgstr "Platform History"
+
+msgid "Lifetime Value (LTV)"
+msgstr "Lifetime Value (LTV)"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "Joined:"
+msgstr "Joined:"
+
+msgid "Bookings:"
+msgstr "Bookings:"
+
+msgid "No client records found."
+msgstr "No client records found."
+
+msgid "Dashboard Overview"
+msgstr "Dashboard Overview"
+
+msgid "View Calendar"
+msgstr "View Calendar"
+
+msgid "+ New Service"
+msgstr "+ New Service"
+
+msgid "Today\\'s Schedule"
+msgstr "Today\\'s Schedule"
+
+msgid "Total Revenue"
+msgstr "Revenu Total"
+
+msgid "Total Customers"
+msgstr "Total Clients"
+
+msgid "Active Services"
+msgstr "Services Actifs"
+
+msgid "Revenue Trajectory (Last 7 Days)"
+msgstr "Revenue Trajectory (Last 7 Days)"
+
+msgid "Top Performing Services"
+msgstr "Top Performing Services"
+
+msgid "Bookings"
+msgstr "Réservations"
+
+msgid "No performance data available."
+msgstr "No performance data available."
+
+msgid "Daily Revenue"
+msgstr "Daily Revenue"
+
+msgid "Recent Activity"
+msgstr "Activité Récente"
+
+msgid "View All"
+msgstr "Voir Tout"
+
+msgid "Customer"
+msgstr "Customer"
+
+msgid "No recent activity."
+msgstr "No recent activity."
+
+msgid "Factory default settings restored successfully!"
+msgstr "Factory default settings restored successfully!"
+
+msgid "Advanced customization settings applied successfully!"
+msgstr "Advanced customization settings applied successfully!"
+
+msgid "System Customization & Branding"
+msgstr "System Customization & Branding"
+
+msgid "Fully loaded control center for your premium booking ecosystem."
+msgstr "Fully loaded control center for your premium booking ecosystem."
+
+msgid "01. Brand Identity & Aesthetic Palette"
+msgstr "01. Brand Identity & Aesthetic Palette"
+
+msgid "Fine-tune your visual identity. These colors define the primary mood, interactions, and granular elements of your booking system."
+msgstr "Fine-tune your visual identity. These colors define the primary mood, interactions, and granular elements of your booking system."
+
+msgid "Core Identity"
+msgstr "Core Identity"
+
+msgid "Primary Color"
+msgstr "Primary Color"
+
+msgid "Gradient Accent"
+msgstr "Gradient Accent"
+
+msgid "Interactions"
+msgstr "Interactions"
+
+msgid "Surfaces & Text"
+msgstr "Surfaces & Text"
+
+msgid "Card BG"
+msgstr "Card BG"
+
+msgid "Heading Text"
+msgstr "Heading Text"
+
+msgid "Body Text"
+msgstr "Body Text"
+
+msgid "Forms & Inputs"
+msgstr "Forms & Inputs"
+
+msgid "Input BG"
+msgstr "Input BG"
+
+msgid "Input Border"
+msgstr "Input Border"
+
+msgid "02. Component Styling & Effects"
+msgstr "02. Component Styling & Effects"
+
+msgid "Typography Engine"
+msgstr "Typography Engine"
+
+msgid "Shadow Depth"
+msgstr "Shadow Depth"
+
+msgid "03. Content & Dynamic Labeling"
+msgstr "03. Content & Dynamic Labeling"
+
+msgid "Step 1 Title"
+msgstr "Step 1 Title"
+
+msgid "Step 2 Title"
+msgstr "Step 2 Title"
+
+msgid "Step 3 Title"
+msgstr "Step 3 Title"
+
+msgid "Step 4 Title"
+msgstr "Step 4 Title"
+
+msgid "Primary Action Button"
+msgstr "Primary Action Button"
+
+msgid "Secondary Back Button"
+msgstr "Secondary Back Button"
+
+msgid "04. Basket & Interaction Ecosystem"
+msgstr "04. Basket & Interaction Ecosystem"
+
+msgid "Show Basket in Menu"
+msgstr "Show Basket in Menu"
+
+msgid "Integrate selection into main nav."
+msgstr "Integrate selection into main nav."
+
+msgid "Interaction Mode"
+msgstr "Interaction Mode"
+
+msgid "Basket Icon"
+msgstr "Basket Icon"
+
+msgid "Details Icon"
+msgstr "Details Icon"
+
+msgid "Menu Label"
+msgstr "Menu Label"
+
+msgid "05. Floating Booking Assistant"
+msgstr "05. Floating Booking Assistant"
+
+msgid "Display Floating Widget"
+msgstr "Display Floating Widget"
+
+msgid "Persistent site-wide mini-basket."
+msgstr "Persistent site-wide mini-basket."
+
+msgid "Button Position"
+msgstr "Button Position"
+
+msgid "Floating Widget Icon"
+msgstr "Floating Widget Icon"
+
+msgid "The floating widget acts as a mini-basket that expands on click, allowing users to manage their selection from any page."
+msgstr "The floating widget acts as a mini-basket that expands on click, allowing users to manage their selection from any page."
+
+msgid "Apply Customization"
+msgstr "Apply Customization"
+
+msgid "Restore Defaults"
+msgstr "Restaurer par Défaut"
+
+msgid "04. Service Booking Page Style"
+msgstr "04. Service Booking Page Style"
+
+msgid "Select the core design language for your frontend booking experience."
+msgstr "Select the core design language for your frontend booking experience."
+
+msgid "05. Frontend Deployment"
+msgstr "05. Frontend Deployment"
+
+msgid "06. Service Display Showcase"
+msgstr "06. Service Display Showcase"
+
+msgid "Embed your services anywhere on your site using these advanced shortcodes. Clients can view service details and jump directly into the booking flow."
+msgstr "Embed your services anywhere on your site using these advanced shortcodes. Clients can view service details and jump directly into the booking flow."
+
+msgid "Shortcode Power"
+msgstr "Shortcode Power"
+
+msgid "You can combine your own styles by using the <code>layout=\"grid\"</code> or <code>layout=\"carousel\"</code> attribute in the shortcode."
+msgstr "You can combine your own styles by using the <code>layout=\"grid\"</code> or <code>layout=\"carousel\"</code> attribute in the shortcode."
+
+msgid "Restore Factory Defaults?"
+msgstr "Restore Factory Defaults?"
+
+msgid "This action will permanently remove all your custom branding, color palettes, and typography settings. This cannot be undone."
+msgstr "This action will permanently remove all your custom branding, color palettes, and typography settings. This cannot be undone."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Confirm Reset"
+msgstr "Confirm Reset"
+
+msgid "Select an Icon"
+msgstr "Select an Icon"
+
+msgid "Financial Ledger & Revenue"
+msgstr "Financial Ledger & Revenue"
+
+msgid "Reporting Period:"
+msgstr "Reporting Period:"
+
+msgid "All Time"
+msgstr "All Time"
+
+msgid "Today"
+msgstr "Today"
+
+msgid "Last 7 Days"
+msgstr "Last 7 Days"
+
+msgid "Last 30 Days"
+msgstr "Last 30 Days"
+
+msgid "This Year"
+msgstr "This Year"
+
+msgid "Total Realized Revenue"
+msgstr "Total Realized Revenue"
+
+msgid "Verified Transactions"
+msgstr "Verified Transactions"
+
+msgid "Avg. Transaction Value"
+msgstr "Avg. Transaction Value"
+
+msgid "Pending / Outstanding"
+msgstr "Pending / Outstanding"
+
+msgid "Revenue Performance Analysis"
+msgstr "Revenue Performance Analysis"
+
+msgid "Related Booking"
+msgstr "Related Booking"
+
+msgid "Booking"
+msgstr "Booking"
+
+msgid "No payment records found in this timeframe."
+msgstr "No payment records found in this timeframe."
+
+msgid "Integrations and gateways securely updated!"
+msgstr "Integrations and gateways securely updated!"
+
+msgid "Integrations & Ecosystem"
+msgstr "Integrations & Ecosystem"
+
+msgid "Connect your booking engine to external payment processors, marketing tools, and third-party APIs."
+msgstr "Connect your booking engine to external payment processors, marketing tools, and third-party APIs."
+
+msgid "Payment Gateway Ecosystem"
+msgstr "Payment Gateway Ecosystem"
+
+msgid "Stripe Active"
+msgstr "Stripe Active"
+
+msgid "Stripe Professional"
+msgstr "Stripe Professional"
+
+msgid "Publishable API Key"
+msgstr "Publishable API Key"
+
+msgid "Secret API Key"
+msgstr "Secret API Key"
+
+msgid "Active Ecosystem Extensions"
+msgstr "Active Ecosystem Extensions"
+
+msgid "PayPal Professional Gateway"
+msgstr "PayPal Professional Gateway"
+
+msgid "High-conversion checkout engine."
+msgstr "High-conversion checkout engine."
+
+msgid "Aura Luxe Design Pack"
+msgstr "Aura Luxe Design Pack"
+
+msgid "Premium aesthetic and layout engine."
+msgstr "Premium aesthetic and layout engine."
+
+msgid "Enabled"
+msgstr "Enabled"
+
+msgid "Disabled"
+msgstr "Disabled"
+
+msgid "No additional third-party integrations detected."
+msgstr "No additional third-party integrations detected."
+
+msgid "Install official extensions to enable more features."
+msgstr "Install official extensions to enable more features."
+
+msgid "Save Integration Ecosystem"
+msgstr "Save Integration Ecosystem"
+
+msgid "Service permanently deleted."
+msgstr "Service permanently deleted."
+
+msgid "Service updated successfully!"
+msgstr "Service updated successfully!"
+
+msgid "Service created successfully!"
+msgstr "Service created successfully!"
+
+msgid "Manage Service"
+msgstr "Manage Service"
+
+msgid "Add New Service"
+msgstr "Ajouter un Service"
+
+msgid "Back to Services"
+msgstr "Back to Services"
+
+msgid "Basic Information"
+msgstr "Basic Information"
+
+msgid "Service Name"
+msgstr "Nom du Service"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Featured Image"
+msgstr "Featured Image"
+
+msgid "Select Image"
+msgstr "Select Image"
+
+msgid "Service Gallery (Multiple Images)"
+msgstr "Service Gallery (Multiple Images)"
+
+msgid "Select Gallery Images"
+msgstr "Select Gallery Images"
+
+msgid "Pricing & Duration"
+msgstr "Pricing & Duration"
+
+msgid "Price"
+msgstr "Prix"
+
+msgid "Duration"
+msgstr "Durée"
+
+msgid "m"
+msgstr "m"
+
+msgid "Buffer"
+msgstr "Temps de Tampon"
+
+msgid "Capacity"
+msgstr "Capacité"
+
+msgid "Assign Staff"
+msgstr "Assign Staff"
+
+msgid "No staff members found."
+msgstr "No staff members found."
+
+msgid "Update Service"
+msgstr "Modifier le Service"
+
+msgid "Publish Service"
+msgstr "Publier le Service"
+
+msgid "Services Repository"
+msgstr "Services Repository"
+
+msgid "+ Add New Service"
+msgstr "+ Add New Service"
+
+msgid "Total Services"
+msgstr "Total Services"
+
+msgid "Live Offerings"
+msgstr "Live Offerings"
+
+msgid "Draft / Inactive"
+msgstr "Draft / Inactive"
+
+msgid "All Categories"
+msgstr "All Categories"
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Cap:"
+msgstr "Cap:"
+
+msgid "Buffer:"
+msgstr "Buffer:"
+
+msgid "minutes"
+msgstr "minutes"
+
+msgid "Uncategorized"
+msgstr "Uncategorized"
+
+msgid "No services match your criteria."
+msgstr "No services match your criteria."
+
+msgid "All settings have been restored to factory defaults."
+msgstr "All settings have been restored to factory defaults."
+
+msgid "System Integration Settings securely saved!"
+msgstr "System Integration Settings securely saved!"
+
+msgid "System Settings"
+msgstr "Réglages Système"
+
+msgid "Configure your global booking architecture, payment gateways, and design language."
+msgstr "Configure your global booking architecture, payment gateways, and design language."
+
+msgid "General Settings"
+msgstr "General Settings"
+
+msgid "Core Architecture"
+msgstr "Core Architecture"
+
+msgid "System Default Currency"
+msgstr "System Default Currency"
+
+msgid "Primary currency for all financial transactions."
+msgstr "Primary currency for all financial transactions."
+
+msgid "Skip Professional Selection"
+msgstr "Skip Professional Selection"
+
+msgid "Automatically bypass the team step if not required."
+msgstr "Automatically bypass the team step if not required."
+
+msgid "Disable Online Payments"
+msgstr "Disable Online Payments"
+
+msgid "Skip checkout and confirm bookings instantly."
+msgstr "Skip checkout and confirm bookings instantly."
+
+msgid "Filter Staff by Service"
+msgstr "Filter Staff by Service"
+
+msgid "Only show professionals assigned to selected services."
+msgstr "Only show professionals assigned to selected services."
+
+msgid "Enable Split Scheduling"
+msgstr "Enable Split Scheduling"
+
+msgid "Allow customers to pick different pros/times for each service."
+msgstr "Allow customers to pick different pros/times for each service."
+
+msgid "Scheduling & Time Control"
+msgstr "Scheduling & Time Control"
+
+msgid "Booking Buffer (Min)"
+msgstr "Booking Buffer (Min)"
+
+msgid "Time between slots for preparation."
+msgstr "Time between slots for preparation."
+
+msgid "Min. Notice Time (Hrs)"
+msgstr "Min. Notice Time (Hrs)"
+
+msgid "How far in advance clients must book."
+msgstr "How far in advance clients must book."
+
+msgid "Email Settings"
+msgstr "Email Settings"
+
+msgid "Instant Confirmation"
+msgstr "Instant Confirmation"
+
+msgid "Auto-confirm new bookings without manual review."
+msgstr "Auto-confirm new bookings without manual review."
+
+msgid "Email Notifications"
+msgstr "Email Notifications"
+
+msgid "Send automated confirmation emails to customers."
+msgstr "Send automated confirmation emails to customers."
+
+msgid "Cancellation Policy"
+msgstr "Cancellation Policy"
+
+msgid "Save Settings"
+msgstr "Save Settings"
+
+msgid "Staff record purged from the system."
+msgstr "Staff record purged from the system."
+
+msgid "Staff profile updated securely."
+msgstr "Staff profile updated securely."
+
+msgid "New professional added to the roster."
+msgstr "New professional added to the roster."
+
+msgid "Monday"
+msgstr "Monday"
+
+msgid "Tuesday"
+msgstr "Tuesday"
+
+msgid "Wednesday"
+msgstr "Wednesday"
+
+msgid "Thursday"
+msgstr "Thursday"
+
+msgid "Friday"
+msgstr "Friday"
+
+msgid "Saturday"
+msgstr "Saturday"
+
+msgid "Sunday"
+msgstr "Sunday"
+
+msgid "Manage Staff Profile"
+msgstr "Manage Staff Profile"
+
+msgid "Back to Roster"
+msgstr "Back to Roster"
+
+msgid "Personal Information"
+msgstr "Personal Information"
+
+msgid "Profession / Qualification"
+msgstr "Profession / Qualification"
+
+msgid "Email Address"
+msgstr "Email Address"
+
+msgid "Physical Address"
+msgstr "Physical Address"
+
+msgid "Public Biography / Description"
+msgstr "Public Biography / Description"
+
+msgid "Weekly Schedule"
+msgstr "Weekly Schedule"
+
+msgid "Configure the working hours for this provider. If not working on a day, leave times blank or uncheck."
+msgstr "Configure the working hours for this provider. If not working on a day, leave times blank or uncheck."
+
+msgid "to"
+msgstr "to"
+
+msgid "Performance Insights"
+msgstr "Performance Insights"
+
+msgid "Sessions"
+msgstr "Sessions"
+
+msgid "Profile Image"
+msgstr "Profile Image"
+
+msgid "Select Avatar"
+msgstr "Select Avatar"
+
+msgid "System Status"
+msgstr "System Status"
+
+msgid "Active (Accepting Bookings)"
+msgstr "Active (Accepting Bookings)"
+
+msgid "Inactive (Hidden)"
+msgstr "Inactive (Hidden)"
+
+msgid "Save Staff Configuration"
+msgstr "Save Staff Configuration"
+
+msgid "Time off & Holidays"
+msgstr "Time off & Holidays"
+
+msgid "Enter exact dates where this staff member is unavailable. Use YYYY-MM-DD format on a new line for each date."
+msgstr "Enter exact dates where this staff member is unavailable. Use YYYY-MM-DD format on a new line for each date."
+
+msgid "\\'s Booking Schedule"
+msgstr "\\'s Booking Schedule"
+
+msgid "Staff Roster"
+msgstr "Staff Roster"
+
+msgid "+ Onboard Staff"
+msgstr "+ Onboard Staff"
+
+msgid "Total Staff"
+msgstr "Total Staff"
+
+msgid "Active Providers"
+msgstr "Active Providers"
+
+msgid "Inactive / On Leave"
+msgstr "Inactive / On Leave"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Contact details"
+msgstr "Contact details"
+
+msgid "Performance Index"
+msgstr "Performance Index"
+
+msgid "Roster is empty."
+msgstr "Roster is empty."
+
+msgid "Overview"
+msgstr "Aperçu"
+
+msgid "Finance"
+msgstr "Finances"
+
+msgid "Services"
+msgstr "Services"
+
+msgid "Professional Team"
+msgstr "Équipe Professionnelle"
+
+msgid "Clients"
+msgstr "Clients"
+
+msgid "Customization"
+msgstr "Personnalisation"
+
+msgid "Integrations"
+msgstr "Intégrations"
+
+msgid "Exit to WordPress"
+msgstr "Exit to WordPress"
+
+msgid "Sent via the %s secure scheduling engine."
+msgstr "Sent via the %s secure scheduling engine."
+
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+msgid "Security Verified &bullet; GDPR Compliant"
+msgstr "Security Verified &bullet; GDPR Compliant"
+
+msgid "Staff is currently on holiday/time-off."
+msgstr "Staff is currently on holiday/time-off."
+
+msgid "Booking #%d confirmed & saved!"
+msgstr "Booking #%d confirmed & saved!"
+
+msgid "Failed to create booking."
+msgstr "Failed to create booking."
+
+msgid "Welcome to %s - Your Secure Client Portal"
+msgstr "Welcome to %s - Your Secure Client Portal"
+
+msgid "Security Credentials"
+msgstr "Security Credentials"
+
+msgid "Username:"
+msgstr "Username:"
+
+msgid "Temp Password:"
+msgstr "Temp Password:"
+
+msgid "Access Your Secure Portal"
+msgstr "Access Your Secure Portal"
+
+msgid "Identity Verified"
+msgstr "Identity Verified"
+
+msgid "Hello %s, we\\'ve established a secure client profile for you to manage your appointments."
+msgstr "Hello %s, we\\'ve established a secure client profile for you to manage your appointments."
+
+msgid "Booking Secured"
+msgstr "Booking Secured"
+
+msgid "Booking Received"
+msgstr "Booking Received"
+
+msgid "Appointment #%d"
+msgstr "Appointment #%d"
+
+msgid "Hello %s, your appointment has been successfully registered and confirmed."
+msgstr "Hello %s, your appointment has been successfully registered and confirmed."
+
+msgid "Hello %s, we have received your booking request. Our team will review it and confirm shortly."
+msgstr "Hello %s, we have received your booking request. Our team will review it and confirm shortly."
+
+msgid "Date:"
+msgstr "Date:"
+
+msgid "Time:"
+msgstr "Time:"
+
+msgid "Status:"
+msgstr "Status:"
+
+msgid "Client:"
+msgstr "Client:"
+
+msgid "Email:"
+msgstr "Email:"
+
+msgid "New Lead: Booking #%d"
+msgstr "New Lead: Booking #%d"
+
+msgid "Lead Captured"
+msgstr "Lead Captured"
+
+msgid "A new reservation has been logged in the system."
+msgstr "A new reservation has been logged in the system."
+
+msgid "Security verification failed."
+msgstr "Security verification failed."
+
+msgid "Access Denied. Please login."
+msgstr "Access Denied. Please login."
+
+msgid "Invalid request parameters."
+msgstr "Invalid request parameters."
+
+msgid "Booking record not found."
+msgstr "Booking record not found."
+
+msgid "[Action Required] Cancellation Request: #%d"
+msgstr "[Action Required] Cancellation Request: #%d"
+
+msgid "Client Name:"
+msgstr "Client Name:"
+
+msgid "Booking ID:"
+msgstr "Booking ID:"
+
+msgid "Cancellation Request"
+msgstr "Cancellation Request"
+
+msgid "A client has requested to cancel their scheduled appointment."
+msgstr "A client has requested to cancel their scheduled appointment."
+
+msgid "Cancellation Request Logged: #%d"
+msgstr "Cancellation Request Logged: #%d"
+
+msgid "Your request to cancel appointment #%d has been logged. Our team will review this shortly and update your status."
+msgstr "Your request to cancel appointment #%d has been logged. Our team will review this shortly and update your status."
+
+msgid "Request Received"
+msgstr "Request Received"
+
+msgid "Hello %s,"
+msgstr "Hello %s,"
+
+msgid "Cancellation request submitted successfully!"
+msgstr "Cancellation request submitted successfully!"
+
+msgid "Please fill all fields correctly."
+msgstr "Please fill all fields correctly."
+
+msgid "[Action Required] Reschedule Request: #%d"
+msgstr "[Action Required] Reschedule Request: #%d"
+
+msgid "Requested Date:"
+msgstr "Requested Date:"
+
+msgid "Requested Time:"
+msgstr "Requested Time:"
+
+msgid "Reschedule Requested"
+msgstr "Reschedule Requested"
+
+msgid "A client has requested to move their appointment."
+msgstr "A client has requested to move their appointment."
+
+msgid "Reschedule Request Logged: #%d"
+msgstr "Reschedule Request Logged: #%d"
+
+msgid "We have received your request to reschedule appointment #%d. Our team will check availability and confirm the change shortly."
+msgstr "We have received your request to reschedule appointment #%d. Our team will check availability and confirm the change shortly."
+
+msgid "Reschedule request submitted successfully!"
+msgstr "Reschedule request submitted successfully!"
+
+msgid "First and Last name are required fields."
+msgstr "First and Last name are required fields."
+
+msgid "Password must be at least 6 characters long."
+msgstr "Password must be at least 6 characters long."
+
+msgid "Account details successfully updated!"
+msgstr "Account details successfully updated!"
+
+msgid "Missing required booking details."
+msgstr "Missing required booking details."
+
+msgid "Services not found."
+msgstr "Services not found."
+
+msgid "Stripe is not configured."
+msgstr "Stripe is not configured."
+
+msgid "Failed to log pending booking."
+msgstr "Failed to log pending booking."
+
+msgid "Professional booking for %s at %s"
+msgstr "Professional booking for %s at %s"
+
+msgid "Stripe Error: %s"
+msgstr "Stripe Error: %s"
+
+msgid "Services not selected."
+msgstr "Services not selected."
+
+msgid "Access denied."
+msgstr "Access denied."
+
+msgid "Please enter a valid Stripe Secret Key to test."
+msgstr "Please enter a valid Stripe Secret Key to test."
+
+msgid "API request failed: %s"
+msgstr "API request failed: %s"
+
+msgid "Connection Failed: %s"
+msgstr "Connection Failed: %s"
+
+msgid "Connection Successful! Credentials validated securely."
+msgstr "Connection Successful! Credentials validated securely."
+
+msgid "Payment Received: Booking Confirmed"
+msgstr "Payment Received: Booking Confirmed"
+
+msgid "Payment Successful"
+msgstr "Payment Successful"
+
+msgid "Scheduled Date:"
+msgstr "Scheduled Date:"
+
+msgid "Start Time:"
+msgstr "Start Time:"
+
+msgid "Payment Confirmed"
+msgstr "Payment Confirmed"
+
+msgid "Hello %s, your payment was successful and your appointment is now fully confirmed!"
+msgstr "Hello %s, your payment was successful and your appointment is now fully confirmed!"
+
+msgid "Book This Service Now"
+msgstr "Book This Service Now"
+
+msgid "1. Select a Service"
+msgstr "1. Select a Service"
+
+msgid "2. Choose a Professional"
+msgstr "2. Choose a Professional"
+
+msgid "3. Select Date & Time"
+msgstr "3. Select Date & Time"
+
+msgid "4. Your Details"
+msgstr "4. Your Details"
+
+msgid "Next Step"
+msgstr "Next Step"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Select your desired service to begin your experience."
+msgstr "Select your desired service to begin your experience."
+
+msgid "Services Selected"
+msgstr "Services Selected"
+
+msgid "Client Portal"
+msgstr "Client Portal"
+
+msgid "Your Selection"
+msgstr "Votre Sélection"
+
+msgid "No services selected yet."
+msgstr "No services selected yet."
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Continue Booking"
+msgstr "Continuer la réservation"
+
+msgid "No services available yet."
+msgstr "No services available yet."
+
+msgid "Our team of experts is ready to provide exceptional care."
+msgstr "Our team of experts is ready to provide exceptional care."
+
+msgid "✨ Selected Bundle"
+msgstr "✨ Selected Bundle"
+
+msgid "Scheduling:"
+msgstr "Scheduling:"
+
+msgid "Any Available"
+msgstr "Any Available"
+
+msgid "Optimal Availability"
+msgstr "Optimal Availability"
+
+msgid "Find a time that perfectly fits your schedule."
+msgstr "Find a time that perfectly fits your schedule."
+
+msgid "Finding a %s min opening for your combined services."
+msgstr "Finding a %s min opening for your combined services."
+
+msgid "📅 Choose Your Date"
+msgstr "📅 Choose Your Date"
+
+msgid "Su"
+msgstr "Su"
+
+msgid "Mo"
+msgstr "Mo"
+
+msgid "Tu"
+msgstr "Tu"
+
+msgid "We"
+msgstr "We"
+
+msgid "Th"
+msgstr "Th"
+
+msgid "Fr"
+msgstr "Fr"
+
+msgid "Sa"
+msgstr "Sa"
+
+msgid "🕒 Available Slots"
+msgstr "🕒 Available Slots"
+
+msgid "Tell us a little about yourself to secure your spot."
+msgstr "Tell us a little about yourself to secure your spot."
+
+msgid "First Name"
+msgstr "First Name"
+
+msgid "Last Name"
+msgstr "Last Name"
+
+msgid "Additional Notes"
+msgstr "Additional Notes"
+
+msgid "Note:"
+msgstr "Note:"
+
+msgid "An account will be created automatically using your email address. You\\'ll receive temporary login details to securely monitor and manage your bookings."
+msgstr "An account will be created automatically using your email address. You\\'ll receive temporary login details to securely monitor and manage your bookings."
+
+msgid "Confirm Booking"
+msgstr "Confirm Booking"
+
+msgid "Select Payment Method"
+msgstr "Select Payment Method"
+
+msgid "Your transaction is secure and encrypted."
+msgstr "Your transaction is secure and encrypted."
+
+msgid "256-bit SSL Secure"
+msgstr "256-bit SSL Secure"
+
+msgid "Credit Card"
+msgstr "Credit Card"
+
+msgid "Secure via Stripe"
+msgstr "Secure via Stripe"
+
+msgid "Buyer Protection"
+msgstr "Buyer Protection"
+
+msgid "Your purchase is fully protected by secure, advanced fraud monitoring."
+msgstr "Your purchase is fully protected by secure, advanced fraud monitoring."
+
+msgid "Continue to Secure Payment"
+msgstr "Continue to Secure Payment"
+
+msgid "By continuing, you agree to our %s."
+msgstr "By continuing, you agree to our %s."
+
+msgid "Terms of Service"
+msgstr "Terms of Service"
+
+msgid "Complete Your Payment"
+msgstr "Complete Your Payment"
+
+msgid "Finalize your booking with our secure gateway."
+msgstr "Finalize your booking with our secure gateway."
+
+msgid "Encrypted Transaction"
+msgstr "Encrypted Transaction"
+
+msgid "Preparing your secure payment session..."
+msgstr "Preparing your secure payment session..."
+
+msgid "Pay & Confirm Booking"
+msgstr "Pay & Confirm Booking"
+
+msgid "Click the button below to pay with PayPal"
+msgstr "Click the button below to pay with PayPal"
+
+msgid "You are one step away! Your professional is reserved once the payment is confirmed."
+msgstr "You are one step away! Your professional is reserved once the payment is confirmed."
+
+msgid "Order Summary"
+msgstr "Order Summary"
+
+msgid "Loading details..."
+msgstr "Loading details..."
+
+msgid "to Methods"
+msgstr "to Methods"
+
+msgid "Client Dashboard"
+msgstr "Client Dashboard"
+
+msgid "Welcome back! Please sign in securely below to track, modify, or review upcoming appointments."
+msgstr "Welcome back! Please sign in securely below to track, modify, or review upcoming appointments."
+
+msgid "Sign In to My Dashboard"
+msgstr "Sign In to My Dashboard"
+
+msgid "Payment Successful!"
+msgstr "Payment Successful!"
+
+msgid "Your secure transaction was confirmed. Your appointment has been successfully scheduled and added to your dashboard."
+msgstr "Your secure transaction was confirmed. Your appointment has been successfully scheduled and added to your dashboard."
+
+msgid "Manage My Bookings"
+msgstr "Manage My Bookings"
+
+msgid "Welcome Back, %s!"
+msgstr "Welcome Back, %s!"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "My Bookings"
+msgstr "My Bookings"
+
+msgid "Account Details"
+msgstr "Account Details"
+
+msgid "You haven\\'t made any appointments yet."
+msgstr "You haven\\'t made any appointments yet."
+
+msgid "Booking ID"
+msgstr "ID Réservation"
+
+msgid "Custom Service"
+msgstr "Custom Service"
+
+msgid "Reschedule"
+msgstr "Reschedule"
+
+msgid "Manage Account Details"
+msgstr "Manage Account Details"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Residential Address"
+msgstr "Residential Address"
+
+msgid "Change Password"
+msgstr "Change Password"
+
+msgid "(Leave blank to keep current)"
+msgstr "(Leave blank to keep current)"
+
+msgid "Save Changes"
+msgstr "Enregistrer"
+
+msgid "Booking Details"
+msgstr "Détails de la Réservation"
+
+msgid "Reschedule Appointment"
+msgstr "Reschedule Appointment"
+
+msgid "Choose a Professional"
+msgstr "Choisir un Professionnel"
+
+msgid "-- Select Professional --"
+msgstr "-- Select Professional --"
+
+msgid "Pick a Date"
+msgstr "Choisir une Date"
+
+msgid "Available Time Slots"
+msgstr "Créneaux Disponibles"
+
+msgid "Please select a time slot."
+msgstr "Please select a time slot."
+
+msgid "Request Reschedule"
+msgstr "Demander un Report"
+
+msgid "Request Cancellation"
+msgstr "Demander l'Annulation"
+
+msgid "Are you sure you want to request cancellation for appointment %s? This request is subject to administrative review."
+msgstr "Are you sure you want to request cancellation for appointment %s? This request is subject to administrative review."
+
+msgid "Keep Booking"
+msgstr "Keep Booking"
+
+msgid "Book a Service"
+msgstr "Book a Service"
+
+msgid "No services found matching your criteria."
+msgstr "No services found matching your criteria."
+
+msgid "Selection"
+msgstr "Selection"
+
+msgid "Empty"
+msgstr "Empty"
+
+msgid "Book Now"
+msgstr "Réserver maintenant"
+
+msgid "Your basket is empty"
+msgstr "Your basket is empty"
+
+msgid "Start Booking"
+msgstr "Start Booking"
+
