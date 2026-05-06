@@ -1,5 +1,5 @@
 <?php
-class Bc_Admin_Bookings
+class Bc_Bookings
 {
     private $admin;
 

@@ -1,5 +1,5 @@
 <?php
-class Bc_Admin_Integrations {
+class Bc_Integrations {
     private $admin;
 
     public function __construct($admin) {

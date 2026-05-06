@@ -1,4 +1,4 @@
-/* WSB Admin Styles - Dark Mode Pro Theme */
+/* BC Admin Styles - Dark Mode Pro Theme */
 :root {
     --bc-bg-dark: #0f172a;
     --bc-panel-dark: #1e293b;
@@ -473,7 +473,7 @@
     .bc-modern-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     
     /* Finance / Analytics */
-    #wsbRevenueChart { height: 250px !important; }
+    #bcRevenueChart { height: 250px !important; }
 }
 
 @media (max-width: 600px) {
@@ -674,7 +674,7 @@
     align-items: center;
     justify-content: center;
     z-index: 999999;
-    animation: wsbFadeIn 0.4s ease;
+    animation: bcFadeIn 0.4s ease;
 }
 
 .bc-admin-modal {
@@ -780,7 +780,7 @@
     filter: brightness(1.1);
 }
 
-@keyframes wsbFadeIn {
+@keyframes bcFadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }

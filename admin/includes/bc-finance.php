@@ -1,5 +1,5 @@
 <?php
-class Bc_Admin_Finance {
+class Bc_Finance {
     private $admin;
 
     public function __construct($admin) {
@@ -116,7 +116,7 @@ class Bc_Admin_Finance {
                 style="background:var(--bc-panel-dark); padding:20px; border-radius:12px; border:1px solid var(--bc-border); margin-bottom:30px;">
                 <h3 style="margin:0 0 20px 0; color: #fff;"><?php _e('Revenue Performance Analysis', 'boocommerce'); ?></h3>
                 <div style="position:relative; height:300px; width:100%;">
-                    <canvas id="wsbRevenueChart" data-chart='<?php echo $chart_json; ?>'></canvas>
+                    <canvas id="bcRevenueChart" data-chart='<?php echo $chart_json; ?>'></canvas>
                 </div>
             </div>
 

@@ -1,5 +1,5 @@
 <?php
-class Bc_Admin_Customers {
+class Bc_Customers {
     private $admin;
 
     public function __construct($admin) {

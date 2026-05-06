@@ -838,14 +838,14 @@ class Bc_Public
             <?php if (isset($_GET['bc_payment_confirmed'])): ?>
                 <div id="bc-success-overlay"
                     style="background: #ffffff; border: 1.5px solid #10b981; padding: 40px; border-radius: 24px; margin-bottom: 40px; text-align: center; box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.15); position: relative; overflow: hidden;">
-                    <button onclick="wsbCloseSuccess()"
+                    <button onclick="bcCloseSuccess()"
                         style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #10b981; font-size: 24px; cursor: pointer; opacity: 0.5; font-weight: 800;">&times;</button>
                     <div
                         style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(16, 185, 129, 0.05); border-radius: 50%;">
                     </div>
 
                     <div
-                        style="width: 80px; height: 80px; background: #10b981; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 25px; animation: wsbPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                        style="width: 80px; height: 80px; background: #10b981; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 25px; animation: bcPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
                         ✓</div>
 
                     <h2 style="margin: 0 0 10px; font-size: 28px; font-weight: 800; color: #064e3b;"><?php _e('Payment Successful!', 'boocommerce'); ?></h2>
@@ -854,7 +854,7 @@ class Bc_Public
                         <?php _e('Your secure transaction was confirmed. Your appointment has been successfully scheduled and added to your dashboard.', 'boocommerce'); ?></p>
 
                     <div style="display: flex; gap: 15px; justify-content: center;">
-                        <button onclick="wsbCloseSuccess()" class="bc-btn"
+                        <button onclick="bcCloseSuccess()" class="bc-btn"
                             style="background: #10b981; border: none; color: #fff; padding: 12px 30px; border-radius: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);"><?php _e('Manage My Bookings', 'boocommerce'); ?></button>
                     </div>
                 </div>

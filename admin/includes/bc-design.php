@@ -1,5 +1,5 @@
 <?php
-class Bc_Admin_Design {
+class Bc_Design {
     private $admin;
 
     public function __construct($admin) {
@@ -499,7 +499,7 @@ class Bc_Admin_Design {
                                     $is_active = ($service_layout === $val);
                                 ?>
                                     <label style="display:block; cursor:pointer; position:relative;" class="bc-layout-card-label">
-                                        <input type="radio" name="bc_service_layout" value="<?php echo $val; ?>" <?php checked($service_layout, $val); ?> style="display:none;" onchange="updateWsbLayoutSelection(this)">
+                                        <input type="radio" name="bc_service_layout" value="<?php echo $val; ?>" <?php checked($service_layout, $val); ?> style="display:none;" onchange="updateBcLayoutSelection(this)">
                                         <div class="bc-layout-visual-card" style="display:flex; align-items:center; gap:15px; padding:15px; background:<?php echo $is_active ? 'rgba(99,102,241,0.1)' : 'rgba(255,255,255,0.02)'; ?>; border:1.5px solid <?php echo $is_active ? 'var(--bc-primary)' : 'rgba(255,255,255,0.05)'; ?>; border-radius:12px; transition:all 0.3s ease;">
                                             <div style="width:45px; height:45px; border-radius:10px; background:<?php echo $data['gradient']; ?>; display:flex; align-items:center; justify-content:center; color:white;">
                                                 <span class="dashicons <?php echo $data['icon']; ?>"></span>
@@ -516,7 +516,7 @@ class Bc_Admin_Design {
                         </div>
 
                         <script>
-                        function updateWsbLayoutSelection(input) {
+                        function updateBcLayoutSelection(input) {
                             // Reset all cards
                             document.querySelectorAll('.bc-layout-visual-card').forEach(card => {
                                 card.style.background = 'rgba(255,255,255,0.02)';
@@ -654,8 +654,8 @@ class Bc_Admin_Design {
         <script>
         jQuery(document).ready(function($) {
             // 1. Initialize global cache if not present
-            if (typeof window.wsbIconsCache === 'undefined') {
-                window.wsbIconsCache = [
+            if (typeof window.bcIconsCache === 'undefined') {
+                window.bcIconsCache = [
                     // Dashicons
                     'dashicons-cart', 'dashicons-visibility', 'dashicons-calendar-alt', 'dashicons-admin-users', 'dashicons-store',
                     'dashicons-heart', 'dashicons-star-filled', 'dashicons-clock', 'dashicons-location', 'dashicons-phone',
@@ -690,7 +690,7 @@ class Bc_Admin_Design {
                             }
                         }
                         
-                        window.wsbIconsCache = window.wsbIconsCache.concat(Array.from(iconSet));
+                        window.bcIconsCache = window.bcIconsCache.concat(Array.from(iconSet));
                         
                         // Render immediately if modal is currently open
                         if ($('#bc-icon-library-modal').is(':visible')) {
@@ -701,14 +701,14 @@ class Bc_Admin_Design {
             }
 
             // 2. Define universal render function
-            window.wsbRenderIcons = function(filter = '') {
+            window.bcRenderIcons = function(filter = '') {
                 const grid = $('#bc-icon-grid');
                 if (!grid.length) return;
 
                 grid.empty();
                 
                 const filterLower = filter.toLowerCase();
-                const matchedIcons = window.wsbIconsCache.filter(icon => icon.toLowerCase().includes(filterLower));
+                const matchedIcons = window.bcIconsCache.filter(icon => icon.toLowerCase().includes(filterLower));
                 
                 // For performance, cap rendering if no filter to prevent DOM freezing
                 const renderLimit = filterLower === '' ? 200 : matchedIcons.length;
@@ -745,8 +745,8 @@ class Bc_Admin_Design {
                     );
 
                     div.on('click', function() {
-                        if (window.wsbCurrentTargetInput) {
-                            $(window.wsbCurrentTargetInput).val(icon);
+                        if (window.bcCurrentTargetInput) {
+                            $(window.bcCurrentTargetInput).val(icon);
                         }
                         $('#bc-icon-library-modal').hide();
                     });
@@ -756,21 +756,21 @@ class Bc_Admin_Design {
             };
 
             // 3. Bind robust delegated events (using off.on to prevent duplicates)
-            $(document).off('click.wsbIconPicker').on('click.wsbIconPicker', '.bc-icon-picker-btn', function(e) {
+            $(document).off('click.bcIconPicker').on('click.bcIconPicker', '.bc-icon-picker-btn', function(e) {
                 e.preventDefault();
                 const targetId = $(this).attr('data-target');
-                window.wsbCurrentTargetInput = document.getElementById(targetId);
+                window.bcCurrentTargetInput = document.getElementById(targetId);
                 
                 $('#bc-icon-search').val('');
-                window.wsbRenderIcons();
+                window.bcRenderIcons();
                 $('#bc-icon-library-modal').css('display', 'flex');
             });
 
-            $(document).off('input.wsbIconSearch').on('input.wsbIconSearch', '#bc-icon-search', function(e) {
-                window.wsbRenderIcons($(this).val());
+            $(document).off('input.bcIconSearch').on('input.bcIconSearch', '#bc-icon-search', function(e) {
+                window.bcRenderIcons($(this).val());
             });
 
-            $(document).off('click.wsbIconClose').on('click.wsbIconClose', '#bc-icon-library-modal', function(e) {
+            $(document).off('click.bcIconClose').on('click.bcIconClose', '#bc-icon-library-modal', function(e) {
                 if (e.target === this) {
                     $(this).hide();
                 }

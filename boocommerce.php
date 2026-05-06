@@ -1,10 +1,11 @@
 <?php
 /**
  * Plugin Name:       BooCommerce
- * Plugin URI:        https://example.com/boocommerce
+ * Plugin URI:        https://webbird.co.uk/boocommerce
  * Description:       A complete appointment and service booking system with staff management, payments, and analytics.
  * Version:           1.0.0
- * Author:            Antigravity
+ * Author:            WebBird
+ * Author URI:        https://webbird.co.uk
  * Text Domain:       boocommerce
  * Domain Path:       /languages
  * 
@@ -202,19 +203,19 @@ add_action('plugins_loaded', 'bc_load_textdomain');
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-bc-activator.php
+ * This action is documented in includes/bc-activator.php
  */
 function activate_boocommerce() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-bc-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/bc-activator.php';
 	Bc_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-bc-deactivator.php
+ * This action is documented in includes/bc-deactivator.php
  */
 function deactivate_boocommerce() {
-	// require_once plugin_dir_path( __FILE__ ) . 'includes/class-bc-deactivator.php';
+	// require_once plugin_dir_path( __FILE__ ) . 'includes/bc-deactivator.php';
 	// Bc_Deactivator::deactivate();
 }
 
@@ -225,7 +226,7 @@ register_deactivation_hook( __FILE__, 'deactivate_boocommerce' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-boocommerce.php';
+require plugin_dir_path( __FILE__ ) . 'includes/boocommerce.php';
 
 /**
  * Begins execution of the plugin.

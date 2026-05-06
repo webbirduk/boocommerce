@@ -36,15 +36,15 @@ jQuery(document).ready(function($) {
                         var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=bc_main&tab=' + tab + extraParams;
                         window.history.pushState({path: newUrl}, '', newUrl);
                     } catch (e) {
-                        console.error('WSB Render Error:', e);
+                        console.error('BC Render Error:', e);
                     }
-                    handleWSBNotices(); // Ensure notices are handled after AJAX load
+                    handleBCNotices(); // Ensure notices are handled after AJAX load
                 } else {
-                    console.error('WSB AJAX Error: Success was false.', response);
+                    console.error('BC AJAX Error: Success was false.', response);
                 }
             },
             error: function(xhr, status, error) {
-                console.error('WSB AJAX Network Error:', status, error);
+                console.error('BC AJAX Network Error:', status, error);
             },
             complete: function() {
                 $('.bc-loader').fadeOut('fast');
@@ -156,12 +156,12 @@ jQuery(document).ready(function($) {
                     var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + queryString;
                     window.history.pushState({path: newUrl}, '', newUrl);
 
-                    handleWSBNotices(); // Handle notices after form submission
+                    handleBCNotices(); // Handle notices after form submission
                 }
                 $('.bc-loader').fadeOut('fast');
             },
             error: function() {
-                console.error('WSB Error: Form submission failed.');
+                console.error('BC Error: Form submission failed.');
             },
             complete: function() {
                 $('.bc-loader').fadeOut('fast');
@@ -237,7 +237,7 @@ jQuery(document).ready(function($) {
     });
 
     // 5. Notice Handler (Close Icon + Auto-disappear)
-    function handleWSBNotices() {
+    function handleBCNotices() {
         $('.bc-master-wrapper .notice').each(function() {
             var notice = $(this);
             
@@ -266,11 +266,11 @@ jQuery(document).ready(function($) {
     });
 
     // Initial check
-    handleWSBNotices();
+    handleBCNotices();
 
     // Re-check after tab loads or forms submit (handled via triggers or callbacks)
     $(document).on('bc-tab-loaded', function() {
-        handleWSBNotices();
+        handleBCNotices();
     });
 
     // Handle History (Back/Forward)
@@ -280,11 +280,11 @@ jQuery(document).ready(function($) {
         $('.bc-nav-item').removeClass('active');
         $('.bc-nav-item[data-tab="' + tab + '"]').addClass('active');
         loadTab(tab);
-        handleWSBNotices();
+        handleBCNotices();
     };
 
     // 6. Admin Safety Confirmation (Impact Analysis)
-    function wsbConfirm(title, msg) {
+    function bcConfirm(title, msg) {
         return new Promise((resolve) => {
             const modal = $(`
                 <div class="bc-admin-modal-overlay">
@@ -355,7 +355,7 @@ jQuery(document).ready(function($) {
             // Revert state temporarily while waiting for confirmation
             checkbox.prop('checked', !isChecked);
             
-            const confirmed = await wsbConfirm(impact.title, impact.msg);
+            const confirmed = await bcConfirm(impact.title, impact.msg);
             if (confirmed) {
                 checkbox.prop('checked', isChecked);
             } else {
@@ -367,7 +367,7 @@ jQuery(document).ready(function($) {
     // 7. Restore Defaults Confirmation
     $(document).on('click', '#bc-restore-defaults-btn', async function(e) {
         e.preventDefault();
-        const confirmed = await wsbConfirm(
+        const confirmed = await bcConfirm(
             'Restore Factory Defaults?', 
             'This will revert all system settings, scheduling rules, and flow controls to their original values. This action cannot be undone.'
         );
@@ -388,12 +388,12 @@ jQuery(document).ready(function($) {
 /**
  * Professional Separation: Financial Analysis Module
  */
-function initWSBRevenueChart() {
+function initBCRevenueChart() {
     if (typeof Chart === 'undefined') {
-        setTimeout(initWSBRevenueChart, 200);
+        setTimeout(initBCRevenueChart, 200);
         return;
     }
-    const canvas = document.getElementById('wsbRevenueChart');
+    const canvas = document.getElementById('bcRevenueChart');
     if (!canvas) return;
 
     const dataAttr = canvas.getAttribute('data-chart');
@@ -456,10 +456,10 @@ function initWSBRevenueChart() {
 
 // Hook into tab loading
 jQuery(document).on('bc-tab-loaded', function() {
-    initWSBRevenueChart();
+    initBCRevenueChart();
 });
 
 // Initial load check
 jQuery(document).ready(function() {
-    initWSBRevenueChart();
+    initBCRevenueChart();
 });

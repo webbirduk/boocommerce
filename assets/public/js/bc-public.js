@@ -326,7 +326,7 @@ jQuery(document).ready(function($) {
             }
         }
 
-        console.log('WSB: Navigating to:', nextStep);
+        console.log('BC: Navigating to:', nextStep);
 
         // If we are moving from selection to checkout, handle Stripe redirect
         if (nextStep === 'bc-step-checkout') {
@@ -385,7 +385,7 @@ jQuery(document).ready(function($) {
             // If we just reached the final checkout step (for non-Stripe methods)
             if (nextStep === 'bc-step-checkout') {
                 const method = $('input[name="payment_method"]:checked').val();
-                console.log('WSB: Final checkout for method:', method);
+                console.log('BC: Final checkout for method:', method);
                 
                 // Populate final summary from selected service cards
                 let serviceNames = [];
@@ -453,7 +453,7 @@ jQuery(document).ready(function($) {
                 rowStyle = 'opacity:1; font-weight:500;';
                 statusLabel = '<span style="font-size:10px; color:#10b981; margin-left:8px;">Scheduled</span>';
             } else if (index === currentSplitIndex) {
-                statusIcon = '<span style="color:var(--bc-brand); animation: wsbPulse 1.5s infinite;">📍</span>';
+                statusIcon = '<span style="color:var(--bc-brand); animation: bcPulse 1.5s infinite;">📍</span>';
                 rowStyle = 'opacity:1; font-weight:800; background:rgba(99, 102, 241, 0.03); border-radius:6px; padding:4px 8px; margin: 2px -8px;';
                 statusLabel = '<span style="font-size:10px; color:var(--bc-brand); margin-left:8px;">Planning...</span>';
             }
@@ -604,7 +604,7 @@ jQuery(document).ready(function($) {
                 // Show success state
                 $('#bc-booking-wizard-container').html(
                     '<div style="text-align:center; padding:60px 40px; background:#fff; border-radius:32px; border:1px solid var(--bc-border); box-shadow:var(--bc-shadow-lg);">' +
-                    '<div style="width:100px; height:100px; background:#10b981; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:50px; margin:0 auto 30px; animation:wsbPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);">✓</div>' +
+                    '<div style="width:100px; height:100px; background:#10b981; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:50px; margin:0 auto 30px; animation:bcPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);">✓</div>' +
                     '<h2 style="font-size:32px; font-weight:800; color:#0f172a; margin-bottom:15px;">All appointments secured!</h2>' +
                     '<p style="color:#64748b; font-size:18px; line-height:1.6; margin-bottom:40px;">Your scheduling request has been processed successfully. Check your email for details.</p>' +
                     '<button onclick="location.reload()" class="bc-btn bc-next-btn" style="padding:15px 40px;">Book More Services</button>' +
@@ -615,7 +615,7 @@ jQuery(document).ready(function($) {
                 $btn.text(originalText).prop('disabled', false);
             }
         } catch (err) {
-            console.error('WSB Booking Error:', err);
+            console.error('BC Booking Error:', err);
             alert('A technical error occurred while securing your appointments. Please try again.');
             $btn.text(originalText).prop('disabled', false);
         }
@@ -832,7 +832,7 @@ jQuery(document).ready(function($) {
         }
 
         if (paymentMethod === 'stripe_card') {
-            console.log('WSB: Initializing Stripe Checkout redirect...');
+            console.log('BC: Initializing Stripe Checkout redirect...');
             $.ajax({
                 url: bc_ajax.ajax_url,
                 type: 'POST',
@@ -1222,7 +1222,7 @@ jQuery(document).ready(function($) {
                 isStripeLoading = false;
                 $('#bc-payment-loading').hide();
                 $('#bc-stripe-error').text('Secure connection failed (Network Error). Please refresh and try again.');
-                console.error('WSB Stripe AJAX Error:', status, error);
+                console.error('BC Stripe AJAX Error:', status, error);
             }
         });
     }
@@ -1332,7 +1332,7 @@ jQuery(document).ready(function($) {
 /**
  * Professional Separation: Booking Success Feedback
  */
-function wsbCloseSuccess() {
+function bcCloseSuccess() {
     const overlay = document.getElementById('bc-success-overlay');
     if (!overlay) return;
     overlay.style.transition = 'all 0.5s ease-in';
@@ -1349,6 +1349,6 @@ function wsbCloseSuccess() {
 // Auto-close success message if present
 jQuery(document).ready(function() {
     if (document.getElementById('bc-success-overlay')) {
-        setTimeout(wsbCloseSuccess, 2000);
+        setTimeout(bcCloseSuccess, 2000);
     }
 });

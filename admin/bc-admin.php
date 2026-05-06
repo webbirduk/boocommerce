@@ -21,15 +21,15 @@ class Bc_Admin
     private function load_dependencies()
     {
         $dir = plugin_dir_path(__FILE__) . 'includes/';
-        require_once $dir . 'class-bc-admin-bookings.php';
-        require_once $dir . 'class-bc-admin-services.php';
-        require_once $dir . 'class-bc-admin-staff.php';
-        require_once $dir . 'class-bc-admin-customers.php';
-        require_once $dir . 'class-bc-admin-finance.php';
-        require_once $dir . 'class-bc-admin-settings.php';
-        require_once $dir . 'class-bc-admin-design.php';
-        require_once $dir . 'class-bc-admin-integrations.php';
-        require_once $dir . 'class-bc-admin-dashboard.php';
+        require_once $dir . 'bc-bookings.php';
+        require_once $dir . 'bc-services.php';
+        require_once $dir . 'bc-staff.php';
+        require_once $dir . 'bc-customers.php';
+        require_once $dir . 'bc-finance.php';
+        require_once $dir . 'bc-settings.php';
+        require_once $dir . 'bc-design.php';
+        require_once $dir . 'bc-integrations.php';
+        require_once $dir . 'bc-dashboard.php';
     }
 
     public function ajax_load_tab()
@@ -50,15 +50,15 @@ class Bc_Admin
         // --- DEVELOPER SCALABILITY ENGINE ---
         // Allow developers to register custom modules or override existing ones
         $allowed_tabs = apply_filters('bc_admin_tabs', array(
-            'dashboard' => array('class' => 'Bc_Admin_Dashboard'),
-            'bookings'  => array('class' => 'Bc_Admin_Bookings'),
-            'finance'   => array('class' => 'Bc_Admin_Finance'),
-            'services'  => array('class' => 'Bc_Admin_Services'),
-            'staff'     => array('class' => 'Bc_Admin_Staff'),
-            'customers' => array('class' => 'Bc_Admin_Customers'),
-            'design'    => array('class' => 'Bc_Admin_Design'),
-            'settings'  => array('class' => 'Bc_Admin_Settings'),
-            'integrations' => array('class' => 'Bc_Admin_Integrations')
+            'dashboard' => array('class' => 'Bc_Dashboard'),
+            'bookings'  => array('class' => 'Bc_Bookings'),
+            'finance'   => array('class' => 'Bc_Finance'),
+            'services'  => array('class' => 'Bc_Services'),
+            'staff'     => array('class' => 'Bc_Staff'),
+            'customers' => array('class' => 'Bc_Customers'),
+            'design'    => array('class' => 'Bc_Design'),
+            'settings'  => array('class' => 'Bc_Settings'),
+            'integrations' => array('class' => 'Bc_Integrations')
         ));
 
         ob_start();
@@ -72,7 +72,7 @@ class Bc_Admin
             }
         } else {
             // Default Fallback
-            $module = new Bc_Admin_Dashboard($this);
+            $module = new Bc_Dashboard($this);
             $module->display();
         }
         

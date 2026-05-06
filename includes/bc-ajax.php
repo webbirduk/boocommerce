@@ -152,7 +152,7 @@ class Bc_Ajax {
                 ));
                 $created_account = true;
             } else {
-                error_log('WSB User Creation Error: ' . $user_id->get_error_message());
+                error_log('BC User Creation Error: ' . $user_id->get_error_message());
             }
         }
 

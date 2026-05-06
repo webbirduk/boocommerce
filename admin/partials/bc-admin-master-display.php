@@ -147,7 +147,7 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboard';
     <!-- Main Sidebar Navigation -->
     <div class="bc-master-sidebar">
         <div class="bc-sidebar-header">
-            <h2>WSB ELITE</h2>
+            <h2>BooCommerce</h2>
         </div>
         
         <nav class="bc-sidebar-nav">
@@ -189,31 +189,31 @@ $tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'dashboard';
             <?php
             switch ($tab) {
             case 'bookings':
-                (new Bc_Admin_Bookings($this))->display();
+                (new Bc_Bookings($this))->display();
                 break;
             case 'finance':
-                (new Bc_Admin_Finance($this))->display();
+                (new Bc_Finance($this))->display();
                 break;
             case 'services':
-                (new Bc_Admin_Services($this))->display();
+                (new Bc_Services($this))->display();
                 break;
             case 'staff':
-                (new Bc_Admin_Staff($this))->display();
+                (new Bc_Staff($this))->display();
                 break;
             case 'customers':
-                (new Bc_Admin_Customers($this))->display();
+                (new Bc_Customers($this))->display();
                 break;
             case 'design':
-                (new Bc_Admin_Design($this))->display();
+                (new Bc_Design($this))->display();
                 break;
             case 'settings':
-                (new Bc_Admin_Settings($this))->display();
+                (new Bc_Settings($this))->display();
                 break;
             case 'integrations':
-                (new Bc_Admin_Integrations($this))->display();
+                (new Bc_Integrations($this))->display();
                 break;
             default:
-                (new Bc_Admin_Dashboard($this))->display();
+                (new Bc_Dashboard($this))->display();
                 break;
         }
         ?>

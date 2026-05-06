@@ -1,5 +1,5 @@
 <?php
-class Bc_Admin_Dashboard {
+class Bc_Dashboard {
     private $admin;
 
     public function __construct($admin) {

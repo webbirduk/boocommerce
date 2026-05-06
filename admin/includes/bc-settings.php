@@ -1,5 +1,5 @@
 <?php
-class Bc_Admin_Settings
+class Bc_Settings
 {
     private $admin;
 

@@ -15,9 +15,9 @@ class Boocommerce {
 	}
 
 	private function load_dependencies() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-bc-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-bc-public.php';
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-bc-ajax.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/bc-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/bc-public.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/bc-ajax.php';
 	}
 
 	private function define_admin_hooks() {
