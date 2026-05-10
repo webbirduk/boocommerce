@@ -12,9 +12,16 @@ class Bc_Services {
     }
 
     public function display() {
-        // Auto-patch schema if image columns don't exist
-        $wpdb->query("ALTER TABLE {$wpdb->prefix}bc_services ADD COLUMN IF NOT EXISTS image_url varchar(255) DEFAULT NULL");
-        $wpdb->query("ALTER TABLE {$wpdb->prefix}bc_services ADD COLUMN IF NOT EXISTS gallery_urls text DEFAULT NULL");
+        global $wpdb;
+
+        // Auto-patch schema with compatibility check
+        $columns = $wpdb->get_col("DESCRIBE {$wpdb->prefix}bc_services");
+        if (!in_array('image_url', $columns)) {
+            $wpdb->query("ALTER TABLE {$wpdb->prefix}bc_services ADD COLUMN image_url varchar(255) DEFAULT NULL");
+        }
+        if (!in_array('gallery_urls', $columns)) {
+            $wpdb->query("ALTER TABLE {$wpdb->prefix}bc_services ADD COLUMN gallery_urls text DEFAULT NULL");
+        }
 
         $action = isset($_REQUEST['bc_action']) ? sanitize_text_field($_REQUEST['bc_action']) : (isset($_GET['action']) ? $_GET['action'] : 'list');
         $service_id = isset($_REQUEST['service_id']) ? intval($_REQUEST['service_id']) : (isset($_REQUEST['id']) ? intval($_REQUEST['id']) : 0);
